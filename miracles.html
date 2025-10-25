@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sai Baba Spiritual Portal</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Philosopher&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">🌸 Sai Baba Portal 🌸</a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="teachings.html">Teachings</a>
+        <a href="chits.html">Chits</a>
+        <a href="daily-quote.html">Daily Quote</a>
+        <a href="Worship.html">Worship</a>
+        <a href="miracles.html" class="active">Miracles</a>
+        <a href="Contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+<body>
+
+  <div class="miracle-container">
+    <!-- Right: Form -->
+    <div class="form-section">
+      <h1>Share Your Miracle Story</h1>
+        <p>Share your Sai Baba miracle and inspire others with His divine blessings.</p>
+
+      <form id="miracleForm">
+        <input type="text" name="entry.579044948" placeholder="Your Name" required>
+        <select name="entry.964793499" required>
+          <option value="">Select Category</option>
+          <option value="Marriage">Marriage</option>
+          <option value="Health">Health</option>
+          <option value="Wealth">Wealth</option>
+          <option value="Relationship">Relationship</option>
+          <option value="Other">Other</option>
+        </select>
+        <textarea name="entry.1663738702" placeholder="Share your story..." rows="5" required></textarea>
+        <button type="submit">Submit Story</button>
+        <p id="status"></p>
+        <p style="font-size:0.9rem; color:#8e24aa; margin-top:12px; text-align:center;">
+  ✨ Your story may be the blessing someone else needs today. ✨
+</p>
+
+      </form>
+    </div>
+
+    <!-- Left: Stories -->
+    <div class="stories-section" id="stories">
+      <h2>Submitted Stories</h2>
+      <div id="storiesContainer">
+        <div class="loader"></div>
+      </div>
+   
+  <p style="font-style: italic; color:#5b3c11; text-align:center; margin-bottom:15px;">
+  Read the divine experiences shared by fellow devotees. May these stories strengthen your faith and bring peace to your heart.
+</p>
+
+ </div>
+  </div>
+
+<script>
+const form = document.getElementById('miracleForm');
+const status = document.getElementById('status');
+const storiesContainer = document.getElementById('storiesContainer');
+const storiesSection = document.getElementById('stories');
+
+const googleFormAction = "https://docs.google.com/forms/d/e/1FAIpQLSc67HpyGedHobqRiVFJNhZ-TC8m-KtLVhiHeiBFV65j4W5SNg/formResponse";
+const appScriptURL = "https://script.google.com/macros/s/AKfycbxEMxINPnuddrqy72-FXAyVRyTW5I-UjvnEYlFuHslNuId6jUC5RqXg9Kdgvmm2B1DCJw/exec";
+
+// ⚡ FAST LOCAL CACHE for instant display
+const CACHE_KEY = "sai_baba_stories";
+
+// --- Display Stories Immediately ---
+function displayStories(data) {
+  storiesContainer.innerHTML = "";
+  if (!data.length) {
+    storiesContainer.innerHTML = "<p>No stories yet.</p>";
+    return;
+  }
+  data.reverse().forEach(story => {
+    const div = document.createElement('div');
+    div.classList.add('story-card');
+    div.style.opacity = 0;
+    div.style.transform = "translateY(-10px)";
+    div.innerHTML = `<h3>${story.Name || story.name} (${story.Category || story.category})</h3>
+                     <span>${new Date(story.Timestamp || story.time || Date.now()).toLocaleString()}</span>
+                     <p>${story.Story || story.storyText}</p>`;
+    storiesContainer.appendChild(div);
+    requestAnimationFrame(() => {
+      div.style.opacity = 1;
+      div.style.transform = "translateY(0)";
+    });
+  });
+}
+
+// --- Submit Form Instantly ---
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  status.textContent = "Submitting...";
+
+  const data = new FormData(form);
+  const name = data.get("entry.579044948");
+  const category = data.get("entry.964793499");
+  const storyText = data.get("entry.1663738702");
+
+  // 1️⃣ Instantly add to UI
+  const newStory = {
+    Name: name,
+    Category: category,
+    Story: storyText,
+    Timestamp: new Date().toISOString()
+  };
+  const currentStories = JSON.parse(localStorage.getItem(CACHE_KEY) || "[]");
+  currentStories.push(newStory);
+  localStorage.setItem(CACHE_KEY, JSON.stringify(currentStories));
+  displayStories(currentStories);
+
+  // 2️⃣ Send to Google Form
+  const params = new URLSearchParams();
+  for (const pair of data) params.append(pair[0], pair[1]);
+  fetch(googleFormAction, { method: 'POST', mode: 'no-cors', body: params });
+
+  // 3️⃣ Reset form + message
+  form.reset();
+  status.textContent = "✨ Story submitted successfully!";
+  storiesSection.scrollIntoView({ behavior: 'smooth' });
+
+  // 4️⃣ Background refresh (without delay or flicker)
+  fetchStories(false);
+});
+
+// --- Fetch Stories from Google Sheet ---
+async function fetchStories(showLoader = false) {
+  if (showLoader) storiesContainer.innerHTML = '<div class="loader"></div>';
+  try {
+    const response = await fetch(appScriptURL, { cache: "no-cache" });
+    const data = await response.json();
+    if (data.length) {
+      localStorage.setItem(CACHE_KEY, JSON.stringify(data)); // cache latest
+      displayStories(data);
+    }
+  } catch (err) {
+    console.error("Failed to fetch stories:", err);
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (cached) displayStories(JSON.parse(cached));
+  }
+}
+
+// --- On Page Load ---
+(function init() {
+  // 🔹 Show cached stories instantly
+  const cached = localStorage.getItem(CACHE_KEY);
+  if (cached) displayStories(JSON.parse(cached));
+  else storiesContainer.innerHTML = "<p>Loading stories...</p>";
+
+  // 🔹 Fetch fresh data silently (no loader delay)
+  fetchStories(false);
+})();
+</script>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <p>© 2025 Sai Baba Spiritual Portal. All rights reserved.</p>
+  <p class="disclaimer">
+    Disclaimer: The content on this website is for informational and spiritual guidance purposes only. 
+    It is based on public domain sources and does not claim ownership of copyrighted materials.
+  </p>
+</footer>
+
+</body>
+</html>
+
+
+

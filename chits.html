@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sai Baba Spiritual Portal</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Philosopher&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">🌸 Sai Baba Portal 🌸</a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="teachings.html">Teachings</a>
+        <a href="chits.html" class="active">Chits</a>
+        <a href="daily-quote.html">Daily Quote</a>
+        <a href="Worship.html">Worship</a>
+        <a href="miracles.html">Miracles</a>
+        <a href="Contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="game-container">
+
+<!-- Chit Input Section -->
+<div class="chit-input-section">
+  <h2>Write your chits</h2>
+  <p class="instructions">
+    🙏 With faith in your heart, write down your questions, hopes, or prayers. 
+    Baba will guide you through the chits you create. 🌸
+  </p>
+
+  <div id="chitInputs">
+    <div class="chit-box">
+      <textarea placeholder="Write your chit here..." maxlength="200"></textarea>
+    </div>
+    <div class="chit-box">
+      <textarea placeholder="Write your chit here..." maxlength="200"></textarea>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <button id="addChit">+ Add More Chit</button>
+    <button id="submitAllChits">Submit All Chits</button>
+    <button id="resetGame">🔄 Reset</button> <!-- Reset button moved here -->
+  </div>
+</div>
+    
+    <!-- Shuffled Chits Section -->
+    <div class="chit-display-section">
+      <h2>Pick a chit</h2>
+      <p class="instructions">✨ Close your eyes, surrender your worries, and let Baba choose a message for you. Whatever chit you open, accept it with Shraddha (faith) and Saburi (patience). 🙏</p>
+      <div id="chitPool"></div>
+    </div>
+
+    <!-- Bottom Reset Button -->
+<button id="bottomReset">🔄 Reset & Begin Again</button>
+
+  
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <p>© 2025 Sai Baba Spiritual Portal. All rights reserved.</p>
+  <p class="disclaimer">
+    Disclaimer: The content on this website is for informational and spiritual guidance purposes only. 
+    It is based on public domain sources and does not claim ownership of copyrighted materials.
+  </p>
+</footer>
+</html>
+

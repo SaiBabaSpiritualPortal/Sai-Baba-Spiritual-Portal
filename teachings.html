@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sai Baba Teachings - Spiritual Portal</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Tiro+Devanagari+Sanskrit&family=Philosopher&display=swap" rel="stylesheet">
+ <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+<style>
+:root {
+  --bg: #fff9f6;
+  --accent: #8e24aa;
+  --accent-2: #f39f86;
+  --muted: #555;
+  --card: #ffffff;
+  --shadow: 0 6px 20px rgba(0,0,0,0.08);
+  --radius: 20px;
+  --glow: 0 0 20px rgba(142,36,170,0.3);
+  --modal-bg: rgba(0,0,0,0.7);
+  font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff9f4;
+  font-family: 'Poppins', sans-serif;
+  color: #4a148c;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+
+
+
+/* Hero */
+.hero {
+  text-align:center;
+  margin:30px auto;
+  max-width:3250px;
+  background: rgba(255,255,255,0.92);
+  border-radius: var(--radius);
+  padding:30px;
+  box-shadow: var(--shadow), var(--glow);
+}
+.hero h1 {
+  font-family:'Tiro Devanagari Sanskrit', serif;
+  font-size:2.2rem;
+  color: var(--accent);
+  margin-bottom:15px;
+  text-shadow: 1px 1px 12px #fff, 0 0 15px rgba(142,36,170,0.6);
+
+}
+.hero p {
+  font-size:0.90rem;
+  color: var(--muted);
+      text-align:left;
+
+}
+
+/* Cards - responsive grid */
+.features {
+  display:grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap:20px;
+  max-width:1200px;
+  margin:20px auto;
+}
+.feature-card {
+  background: rgba(246, 234, 249, 0.95);
+  padding:10px 15px;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08), var(--glow);
+  cursor:pointer;
+  transition: transform 0.4s, box-shadow 0.4s;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  min-height:220px;
+}
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.18),0 0 30px rgba(142,36,170,0.4);
+}
+.feature-card h3 {
+  color: var(--accent-2); margin-top:0; font-size:1.2rem;
+  font-family:'Philosopher', serif;
+}
+.feature-card p {
+  font-size:0.95rem; color: #444; margin-top:8px; line-height:1.4;
+}
+
+/* Pagination Buttons */
+.pagination {
+  display:flex; justify-content:center; margin-bottom:40px;
+  gap:20px;
+}
+.pagination button {
+  padding: 10px 20px;
+  border:none;
+  border-radius: var(--radius);
+  background: var(--accent-2);
+  color:#fff;
+  font-weight:bold;
+  cursor:pointer;
+  transition: 0.3s;
+}
+.pagination button:hover {
+  background: var(--accent);
+}
+
+/* Responsive Grid */
+@media(max-width:1400px){ .features{grid-template-columns: repeat(4,1fr);} }
+@media(max-width:1100px){ .features{grid-template-columns: repeat(3,1fr);} }
+@media(max-width:800px){ .features{grid-template-columns: repeat(2,1fr);} }
+@media(max-width:500px){ .features{grid-template-columns: 1fr;} }
+
+/* Modal */
+.modal {
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  background: var(--modal-bg);
+  display:none;
+  align-items:center; justify-content:center;
+  z-index:2000;
+  padding:20px;
+  overflow:auto;
+}
+.modal-content {
+  background: #fffdf9;
+  padding:30px;
+  border-radius: var(--radius);
+  max-width: 800px;
+  width:100%;
+  max-height:90vh;
+  overflow-y:auto;
+  box-shadow: var(--shadow), var(--glow);
+  font-size:1.1rem; line-height:1.8; color:#4a148c;
+  font-family:'Tiro Devanagari Sanskrit', serif;
+  position: relative;
+}
+.modal-content h2 {
+  color: var(--accent);
+  margin-top:0; text-align:center; font-size:1.8rem;
+}
+.close-btn {
+  position:absolute;
+  top:15px; right:20px;
+  background:none; border:none;
+  font-size:1.5rem;
+  cursor:pointer;
+  color:var(--accent-2);
+}
+
+/* Modal story formatting */
+#modalStory p:first-letter {
+  font-size:1.5rem;
+  font-weight:bold;
+  color: var(--accent-2);
+}
+
+
+</style>
+</head>
+<body>
+
+    <!-- Header & Navigation (same as home page) -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">🌸 Sai Baba Portal 🌸</a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="teachings.html" class="active">Teachings</a>
+        <a href="chits.html">Chits</a>
+      <a href="daily-quote.html">Daily Quote</a>
+        <a href="Worship.html">Worship</a>
+        <a href="miracles.html">Miracles</a>
+        <a href="Contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+<!-- Hero -->
+<section class="hero">
+  <h1>🌸 Sai Baba Teachings & Stories 🌸</h1>
+  <p>Click on a teaching below to read a detailed story from Shirdi Sai Satcharitra.</p>
+</section>
+
+<!-- Cards Container -->
+<section class="features" id="cardsContainer"></section>
+
+<!-- Pagination -->
+<div class="pagination">
+  <button id="prevBtn">Previous</button>
+  <button id="nextBtn">Next</button>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="storyModal">
+  <div class="modal-content">
+    <button class="close-btn" id="closeModal">&times;</button>
+    <h2 id="modalTitle"></h2>
+    <div id="modalStory"></div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <p>© 2025 Sai Baba Spiritual Portal. All rights reserved.</p>
+  <p class="disclaimer">
+    Disclaimer: The content on this website is for informational and spiritual guidance purposes only. 
+    It is based on public domain sources and does not claim ownership of copyrighted materials.
+  </p>
+</footer>
+
+<script>
+// Card Data
+const allCards = [
+  {title:"Shraddha (Faith)", text:"Trust Baba completely; faith bridges despair to hope.", story:"Paragraph 1: Faith is the foundation... Paragraph 2: A devotee came to Baba... Paragraph 3: Baba guided him... Paragraph 4: The devotee followed faithfully... Paragraph 5: Baba explained that faith connects the heart... Paragraph 6: Always maintain this steadfast faith."},
+  {title:"Saburi (Patience)", text:"Learn patience; blessings come in divine timing.", story:"Paragraph 1: Patience is a virtue... Paragraph 2: A merchant troubled by debts... Paragraph 3: Baba advised him to wait calmly... Paragraph 4: Days later, solutions appeared... Paragraph 5: Baba explained impatience clouds judgment... Paragraph 6: True patience nurtures inner strength."},
+  {title:"Service to Others", text:"Helping the needy is the highest service to God.", story:"Paragraph 1: Baba helped poor and sick... Paragraph 2: Village struck by famine... Paragraph 3: Baba arranged food, shelter... Paragraph 4: Devotees learned helping opens heart... Paragraph 5: Baba emphasized no act of service is small... Paragraph 6: Continuous service purifies the soul."},
+  {title:"Charity & Sharing", text:"Selfless giving purifies the soul.", story:"Paragraph 1: Baba regarded annadan sacred... Paragraph 2: He instructed devotees to share meals... Paragraph 3: Wealthy merchant followed guidance... Paragraph 4: Baba taught giving purifies ego... Paragraph 5: Selfless sharing cultivates compassion... Paragraph 6: True charity is continuous."},
+  {title:"Remembrance of God", text:"Chant and meditate; keep Baba in your heart.", story:"Paragraph 1: Baba emphasized remembering God... Paragraph 2: Devotee distracted by world affairs... Paragraph 3: Baba reminded him constant remembrance keeps mind calm... Paragraph 4: Devotee meditated regularly... Paragraph 5: Baba explained mind aligned with God is free from fear... Paragraph 6: Remembrance transforms life into divine living."},
+  {title:"Humility & Simplicity", text:"Live simply and humbly; pride separates from God.", story:"Paragraph 1: Baba lived simply... Paragraph 2: Never showed pride... Paragraph 3: Rich disciple learned humility by serving... Paragraph 4: Baba explained ego separates from grace... Paragraph 5: Simplicity fosters contentment... Paragraph 6: Humility opens heart to wisdom."},
+  {title:"Forgiveness & Love", text:"Forgive and love all beings.", story:"Paragraph 1: Baba forgave everyone... Paragraph 2: Devotee wronged by friend came upset... Paragraph 3: Baba encouraged forgiveness... Paragraph 4: Devotee reconciled and felt freedom... Paragraph 5: Baba taught love binds humans and God... Paragraph 6: Forgiveness and love key to spiritual growth."},
+  {title:"Equality & Unity", text:"All are one under God; respect every path.", story:"Paragraph 1: Baba taught God is one... Paragraph 2: Hindu, Muslim devotees came... Paragraph 3: Baba explained all religions lead to same Divine... Paragraph 4: Devotees treated equally... Paragraph 5: Unity fosters peace... Paragraph 6: Respect all paths and faiths."},
+  {title:"Trust in Divine Will", text:"Surrender worries; God will guide you.", story:"Paragraph 1: Baba advised surrendering ego... Paragraph 2: Devotee anxious about future... Paragraph 3: Baba told trust in divine will... Paragraph 4: Outcomes unfolded magically... Paragraph 5: Trust reduces anxiety... Paragraph 6: Surrender brings inner peace."},
+  {title:"Faithful Prayer", text:"Prayer with devotion brings miracles.", story:"Paragraph 1: Baba valued heartfelt prayer... Paragraph 2: Devotee prayed daily... Paragraph 3: Baba responded in unexpected ways... Paragraph 4: Devotee's life transformed... Paragraph 5: Prayer strengthens connection with God... Paragraph 6: Faithful prayer brings guidance and support."},
+  {title:"Patience in Trials", text:"Difficult times test devotion.", story:"Paragraph 1: Baba explained life has trials... Paragraph 2: Devotee suffered loss... Paragraph 3: Baba advised patience and trust... Paragraph 4: Relief came in divine timing... Paragraph 5: Patience purifies heart... Paragraph 6: Trials deepen spiritual strength."},
+  {title:"Helping Strangers", text:"Serve without expecting return.", story:"Paragraph 1: Baba helped anyone in need... Paragraph 2: Stranger arrived hungry... Paragraph 3: Baba instructed feeding and care... Paragraph 4: Devotees learned selflessness... Paragraph 5: Serving strangers purifies soul... Paragraph 6: Selfless service earns divine blessings."},
+  {title:"Moderation & Temperance", text:"Avoid excess; live balanced life.", story:"Paragraph 1: Baba advocated moderation... Paragraph 2: Devotee overindulged and suffered... Paragraph 3: Baba guided balanced lifestyle... Paragraph 4: Health and spirit flourished... Paragraph 5: Excess leads to attachment... Paragraph 6: Moderation cultivates contentment."},
+  {title:"Respect Elders & Teachers", text:"Honor elders; follow guidance.", story:"Paragraph 1: Baba taught respect for elders... Paragraph 2: Devotee neglected guidance... Paragraph 3: Baba reminded respect is spiritual duty... Paragraph 4: Devotee learned humility... Paragraph 5: Elders' wisdom nurtures soul... Paragraph 6: Respect strengthens spiritual bonds."},
+  {title:"Overcoming Fear", text:"Faith dispels fear.", story:"Paragraph 1: Baba reassured fearful devotee... Paragraph 2: Fear arises from ego and doubt... Paragraph 3: Baba instructed meditation and trust... Paragraph 4: Devotee overcame fear gradually... Paragraph 5: Courage comes from faith... Paragraph 6: Fearless heart embraces divine grace."},
+  {title:"Sincerity & Truthfulness", text:"Speak truth and act sincerely.", story:"Paragraph 1: Baba stressed honesty... Paragraph 2: Devotee lied for personal gain... Paragraph 3: Baba corrected gently... Paragraph 4: Truth restored relationships... Paragraph 5: Sincerity strengthens soul... Paragraph 6: True devotion requires honesty."},
+  {title:"Gratitude & Contentment", text:"Be grateful; appreciate every blessing.", story:"Paragraph 1: Baba encouraged gratitude... Paragraph 2: Devotee complained about minor issues... Paragraph 3: Baba explained every blessing counts... Paragraph 4: Devotee practiced gratitude daily... Paragraph 5: Contentment increases happiness... Paragraph 6: Gratitude aligns heart with God."},
+  {title:"Devotion over Rituals", text:"Heart devotion matters more than form.", story:"Paragraph 1: Baba emphasized inner devotion... Paragraph 2: Devotee focused only on rituals... Paragraph 3: Baba taught love and faith are supreme... Paragraph 4: Rituals without devotion are empty... Paragraph 5: Devotee experienced divine presence through love... Paragraph 6: Heartful devotion is eternal."},
+  {title:"Self-Control & Discipline", text:"Control mind and senses.", story:"Paragraph 1: Baba taught self-control... Paragraph 2: Devotee succumbed to impulses... Paragraph 3: Baba advised discipline in daily life... Paragraph 4: Devotee attained mental clarity... Paragraph 5: Self-control strengthens spiritual resolve... Paragraph 6: Discipline aligns life with divine order."},
+  {title:"Meditation & Silence", text:"Meditate to connect with God.", story:"Paragraph 1: Baba recommended silent meditation... Paragraph 2: Devotee restless and worried... Paragraph 3: Baba taught daily meditation practice... Paragraph 4: Peace and clarity emerged... Paragraph 5: Meditation deepens divine awareness... Paragraph 6: Silence nurtures spiritual growth."}
+];
+
+let currentPage = 1;
+const cardsPerPage = 10;
+const cardsContainer = document.getElementById('cardsContainer');
+
+// Render Cards Function
+function renderCards() {
+  cardsContainer.innerHTML = '';
+  const start = (currentPage-1)*cardsPerPage;
+  const end = start + cardsPerPage;
+  const pageCards = allCards.slice(start,end);
+
+  pageCards.forEach(card => {
+    const div = document.createElement('div');
+    div.classList.add('feature-card');
+    div.dataset.title = card.title;
+    div.dataset.story = card.story;
+    div.innerHTML = `<h3>🌸 ${card.title}</h3><p>${card.text}</p>`;
+    cardsContainer.appendChild(div);
+  });
+
+  // Click events for modal
+  const cards = document.querySelectorAll('.feature-card');
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      document.getElementById('modalTitle').textContent = card.dataset.title;
+
+      // Format story into paragraphs with indent & first letter styling
+      const formattedStory = card.dataset.story
+        .split(/Paragraph \d+: /)
+        .filter(p => p.trim()!=='')
+        .map(p => `<p style="text-indent:1.2em; margin-bottom:1em;">${p.trim()}</p>`)
+        .join('');
+      document.getElementById('modalStory').innerHTML = formattedStory;
+
+      document.getElementById('storyModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    });
+  });
+}
+
+// Pagination
+document.getElementById('prevBtn').addEventListener('click', ()=>{
+  if(currentPage>1) currentPage--;
+  renderCards();
+});
+document.getElementById('nextBtn').addEventListener('click', ()=>{
+  if(currentPage<Math.ceil(allCards.length/cardsPerPage)) currentPage++;
+  renderCards();
+});
+
+// Initial render
+renderCards();
+
+// Modal close
+const modal = document.getElementById('storyModal');
+document.getElementById('closeModal').addEventListener('click', ()=>{
+  modal.style.display='none';
+  document.body.style.overflow='auto';
+});
+window.addEventListener('click', e=>{
+  if(e.target===modal){
+    modal.style.display='none';
+    document.body.style.overflow='auto';
+  }
+});
+</script>
+</body>
+</html>
