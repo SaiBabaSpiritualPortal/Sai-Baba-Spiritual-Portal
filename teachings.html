@@ -10,161 +10,196 @@
  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
 <style>
+/* ============================= */
+/* Universal Premium CSS Reset */
+/* ============================= */
 :root {
-  --bg: #fff9f6;
-  --accent: #8e24aa;
-  --accent-2: #f39f86;
-  --muted: #555;
-  --card: #ffffff;
+  --bg: #fdf8f4;            /* Soft cream background */
+  --accent: #5d3a85;        /* Rich deep purple for headings */
+  --accent-2: #d4af7f;      /* Premium gold accent for cards/buttons */
+  --muted: #555555;          /* Muted text */
+  --card: #ffffff;           /* Card background */
   --shadow: 0 6px 20px rgba(0,0,0,0.08);
-  --radius: 20px;
-  --glow: 0 0 20px rgba(142,36,170,0.3);
-  --modal-bg: rgba(0,0,0,0.7);
+  --radius: 20px;            /* Rounded corners */
+  --glow: 0 0 25px rgba(93,58,133,0.25);
+  --modal-bg: rgba(0,0,0,0.65);
   font-family: 'Poppins', sans-serif;
+  line-height: 1.7;
+  color: var(--muted);
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  text-align: justify;
+  margin: 0; padding: 0;
 }
 
-
+/* Body */
 body {
-  margin: 0;
-  padding: 0;
-  background: #fff9f4;
+  background: var(--bg);
   font-family: 'Poppins', sans-serif;
   color: #4a148c;
-  line-height: 1.8;
-  text-align: justify;
 }
 
-
-
-
-/* Hero */
+/* ============================= */
+/* Hero Section */
+/* ============================= */
 .hero {
-  text-align:center;
-  margin:30px auto;
-  max-width:3250px;
-  background: rgba(255,255,255,0.92);
+  text-align: center;
+  margin: 30px auto;
+  max-width: 1200px;
+  background: rgba(255, 255, 255, 0.95);
   border-radius: var(--radius);
-  padding:30px;
+  padding: 40px;
   box-shadow: var(--shadow), var(--glow);
 }
 .hero h1 {
-  font-family:'Tiro Devanagari Sanskrit', serif;
-  font-size:2.2rem;
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+  font-size: 2.4rem;
   color: var(--accent);
-  margin-bottom:15px;
-  text-shadow: 1px 1px 12px #fff, 0 0 15px rgba(142,36,170,0.6);
-
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 10px rgba(0,0,0,0.08);
 }
 .hero p {
-  font-size:0.90rem;
+  font-size: 1rem;
   color: var(--muted);
-      text-align:left;
-
+  text-align: center;
 }
 
-/* Cards - responsive grid */
+/* ============================= */
+/* Cards Grid */
+/* ============================= */
 .features {
-  display:grid;
+  display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap:20px;
-  max-width:1200px;
-  margin:20px auto;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
 }
 .feature-card {
-  background: rgba(246, 234, 249, 0.95);
-  padding:10px 15px;
+  background: #fffdfb;
+  padding: 20px 15px;
   border-radius: var(--radius);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08), var(--glow);
-  cursor:pointer;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08), var(--glow);
+  cursor: pointer;
   transition: transform 0.4s, box-shadow 0.4s;
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  min-height:220px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 220px;
 }
 .feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.18),0 0 30px rgba(142,36,170,0.4);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15), 0 0 40px rgba(93,58,133,0.3);
 }
 .feature-card h3 {
-  color: var(--accent-2); margin-top:0; font-size:1.2rem;
-  font-family:'Philosopher', serif;
+  color: var(--accent-2);
+  margin-top: 0;
+  font-size: 1.3rem;
+  font-family: 'Philosopher', serif;
 }
 .feature-card p {
-  font-size:0.95rem; color: #444; margin-top:8px; line-height:1.4;
+  font-size: 1rem;
+  color: #444;
+  margin-top: 8px;
+  line-height: 1.5;
 }
 
+/* ============================= */
 /* Pagination Buttons */
+/* ============================= */
 .pagination {
-  display:flex; justify-content:center; margin-bottom:40px;
-  gap:20px;
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+  gap: 20px;
 }
 .pagination button {
-  padding: 10px 20px;
-  border:none;
+  padding: 12px 24px;
+  border: none;
   border-radius: var(--radius);
   background: var(--accent-2);
-  color:#fff;
-  font-weight:bold;
-  cursor:pointer;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
   transition: 0.3s;
 }
 .pagination button:hover {
   background: var(--accent);
 }
 
+/* ============================= */
 /* Responsive Grid */
-@media(max-width:1400px){ .features{grid-template-columns: repeat(4,1fr);} }
-@media(max-width:1100px){ .features{grid-template-columns: repeat(3,1fr);} }
-@media(max-width:800px){ .features{grid-template-columns: repeat(2,1fr);} }
-@media(max-width:500px){ .features{grid-template-columns: 1fr;} }
+/* ============================= */
+@media(max-width: 1400px) { .features { grid-template-columns: repeat(4, 1fr); } }
+@media(max-width: 1100px) { .features { grid-template-columns: repeat(3, 1fr); } }
+@media(max-width: 800px) { .features { grid-template-columns: repeat(2, 1fr); } }
+@media(max-width: 500px) { .features { grid-template-columns: 1fr; } }
 
+/* ============================= */
 /* Modal */
+/* ============================= */
 .modal {
   position: fixed;
   top:0; left:0; width:100%; height:100%;
   background: var(--modal-bg);
   display:none;
-  align-items:center; justify-content:center;
+  align-items:center;
+  justify-content:center;
   z-index:2000;
   padding:20px;
   overflow:auto;
 }
 .modal-content {
-  background: #fffdf9;
-  padding:30px;
+  background: #fffdfb;
+  padding: 35px;
   border-radius: var(--radius);
-  max-width: 800px;
-  width:100%;
-  max-height:90vh;
-  overflow-y:auto;
+  max-width: 850px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
   box-shadow: var(--shadow), var(--glow);
-  font-size:1.1rem; line-height:1.8; color:#4a148c;
-  font-family:'Tiro Devanagari Sanskrit', serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #4a148c;
+  font-family: 'Tiro Devanagari Sanskrit', serif;
   position: relative;
 }
 .modal-content h2 {
   color: var(--accent);
-  margin-top:0; text-align:center; font-size:1.8rem;
+  margin-top: 0;
+  text-align: center;
+  font-size: 1.8rem;
 }
 .close-btn {
-  position:absolute;
-  top:15px; right:20px;
-  background:none; border:none;
-  font-size:1.5rem;
-  cursor:pointer;
-  color:var(--accent-2);
+  position: absolute;
+  top: 15px; right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--accent-2);
 }
-
-/* Modal story formatting */
 #modalStory p:first-letter {
-  font-size:1.5rem;
-  font-weight:bold;
+  font-size: 1.5rem;
+  font-weight: bold;
   color: var(--accent-2);
 }
 
+/* ============================= */
+/* Footer */
+/* ============================= */
+.site-footer {
+  text-align: center;
+  padding: 20px 0;
+  background: #fffdfb;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.site-footer .disclaimer {
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
 
 </style>
 </head>
