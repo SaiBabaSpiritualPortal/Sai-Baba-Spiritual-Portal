@@ -948,70 +948,516 @@ body {
     color: #777;
     margin-top: 3px;
   }
-/* ============================= */
-/* EMERGENCY MOBILE FIX */
-/* ============================= */
+/* ============================================= */
+/* COMPLETE MOBILE RESPONSIVE FIX - ALL PAGES */
+/* ============================================= */
 
-@media (max-width: 768px) {
-  /* Force everything to fit */
-  * {
-    max-width: 100vw;
-    box-sizing: border-box;
+/* Prevent horizontal scroll globally */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ========== HEADER & NAVIGATION FIX ========== */
+@media (max-width: 1024px) {
+  .site-header {
+    padding: 10px 0;
   }
   
-  /* Fix header */
+  .header-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    gap: 15px;
+  }
+  
+  /* Brand logo - KEEP IN ONE LINE */
+  .brand {
+    font-size: 1.3rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  
+  /* Navigation */
+  .main-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+    flex: 1;
+  }
+  
+  .main-nav a {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
   .header-inner {
     flex-direction: column;
+    gap: 12px;
+  }
+  
+  .brand {
+    font-size: 1.4rem;
+    text-align: center;
+    width: 100%;
   }
   
   .main-nav {
-    flex-wrap: wrap;
+    width: 100%;
     justify-content: center;
-    gap: 5px;
+    gap: 6px;
   }
   
   .main-nav a {
     font-size: 0.75rem;
-    padding: 5px 8px;
+    padding: 6px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand {
+    font-size: 1.2rem;
   }
   
-  /* Fix hero sections */
-  .hero,
-  .daily-quote-hero {
+  .main-nav a {
+    font-size: 0.7rem;
+    padding: 5px 6px;
+  }
+}
+
+/* ========== INDEX.HTML - HOME PAGE ========== */
+@media (max-width: 768px) {
+  .hero {
     grid-template-columns: 1fr !important;
+    gap: 20px;
+    padding: 20px;
   }
   
-  /* Fix all grids */
-  .features,
-  #features,
+  .hero h1 {
+    font-size: 1.8rem !important;
+  }
+  
+  .hero .lead {
+    font-size: 1rem;
+  }
+  
+  .hero-right {
+    order: -1;
+    text-align: center;
+  }
+  
+  .hero-right img {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+  
+  .hero-buttons-wrapper {
+    width: 100%;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .hero-buttons button {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+  }
+  
+  #output {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .output-box {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+  
+  #features {
+    grid-template-columns: 1fr !important;
+    gap: 15px;
+  }
+}
+
+/* ========== CHITS.HTML PAGE ========== */
+@media (max-width: 768px) {
+  .game-container {
+    width: 100% !important;
+    padding: 15px;
+    margin: 20px auto;
+  }
+  
+  .chit-input-section,
+  .chit-display-section {
+    padding: 20px 15px;
+  }
+  
+  .chit-input-section h2,
+  .chit-display-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  #chitInputs .chit-box textarea {
+    width: 100%;
+    font-size: 14px;
+  }
+  
+  .button-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .button-container button {
+    width: 100%;
+  }
+  
+  #chitPool {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px;
+  }
+  
+  .chit-card {
+    width: 100%;
+    height: 80px;
+    font-size: 0.85rem;
+  }
+  
+  #bottomReset {
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 480px) {
   #chitPool {
     grid-template-columns: 1fr !important;
   }
-  
-  /* Fix containers */
-  .container,
-  .game-container,
-  .worship-container,
+}
+
+/* ========== MIRACLES.HTML PAGE ========== */
+@media (max-width: 1000px) {
   .miracle-container {
-    width: 100% !important;
-    padding: 15px !important;
+    flex-direction: column !important;
+    padding: 30px 15px;
+    gap: 25px;
   }
   
-  /* Fix buttons */
-  button,
-  .hero-buttons button {
+  .form-section,
+  .stories-section {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-section {
+    padding: 25px 15px;
+  }
+  
+  .form-section h1 {
+    font-size: 1.6rem;
+  }
+  
+  .form-section input,
+  .form-section select,
+  .form-section textarea {
     width: 100%;
+    font-size: 0.95rem;
+  }
+  
+  .form-section button {
+    width: 100%;
+    padding: 13px 20px;
+  }
+  
+  .stories-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  #storiesContainer {
+    max-height: 350px;
+  }
+}
+
+/* ========== TEACHINGS.HTML PAGE ========== */
+@media (max-width: 1400px) {
+  .features {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .features {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 20px;
+  }
+  
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .features {
+    grid-template-columns: 1fr !important;
+    gap: 15px;
+    padding: 10px;
+  }
+  
+  .feature-card {
+    min-height: auto;
+    padding: 20px 15px;
+  }
+  
+  .feature-card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .pagination {
+    gap: 10px;
+  }
+  
+  .pagination button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ========== DAILY-QUOTE.HTML PAGE ========== */
+@media (max-width: 768px) {
+  .daily-quote-hero {
+    grid-template-columns: 1fr !important;
+    padding: 25px 15px;
+    gap: 20px;
+  }
+  
+  .daily-quote-hero h1 {
+    font-size: 1.8rem !important;
+  }
+  
+  .daily-quote-hero p {
+    font-size: 1rem;
+  }
+  
+  .hero-right {
+    order: -1;
+  }
+  
+  .hero-right img {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+  
+  #newQuoteBtn {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+  }
+  
+  #quoteOutput {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 1rem;
     padding: 12px;
   }
   
-  /* Fix fonts */
-  h1 { font-size: 1.8rem !important; }
-  h2 { font-size: 1.4rem !important; }
-  h3 { font-size: 1.1rem !important; }
+  .quote-cards {
+    grid-template-columns: 1fr !important;
+    gap: 15px;
+  }
+}
+
+/* ========== WORSHIP.HTML PAGE ========== */
+@media (max-width: 768px) {
+  .worship-container {
+    max-width: 100% !important;
+    padding: 25px 15px;
+  }
   
-  /* Fix images */
+  .worship-container h1 {
+    font-size: 1.8rem;
+  }
+  
+  .dual-section {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .timer,
+  .counter {
+    flex: 1 1 100% !important;
+    min-height: auto;
+    width: 100%;
+  }
+  
+  .timer-display,
+  .counter-number {
+    font-size: 2rem;
+  }
+  
+  .timer-buttons,
+  .counter-buttons {
+    gap: 8px;
+  }
+  
+  .timer-buttons button,
+  .counter-buttons button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .section {
+    padding: 20px 15px;
+    margin-top: 20px;
+  }
+  
+  .section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .section h3 {
+    font-size: 1.2rem;
+  }
+}
+
+/* ========== CONTACT.HTML PAGE ========== */
+@media (max-width: 768px) {
+  .contact-form {
+    max-width: 100% !important;
+    width: 100%;
+    padding: 25px 15px;
+    margin: 20px 10px;
+  }
+  
+  .contact-form h2 {
+    font-size: 1.7rem;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+  }
+  
+  .contact-form button {
+    width: 100%;
+    padding: 14px;
+  }
+}
+
+/* ========== FOOTER - ALL PAGES ========== */
+@media (max-width: 768px) {
+  .site-footer {
+    width: 100%;
+    padding: 20px 15px;
+    font-size: 0.85rem;
+  }
+  
+  .site-footer p {
+    margin: 8px 0;
+    line-height: 1.5;
+  }
+  
+  .site-footer .disclaimer {
+    font-size: 0.75rem;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-footer {
+    font-size: 0.8rem;
+    padding: 15px 10px;
+  }
+  
+  .site-footer .disclaimer {
+    font-size: 0.7rem;
+  }
+}
+
+/* ========== GLOBAL MOBILE UTILITIES ========== */
+@media (max-width: 768px) {
+  /* Container fixes */
+  .container {
+    width: 100% !important;
+    max-width: 100%;
+    padding: 15px;
+  }
+  
+  /* Image responsive */
   img {
     max-width: 100%;
     height: auto;
+  }
+  
+  /* Text overflow fix */
+  * {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Modal fix */
+  .modal-content {
+    width: 95%;
+    max-width: 95%;
+    padding: 20px;
+    max-height: 80vh;
+  }
+  
+  /* Popup fix */
+  .highlight-popup {
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  .highlight-popup h2 {
+    font-size: 1.3rem;
+  }
+  
+  /* Button touch targets */
+  button,
+  .feature-card,
+  .chit-card {
+    min-height: 44px;
+  }
+}
+
+/* ========== VERY SMALL SCREENS ========== */
+@media (max-width: 360px) {
+  .brand {
+    font-size: 1.1rem !important;
+  }
+  
+  .main-nav a {
+    font-size: 0.65rem;
+    padding: 4px 5px;
+  }
+  
+  h1 {
+    font-size: 1.5rem !important;
+  }
+  
+  h2 {
+    font-size: 1.3rem !important;
   }
 }
