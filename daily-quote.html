@@ -11,140 +11,190 @@
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* ============================= */
-    /* Body Content Specific for Daily Quote Page */
-    /* ============================= */
-    .daily-quote-hero {
-      display: grid;
-      grid-template-columns: 1fr 220px;
-      gap: 30px;
-      align-items: center;
-      margin-top: 40px;
-      padding: 30px;
-      background: rgba(255, 248, 240, 0.95);
-      border-radius: 25px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.12), 0 0 25px rgba(142,36,170,0.2);
-      animation: fadeInUp 1s ease-out;
-    }
+/* ============================= */
+/* Universal Premium Reset */
+:root {
+  --bg: #f3ecd8;           /* Soft off-white background */
+  --accent:#d4af7f;       /* Deep royal purple */
+  --accent-2: #d4af37;     /* Rich metallic gold */
+  --muted: #3c3c3c;        /* Dark charcoal for text */
+  --card-bg: #f7f4ef;       /* Crisp white cards */
+  --shadow: 0 4px 18px rgba(0,0,0,0.18);
+  --radius: 8px;           /* Subtle sharpness */
+  --glow: 0 0 12px rgba(46,26,71,0.25);
+  --modal-bg: rgba(0,0,0,0.7);
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.7;
+  color: var(--muted);
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    .daily-quote-hero h1 {
-      font-family: 'Tiro Devanagari Sanskrit', serif;
-      color: #8e24aa;
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-      text-shadow: 1px 1px 12px #fff, 0 0 15px rgba(142,36,170,0.4);
-    }
+/* ============================= */
+/* Body */
+body {
+  background: var(--bg);
+  font-family: 'Poppins', sans-serif;
+  color: var(--muted);
+  overflow-x: hidden;
+}
 
-    .daily-quote-hero p {
-      font-size: 1.1rem;
-      color: #4a148c;
-      margin-bottom: 25px;
-      line-height: 1.6;
-      font-style: italic;
-    }
+/* ============================= */
+/* Daily Quote Hero */
+.daily-quote-hero {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 30px;
+  align-items: center;
+  margin-top: 40px;
+  padding: 30px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--accent-2);
+  animation: fadeInUp 1s ease-out;
+}
 
-    /* Quote Output Box */
-    #quoteOutput {
-      background: linear-gradient(135deg,#efda9c,#f1b3a0);
-      padding: 10px 5px;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 25px rgba(142,36,170,0.3);
-      font-size: 1.1rem;
-      color: #4a148c;
-      min-height: 60px;
-      max-width: 780px;
-      margin-top: 15px;
-      display: none;
-      position: relative;
-      text-align: center;
-      line-height: 1.5;
-    }
+.daily-quote-hero h1 {
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+  color: var(--accent);
+  font-size: 2.6rem;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
 
-    #quoteOutput.show {
-      display: block;
-      animation: divineFadeIn 0.8s ease forwards;
-    }
+.daily-quote-hero p {
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin-bottom: 25px;
+  line-height: 1.6;
+  font-style: italic;
+}
 
-    @keyframes divineFadeIn {
-      0% {opacity:0; transform: translateY(-10px) scale(0.95);}
-      100% {opacity:1; transform: translateY(0) scale(1);}
-    }
+/* ============================= */
+/* Quote Output Box */
+#quoteOutput {
+  background: var(--card-bg);
+  border-left: 4px solid var(--accent-2);
+  padding: 15px 12px;
+  box-shadow: var(--shadow);
+  font-size: 1.15rem;
+  color: var(--muted);
+  min-height: 60px;
+  max-width: 780px;
+  margin-top: 15px;
+  display: none;
+  position: relative;
+  text-align: center;
+  line-height: 1.5;
+}
 
-    #quoteOutput .close-output {
-      position: absolute;
-      top: 6px;
-      right: 10px;
-      cursor: pointer;
-      font-weight: bold;
-      color: #b30000;
-      font-size: 16px;
-      transition: color 0.3s, transform 0.3s;
-    }
+#quoteOutput.show {
+  display: block;
+  animation: divineFadeIn 0.8s ease forwards;
+}
 
-    #quoteOutput .close-output:hover {
-      color: #4a148c;
-      transform: rotate(90deg);
-    }
+#quoteOutput .close-output {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--accent);
+  font-size: 16px;
+  transition: color 0.3s, transform 0.3s;
+}
 
-    /* Quote Button */
-    #newQuoteBtn {
-      padding: 16px 30px;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 50px;
-      border: none;
-      cursor: pointer;
-      color: #fff;
-      background: linear-gradient(135deg,#8e24aa,#f39f86);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.2), 0 0 25px rgba(142,36,170,0.4);
-      transition: all 0.3s ease;
-    }
+#quoteOutput .close-output:hover {
+  color: var(--accent-2);
+  transform: rotate(90deg);
+}
 
-    #newQuoteBtn:hover {
-      transform: scale(1.08) translateY(-2px);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.3),0 0 30px rgba(142,36,170,0.5);
-      background: linear-gradient(135deg,#f39f86,#8e24aa);
-    }
+/* ============================= */
+/* Quote Button */
+#newQuoteBtn {
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px; /* sharp premium edges */
+  border: 2px solid var(--accent-2);
+  cursor: pointer;
+  color: var(--accent-2);
+  background: transparent;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
 
-    /* Inspirational Cards Section */
-    .quote-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 50px;
-    }
+#newQuoteBtn:hover {
+  background: var(--accent-2);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
 
-    .quote-card {
-      background: rgba(243, 190, 230, 0.95);
-      padding: 20px;
-      border-radius: 13px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.12), 0 0 25px rgba(142,36,170,0.2);
-      transition: transform 0.3s, box-shadow 0.3s;
-      text-align: center;
-    }
+/* ============================= */
+/* Quote Cards */
+.quote-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 50px;
+}
 
-    .quote-card:hover {
-      transform: translateY(-8px) rotateX(3deg);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.2), 0 0 30px rgba(142,36,170,0.3);
-    }
+.quote-card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 6px; /* sharp */
+  border-left: 4px solid var(--accent);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+.quote-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
 
-    .quote-card h3 {
-      color: #ac0cc4;
-      margin-bottom: 12px;
-      text-shadow:0 0 8px rgba(243,159,134,0.6);
-    }
+.quote-card h3 {
+  color: var(--accent);
+  margin-bottom: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
 
-    .quote-card p {
-      font-style: italic;
-      color: #4a148c;
-      line-height: 1.5;
-    }
+.quote-card p {
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.5;
+}
 
-    .hero-right img {
-      border-radius: 25px;
-      width: 100%;
-      animation: float 4s ease-in-out infinite;
-    }
+/* ============================= */
+/* Hero Right Image */
+.hero-right img {
+  border-radius: 6px;
+  width: 100%;
+  border: 2px solid var(--accent-2);
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ============================= */
+/* Animations */
+@keyframes fadeInUp {
+  0% { opacity:0; transform: translateY(15px);}
+  100% { opacity:1; transform: translateY(0);}
+}
+
+@keyframes divineFadeIn {
+  0% {opacity:0; transform: translateY(-10px) scale(0.95);}
+  100% {opacity:1; transform: translateY(0) scale(1);}
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0);}
+  50% { transform: translateY(-8px);}
+}
+
   </style>
 </head>
 <body>
