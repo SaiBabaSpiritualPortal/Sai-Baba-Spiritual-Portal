@@ -948,133 +948,70 @@ body {
     color: #777;
     margin-top: 3px;
   }
+/* ============================= */
+/* EMERGENCY MOBILE FIX */
+/* ============================= */
 
-/* ============================= */
-/* Mobile Responsiveness */
-/* ============================= */
 @media (max-width: 768px) {
-  /* Header */
-  .site-header .header-inner {
-    flex-direction: column;
-    align-items: center;
-  }
-  .main-nav {
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  .main-nav a {
-    font-size: 16px;
-  }
-
-  /* Hero Section */
-  .hero {
-    flex-direction: column;
-    text-align: center;
-  }
-  .hero-left, .hero-right {
-    width: 100%;
-  }
-  .hero-left h1 {
-    font-size: 24px;
-  }
-  .hero-left .lead {
-    font-size: 16px;
-  }
-  .hero-right img {
-    width: 100%;
-    height: auto;
-    margin-top: 20px;
-  }
-
-  /* Hero Buttons */
-  .hero-buttons {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  /* Features Section */
-  #features {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    text-align: center;
-  }
-  .feature-card {
-    width: 100%;
-  }
-
-  /* Output Box */
-  .output-box {
-    width: 90%;
-  }
-
-  /* Footer */
-  .site-footer {
-    font-size: 14px;
-    text-align: center;
-  }
-}
-
-/* ============================= */
-/* Mobile Responsiveness for Miracles Page */
-/* ============================= */
-@media (max-width: 768px) {
-  /* Miracle container: stack sections vertically */
-  .miracle-container {
-    flex-direction: column;
-  }
-
-  /* Form Section */
-  .form-section {
-    width: 100%;
-    margin-bottom: 30px;
-  }
-  .form-section h1 {
-    font-size: 22px;
-    text-align: center;
-  }
-  .form-section p {
-    font-size: 14px;
-    text-align: center;
-  }
-  .form-section form input,
-  .form-section form select,
-  .form-section form textarea,
-  .form-section form button {
-    width: 100%;
-  }
-
-  /* Stories Section */
-  .stories-section {
-    width: 100%;
-  }
-  .stories-section h2 {
-    font-size: 20px;
-    text-align: center;
-  }
-  #storiesContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  /* Story Cards */
-  .story-card {
-    width: 100%;
-    padding: 12px;
+  /* Force everything to fit */
+  * {
+    max-width: 100vw;
     box-sizing: border-box;
   }
-
-  /* Footer */
-  .site-footer {
-    text-align: center;
-    font-size: 14px;
+  
+  /* Fix header */
+  .header-inner {
+    flex-direction: column;
   }
-
-  /* Loader */
-  .loader {
-    margin: 0 auto;
+  
+  .main-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+  }
+  
+  .main-nav a {
+    font-size: 0.75rem;
+    padding: 5px 8px;
+  }
+  
+  /* Fix hero sections */
+  .hero,
+  .daily-quote-hero {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Fix all grids */
+  .features,
+  #features,
+  #chitPool {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Fix containers */
+  .container,
+  .game-container,
+  .worship-container,
+  .miracle-container {
+    width: 100% !important;
+    padding: 15px !important;
+  }
+  
+  /* Fix buttons */
+  button,
+  .hero-buttons button {
+    width: 100%;
+    padding: 12px;
+  }
+  
+  /* Fix fonts */
+  h1 { font-size: 1.8rem !important; }
+  h2 { font-size: 1.4rem !important; }
+  h3 { font-size: 1.1rem !important; }
+  
+  /* Fix images */
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
-
