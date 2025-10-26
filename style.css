@@ -1016,37 +1016,65 @@ body {
   }
 }
 
-
 /* ============================= */
-/* Mobile Header Fix */
+/* Mobile Responsiveness for Miracles Page */
 /* ============================= */
 @media (max-width: 768px) {
-  /* Stack header items vertically but keep brand on top and nav below */
-  .header-inner {
-    display: flex;
-    flex-direction: column; /* brand on top, nav below */
-    align-items: center;
+  /* Miracle container: stack sections vertically */
+  .miracle-container {
+    flex-direction: column;
   }
 
-  /* Navigation menu */
-  .main-nav {
-    display: flex;
-    flex-wrap: wrap; /* allow items to wrap to next line if needed */
-    justify-content: center; /* center horizontally */
-    gap: 10px; /* spacing between links */
-    margin-top: 10px;
+  /* Form Section */
+  .form-section {
+    width: 100%;
+    margin-bottom: 30px;
   }
-
-  .main-nav a {
-    white-space: nowrap; /* prevent breaking one word per line */
+  .form-section h1 {
+    font-size: 22px;
     text-align: center;
-    font-size: 16px;
+  }
+  .form-section p {
+    font-size: 14px;
+    text-align: center;
+  }
+  .form-section form input,
+  .form-section form select,
+  .form-section form textarea,
+  .form-section form button {
+    width: 100%;
   }
 
-  /* Brand stays centered */
-  .brand {
-    text-align: center;
+  /* Stories Section */
+  .stories-section {
+    width: 100%;
+  }
+  .stories-section h2 {
     font-size: 20px;
-    margin-bottom: 10px;
+    text-align: center;
+  }
+  #storiesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  /* Story Cards */
+  .story-card {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+  }
+
+  /* Footer */
+  .site-footer {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  /* Loader */
+  .loader {
+    margin: 0 auto;
   }
 }
+
