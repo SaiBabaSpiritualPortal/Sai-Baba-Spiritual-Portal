@@ -1016,3 +1016,37 @@ body {
   }
 }
 
+
+/* ============================= */
+/* Mobile Header Fix */
+/* ============================= */
+@media (max-width: 768px) {
+  /* Stack header items vertically but keep brand on top and nav below */
+  .header-inner {
+    display: flex;
+    flex-direction: column; /* brand on top, nav below */
+    align-items: center;
+  }
+
+  /* Navigation menu */
+  .main-nav {
+    display: flex;
+    flex-wrap: wrap; /* allow items to wrap to next line if needed */
+    justify-content: center; /* center horizontally */
+    gap: 10px; /* spacing between links */
+    margin-top: 10px;
+  }
+
+  .main-nav a {
+    white-space: nowrap; /* prevent breaking one word per line */
+    text-align: center;
+    font-size: 16px;
+  }
+
+  /* Brand stays centered */
+  .brand {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+}
