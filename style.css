@@ -1461,3 +1461,171 @@ html, body {
     font-size: 1.3rem !important;
   }
 }
+
+/* ============================================= */
+/* HEADER & NAVIGATION FIX - KEEP ALL IN ONE LINE */
+/* ============================================= */
+
+/* Base header styles */
+.site-header {
+  position: sticky;
+  top: 0;
+  padding: 8px 0;
+  background: linear-gradient(135deg, #fff8e7, #fffdf6);
+  backdrop-filter: blur(12px) saturate(180%);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  z-index: 1000;
+  width: 100%;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  gap: 20px;
+}
+
+/* Brand - Keep in one line */
+.brand {
+  font-family: 'Philosopher', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #b6863d;
+  text-decoration: none;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(142, 36, 170, 0.5);
+  white-space: nowrap; /* CRITICAL: Prevents text wrapping */
+  flex-shrink: 0; /* Prevents brand from shrinking */
+}
+
+/* Navigation - Keep all links in one line */
+.main-nav {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: nowrap; /* CRITICAL: Prevents wrapping to next line */
+  flex-shrink: 1; /* Allows nav to shrink if needed */
+}
+
+.main-nav a {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  color: #5b3c11;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 6px 8px;
+  position: relative;
+  transition: all 0.3s ease;
+  white-space: nowrap; /* Prevents individual links from wrapping */
+  font-size: 0.85rem; /* Slightly smaller to fit better */
+}
+
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #d6a35f;
+  transition: width 0.3s ease-in-out;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  width: 100%;
+}
+
+/* ========== RESPONSIVE BREAKPOINTS ========== */
+
+/* Large tablets and small desktops (1024px and below) */
+@media (max-width: 1024px) {
+  .header-inner {
+    padding: 0 15px;
+    gap: 15px;
+  }
+  
+  .brand {
+    font-size: 1.3rem;
+  }
+  
+  .main-nav {
+    gap: 10px;
+  }
+  
+  .main-nav a {
+    font-size: 0.75rem;
+    padding: 6px 6px;
+  }
+}
+
+/* Tablets (768px and below) - ONLY HERE nav goes to second line */
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px 15px;
+  }
+  
+  .brand {
+    font-size: 1.4rem;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .main-nav {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping on mobile */
+    gap: 8px;
+  }
+  
+  .main-nav a {
+    font-size: 0.75rem;
+    padding: 6px 8px;
+  }
+}
+
+/* Small mobile devices (480px and below) */
+@media (max-width: 480px) {
+  .brand {
+    font-size: 1.2rem;
+  }
+  
+  .main-nav {
+    gap: 6px;
+  }
+  
+  .main-nav a {
+    font-size: 0.7rem;
+    padding: 5px 6px;
+  }
+}
+
+/* Very small devices (360px and below) */
+@media (max-width: 360px) {
+  .brand {
+    font-size: 1.1rem;
+  }
+  
+  .main-nav a {
+    font-size: 0.65rem;
+    padding: 4px 5px;
+  }
+}
+
+/* ========== HOVER EFFECTS ========== */
+.brand:hover {
+  transform: scale(1.02);
+  text-shadow: 0 0 15px rgba(142, 36, 170, 0.7);
+}
+
+.main-nav a:hover {
+  color: #8e24aa;
+  transform: translateY(-2px);
+}
