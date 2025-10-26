@@ -311,7 +311,7 @@ button:hover { background: linear-gradient(135deg,#d6a35f,#e7c57c); box-shadow:0
 /* ============================= */
 .highlight-popup {
   position: fixed;
-  top: 20px;
+  top: 120px; /* moved down from top */
   left: 50%;
   transform: translateX(-50%) scale(0);
   width: 85%;
@@ -594,19 +594,6 @@ body {
 }
 
 
-
-
-
-
-
-
-
-/* ============================= */
-/* Sai Baba Miracles Form & Stories */
-/* ============================= */
-/* ============================= */
-/* Sai Baba Miracles Form & Stories */
-/* ============================= */
 /* ============================= */
 /* Sai Baba Spiritual Portal - Miracles Page */
 /* ============================= */
@@ -724,7 +711,7 @@ body {
 .form-section button {
   padding: 13px 135px;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 0.75rem;
   border: none;
   cursor: pointer;
   background: linear-gradient(135deg, var(--divine-gold), var(--accent-2));
@@ -1629,3 +1616,4 @@ html, body {
   color: #8e24aa;
   transform: translateY(-2px);
 }
+
