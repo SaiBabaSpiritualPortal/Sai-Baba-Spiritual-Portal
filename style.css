@@ -1617,22 +1617,3 @@ html, body {
   transform: translateY(-2px);
 }
 
-
-
-
-
-
-
-/* Force buttons to stay in one row, even in mobile desktop mode */
-.hero-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: nowrap !important; /* prevent wrapping */
-  overflow-x: auto; /* allow horizontal scroll if screen too small */
-  -webkit-overflow-scrolling: touch;
-}
-
-.hero-buttons button {
-  flex: 0 0 auto; /* keep fixed width */
-}
