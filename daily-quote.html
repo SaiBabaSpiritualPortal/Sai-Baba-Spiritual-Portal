@@ -11,6 +11,41 @@
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* ============================= */
+/* Mobile Responsive Fix */
+/* ============================= */
+@media (max-width: 768px) {
+  .daily-quote-hero {
+    grid-template-columns: 1fr;  /* single column */
+    text-align: center;
+  }
+
+  .hero-right {
+    order: -1; /* move image above text (optional) */
+    margin-bottom: 20px;
+  }
+
+  .hero-right img {
+    width: 80%;
+    max-width: 280px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .daily-quote-hero h1 {
+    font-size: 2rem;
+  }
+
+  .daily-quote-hero p {
+    font-size: 1rem;
+  }
+
+  #newQuoteBtn {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
 /* ============================= */
 /* Universal Premium Reset */
 :root {
@@ -232,9 +267,10 @@ body {
         </div>
       </div>
 
-      <div class="hero-right">
-  <img src="assets/sai-baba-statue.jpg" alt="Statue of Sai Baba" class="baba-img">
-      </div>
+<div class="hero-right"> 
+  <img src="assets/sai-baba-statue.jpg" alt="Statue of Sai Baba" class="baba-img"> 
+</div>
+
     </section>
 
     <!-- Inspirational Quote Cards -->
