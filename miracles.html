@@ -178,13 +178,17 @@ async function fetchStories(showLoader = false) {
   }
 }
 
-(function init() {
-  const cached = localStorage.getItem(CACHE_KEY);
-  if (cached) {
-    displayStories(JSON.parse(cached));
-  } else {
-    storiesContainer.innerHTML = "<p>Loading stories...</p>";
-    fetchStories(true);
+// --- On Page Load ---
+(async function init() {
+  // 🚀 Always fetch fresh data first
+  await fetchStories(true);
+
+  // 🧹 After successful fetch, overwrite cache (already done in fetchStories)
+  // 💾 Only use cache if fetch fails
+  if (!storiesContainer.innerHTML.includes("story-card")) {
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (cached) displayStories(JSON.parse(cached));
+    else storiesContainer.innerHTML = "<p>No stories yet.</p>";
   }
 })();
 </script>
@@ -199,5 +203,6 @@ async function fetchStories(showLoader = false) {
   </footer>
 </body>
 </html>
+
 
 
