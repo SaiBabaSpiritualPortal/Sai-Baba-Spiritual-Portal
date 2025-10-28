@@ -73,109 +73,121 @@
     </div>
   </div>
 
-  <script>
-  const form = document.getElementById('miracleForm');
-  const status = document.getElementById('status');
-  const storiesContainer = document.getElementById('storiesContainer');
-  const storiesSection = document.getElementById('stories');
+<script>
+const form = document.getElementById('miracleForm');
+const status = document.getElementById('status');
+const storiesContainer = document.getElementById('storiesContainer');
+const storiesSection = document.getElementById('stories');
 
-  // ✅ Update these two URLs only if you change your Google Form or Script
-  const googleFormAction = "https://docs.google.com/forms/d/e/1FAIpQLSc67HpyGedHobqRiVFJNhZ-TC8m-KtLVhiHeiBFV65j4W5SNg/formResponse";
-  const appScriptURL = "https://script.google.com/macros/s/AKfycbxEMxINPnuddrqy72-FXAyVRyTW5I-UjvnEYlFuHslNuId6jUC5RqXg9Kdgvmm2B1DCJw/exec";
+const googleFormAction = "https://docs.google.com/forms/d/e/1FAIpQLSc67HpyGedHobqRiVFJNhZ-TC8m-KtLVhiHeiBFV65j4W5SNg/formResponse";
+const appScriptURL = "https://script.google.com/macros/s/AKfycbxEMxINPnuddrqy72-FXAyVRyTW5I-UjvnEYlFuHslNuId6jUC5RqXg9Kdgvmm2B1DCJw/exec";
 
-  const CACHE_KEY = "sai_baba_stories";
+const CACHE_KEY = "sai_baba_stories";
 
-  // ✅ Display stories safely
-  function displayStories(data) {
-    storiesContainer.innerHTML = "";
-    if (!data.length) {
-      storiesContainer.innerHTML = "<p>No stories yet.</p>";
-      return;
-    }
-
-    data.reverse().forEach(story => {
-      const name = story.Name || story.name || story["entry.579044948"] || "Anonymous";
-      const category = story.Category || story.category || story["Category"] || story["  Category  "] || story["entry.964793499"] || "Other";
-      const storyText = story.Story || story.storyText || story["entry.1663738702"] || "";
-      const timestamp = story.Timestamp || story.timestamp || story.time || new Date().toISOString();
-
-      const div = document.createElement('div');
-      div.classList.add('story-card');
-      div.style.opacity = 0;
-      div.style.transform = "translateY(-10px)";
-      div.innerHTML = `
-        <h3>${name} (${category})</h3>
-        <span>${new Date(timestamp).toLocaleString()}</span>
-        <p>${storyText}</p>
-      `;
-      storiesContainer.appendChild(div);
-      requestAnimationFrame(() => {
-        div.style.opacity = 1;
-        div.style.transform = "translateY(0)";
-      });
-    });
+function displayStories(data) {
+  storiesContainer.innerHTML = "";
+  if (!data.length) {
+    storiesContainer.innerHTML = "<p>No stories yet.</p>";
+    return;
   }
 
-  // ✅ Handle form submission
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    status.textContent = "Submitting...";
+  data.reverse().forEach(story => {
+    // 🔍 DEBUG: Log the entire story object
+    console.log("Story object:", story);
+    console.log("Available keys:", Object.keys(story));
+    
+    const name = story.Name || story.name || story["entry.579044948"] || "Anonymous";
+    const category = story.Category || story.category || story["entry.964793499"] || "Other";
+    const storyText = story.Story || story.storyText || story["entry.1663738702"] || "";
+    const timestamp = story.Timestamp || story.timestamp || story.time || new Date().toISOString();
 
-    const data = new FormData(form);
-    const name = data.get("entry.579044948");
-    const category = data.get("entry.964793499");
-    const storyText = data.get("entry.1663738702");
+    // 🔍 DEBUG: Log what we extracted
+    console.log("Extracted - Name:", name, "Category:", category);
 
-    // Add instantly to UI
-    const newStory = {
-      Name: name,
-      Category: category,
-      Story: storyText,
-      Timestamp: new Date().toISOString()
-    };
-    const currentStories = JSON.parse(localStorage.getItem(CACHE_KEY) || "[]");
-    currentStories.push(newStory);
-    localStorage.setItem(CACHE_KEY, JSON.stringify(currentStories));
-    displayStories(currentStories);
-
-    // Submit to Google Form
-    const params = new URLSearchParams();
-    for (const pair of data) params.append(pair[0], pair[1]);
-    fetch(googleFormAction, { method: 'POST', mode: 'no-cors', body: params });
-
-    form.reset();
-    status.textContent = "✨ Story submitted successfully!";
-    storiesSection.scrollIntoView({ behavior: 'smooth' });
-
-    // Refresh stories from Google Sheet in background
-    fetchStories(false);
+    const div = document.createElement('div');
+    div.classList.add('story-card');
+    div.style.opacity = 0;
+    div.style.transform = "translateY(-10px)";
+    div.innerHTML = `
+      <h3>${name} (${category})</h3>
+      <span>${new Date(timestamp).toLocaleString()}</span>
+      <p>${storyText}</p>
+    `;
+    storiesContainer.appendChild(div);
+    requestAnimationFrame(() => {
+      div.style.opacity = 1;
+      div.style.transform = "translateY(0)";
+    });
   });
+}
 
-  // ✅ Fetch stories from Google Apps Script (Google Sheet)
-  async function fetchStories(showLoader = false) {
-    if (showLoader) storiesContainer.innerHTML = '<div class="loader"></div>';
-    try {
-      const response = await fetch(appScriptURL, { cache: "no-cache" });
-      const data = await response.json();
-      if (data.length) {
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  status.textContent = "Submitting...";
+
+  const data = new FormData(form);
+  const name = data.get("entry.579044948");
+  const category = data.get("entry.964793499");
+  const storyText = data.get("entry.1663738702");
+
+  const newStory = {
+    Name: name,
+    Category: category,
+    Story: storyText,
+    Timestamp: new Date().toISOString()
+  };
+  const currentStories = JSON.parse(localStorage.getItem(CACHE_KEY) || "[]");
+  currentStories.push(newStory);
+  localStorage.setItem(CACHE_KEY, JSON.stringify(currentStories));
+  displayStories(currentStories);
+
+  const params = new URLSearchParams();
+  for (const pair of data) params.append(pair[0], pair[1]);
+  fetch(googleFormAction, { method: 'POST', mode: 'no-cors', body: params });
+
+  form.reset();
+  status.textContent = "✨ Story submitted successfully!";
+  storiesSection.scrollIntoView({ behavior: 'smooth' });
+
+  setTimeout(() => {
+    fetchStories(false);
+  }, 5000);
+});
+
+async function fetchStories(showLoader = false) {
+  if (showLoader) storiesContainer.innerHTML = '<div class="loader"></div>';
+  try {
+    console.log("🔍 Fetching from:", appScriptURL);
+    const response = await fetch(appScriptURL, { cache: "no-cache" });
+    const data = await response.json();
+    console.log("🔍 Fetched data:", data);
+    
+    if (data.length) {
+      const cached = localStorage.getItem(CACHE_KEY);
+      const cachedData = cached ? JSON.parse(cached) : [];
+      
+      if (data.length >= cachedData.length) {
         localStorage.setItem(CACHE_KEY, JSON.stringify(data));
         displayStories(data);
       }
-    } catch (err) {
-      console.error("Failed to fetch stories:", err);
-      const cached = localStorage.getItem(CACHE_KEY);
-      if (cached) displayStories(JSON.parse(cached));
     }
-  }
-
-  // ✅ On page load
-  (function init() {
+  } catch (err) {
+    console.error("❌ Failed to fetch stories:", err);
     const cached = localStorage.getItem(CACHE_KEY);
     if (cached) displayStories(JSON.parse(cached));
-    else storiesContainer.innerHTML = "<p>Loading stories...</p>";
-    fetchStories(false);
-  })();
-  </script>
+  }
+}
+
+(function init() {
+  const cached = localStorage.getItem(CACHE_KEY);
+  if (cached) {
+    displayStories(JSON.parse(cached));
+  } else {
+    storiesContainer.innerHTML = "<p>Loading stories...</p>";
+    fetchStories(true);
+  }
+})();
+</script>
 
   <!-- Footer -->
   <footer class="site-footer">
@@ -187,4 +199,5 @@
   </footer>
 </body>
 </html>
+
 
