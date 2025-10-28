@@ -95,7 +95,7 @@
 
     data.reverse().forEach(story => {
       const name = story.Name || story.name || story["entry.579044948"] || "Anonymous";
-      const category = story.Category || story.category || story["entry.964793499"] || "Other";
+      const category = story.Category || story.category || story["Category"] || story["  Category  "] || story["entry.964793499"] || "Other";
       const storyText = story.Story || story.storyText || story["entry.1663738702"] || "";
       const timestamp = story.Timestamp || story.timestamp || story.time || new Date().toISOString();
 
@@ -187,3 +187,4 @@
   </footer>
 </body>
 </html>
+
