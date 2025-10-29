@@ -1138,7 +1138,7 @@ html, body {
 }
 
 /* ========== MIRACLES.HTML PAGE ========== */
-/* ========= SHARP & STYLISH DESIGN UPGRADE ========= */
+/* ========= SLEEK & PROFESSIONAL MIRACLES PAGE ========= */
 
 /* Main Container */
 .miracle-container {
@@ -1147,30 +1147,30 @@ html, body {
   align-items: flex-start;
   gap: 40px;
   padding: 50px 60px;
-  background: #f5f6f8;
-  border: 2px solid #d4d4d4;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  border-radius: 0; /* Sharp edges */
+  background: #f6f7f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  border-radius: 6px; /* sleek soft edges */
 }
 
 /* Form Section */
 .form-section {
   flex: 1;
   background: #ffffff;
-  border: 2px solid #cfcfcf;
+  border: 1px solid #d8d8d8;
   padding: 40px 35px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  border-radius: 0; /* No curves */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
 }
 
 .form-section h1 {
   font-size: 2rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #222;
-  border-bottom: 3px solid #333;
+  font-weight: 600;
+  color: #1a1a1a;
+  border-bottom: 2px solid #333;
   padding-bottom: 10px;
   margin-bottom: 25px;
+  letter-spacing: 0.5px;
 }
 
 .form-section input,
@@ -1178,30 +1178,31 @@ html, body {
 .form-section textarea {
   width: 100%;
   padding: 12px 15px;
-  border: 2px solid #bbb;
-  border-radius: 0;
+  border: 1.5px solid #ccc;
+  border-radius: 4px;
   background-color: #fafafa;
   font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .form-section input:focus,
 .form-section select:focus,
 .form-section textarea:focus {
-  border-color: #222;
+  border-color: #333;
   background-color: #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
   outline: none;
 }
 
-/* Submit Button */
+/* Button */
 .form-section button {
   background-color: #222;
   color: #fff;
-  border: 2px solid #222;
-  border-radius: 0;
-  padding: 14px 25px;
+  border: none;
+  border-radius: 4px;
+  padding: 14px 24px;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -1209,77 +1210,80 @@ html, body {
 .form-section button:hover {
   background-color: #fff;
   color: #222;
-  border-color: #222;
+  border: 1.5px solid #222;
 }
 
 /* Stories Section */
 .stories-section {
   flex: 1;
   background: #ffffff;
-  border: 2px solid #cfcfcf;
+  border: 1px solid #d8d8d8;
   padding: 35px 30px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  border-radius: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
 }
 
 .stories-section h2 {
   font-size: 1.8rem;
+  font-weight: 600;
   color: #111;
-  border-bottom: 3px solid #333;
-  padding-bottom: 10px;
-  margin-bottom: 25px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
 }
 
-/* Story Container */
+/* Stories Container */
 #storiesContainer {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
   overflow-y: auto;
   max-height: 400px;
   scrollbar-width: thin;
-  scrollbar-color: #333 #eee;
+  scrollbar-color: #666 #eee;
 }
 
 /* Story Card */
 .story-card {
   background-color: #fafafa;
-  border: 2px solid #bbb;
+  border: 1.5px solid #ccc;
   padding: 18px 20px;
-  border-radius: 0;
+  border-radius: 6px;
   transition: all 0.3s ease;
 }
 
 .story-card:hover {
   background-color: #fff;
-  border-color: #111;
+  border-color: #222;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .story-card h3 {
-  margin-bottom: 8px;
-  font-size: 1.2rem;
+  margin-bottom: 6px;
+  font-size: 1.15rem;
   font-weight: 600;
   color: #222;
 }
 
 .story-card p {
-  font-size: 0.95rem;
+  font-size: 0.96rem;
   color: #444;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-/* Scrollbar Style */
+/* Scrollbar */
 #storiesContainer::-webkit-scrollbar {
   width: 6px;
 }
 #storiesContainer::-webkit-scrollbar-thumb {
-  background: #444;
+  background: #666;
+  border-radius: 6px;
 }
 #storiesContainer::-webkit-scrollbar-track {
   background: #eee;
 }
+
 
 
 /* ========== TEACHINGS.HTML PAGE ========== */
@@ -1716,3 +1720,4 @@ html, body {
   color: #8e24aa;
   transform: translateY(-2px);
 }
+
