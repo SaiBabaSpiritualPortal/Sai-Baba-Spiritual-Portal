@@ -1138,83 +1138,150 @@ html, body {
 }
 
 /* ========== MIRACLES.HTML PAGE ========== */
-/* ========== MIRACLES.HTML PAGE ========== */
+/* ========= SHARP & STYLISH DESIGN UPGRADE ========= */
 
-/* Force sharp edges on ALL containers - applies to all screen sizes */
-.miracle-container,
-.form-section,
-.stories-section,
-.story-card,
-#storiesContainer,
+/* Main Container */
+.miracle-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 50px 60px;
+  background: #f5f6f8;
+  border: 2px solid #d4d4d4;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-radius: 0; /* Sharp edges */
+}
+
+/* Form Section */
+.form-section {
+  flex: 1;
+  background: #ffffff;
+  border: 2px solid #cfcfcf;
+  padding: 40px 35px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  border-radius: 0; /* No curves */
+}
+
+.form-section h1 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #222;
+  border-bottom: 3px solid #333;
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+}
+
 .form-section input,
 .form-section select,
-.form-section textarea,
+.form-section textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #bbb;
+  border-radius: 0;
+  background-color: #fafafa;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-section input:focus,
+.form-section select:focus,
+.form-section textarea:focus {
+  border-color: #222;
+  background-color: #fff;
+  outline: none;
+}
+
+/* Submit Button */
 .form-section button {
-  border-radius: 4px !important;
+  background-color: #222;
+  color: #fff;
+  border: 2px solid #222;
+  border-radius: 0;
+  padding: 14px 25px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-@media (max-width: 1000px) {
-  .miracle-container {
-    flex-direction: column !important;
-    padding: 30px 15px;
-    gap: 25px;
-    border-radius: 4px !important;
-  }
-  
-  .form-section,
-  .stories-section {
-    flex: 1 1 100% !important;
-    max-width: 100% !important;
-    border-radius: 4px !important;
-  }
+.form-section button:hover {
+  background-color: #fff;
+  color: #222;
+  border-color: #222;
 }
 
-@media (max-width: 768px) {
-  .form-section {
-    padding: 25px 15px;
-    border-radius: 4px !important;
-  }
-  
-  .form-section h1 {
-    font-size: 1.6rem;
-  }
-  
-  .form-section input,
-  .form-section select,
-  .form-section textarea {
-    width: 100%;
-    font-size: 0.95rem;
-    border-radius: 4px !important;
-  }
-  
-  .form-section button {
-    width: 100%;
-    padding: 13px 20px;
-    border-radius: 4px !important;
-  }
-  
-  .stories-section {
-    border-radius: 4px !important;
-  }
-  
-  .stories-section h2 {
-    font-size: 1.5rem;
-  }
-  
-  #storiesContainer {
-    max-height: 350px;
-    border-radius: 4px !important;
-  }
-  
-  .story-card {
-    border-radius: 4px !important;
-  }
+/* Stories Section */
+.stories-section {
+  flex: 1;
+  background: #ffffff;
+  border: 2px solid #cfcfcf;
+  padding: 35px 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  border-radius: 0;
 }
 
-/* Global override for any nested elements */
-.miracle-container * {
-  border-radius: 4px !important;
+.stories-section h2 {
+  font-size: 1.8rem;
+  color: #111;
+  border-bottom: 3px solid #333;
+  padding-bottom: 10px;
+  margin-bottom: 25px;
 }
+
+/* Story Container */
+#storiesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  max-height: 400px;
+  scrollbar-width: thin;
+  scrollbar-color: #333 #eee;
+}
+
+/* Story Card */
+.story-card {
+  background-color: #fafafa;
+  border: 2px solid #bbb;
+  padding: 18px 20px;
+  border-radius: 0;
+  transition: all 0.3s ease;
+}
+
+.story-card:hover {
+  background-color: #fff;
+  border-color: #111;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.story-card h3 {
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.story-card p {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* Scrollbar Style */
+#storiesContainer::-webkit-scrollbar {
+  width: 6px;
+}
+#storiesContainer::-webkit-scrollbar-thumb {
+  background: #444;
+}
+#storiesContainer::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+
 /* ========== TEACHINGS.HTML PAGE ========== */
 @media (max-width: 1400px) {
   .features {
@@ -1649,6 +1716,3 @@ html, body {
   color: #8e24aa;
   transform: translateY(-2px);
 }
-
-
-
