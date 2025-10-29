@@ -171,28 +171,41 @@ form.addEventListener('submit', async (e) => {
   status.textContent = "Submitting...";
 
   const data = new FormData(form);
+  
+  // Extract form data for immediate display
+  const name = data.get("entry.579044948");
+  const category = data.get("entry.964793499");
+  const storyText = data.get("entry.1663738702");
+  
+  // Create optimistic story object
+  const newStory = {
+    Name: name,
+    Category: category,
+    Story: storyText,
+    Timestamp: new Date().toISOString()
+  };
+
+  // Immediately add to display (optimistic update)
+  const currentStories = JSON.parse(localStorage.getItem(CACHE_KEY) || "[]");
+  currentStories.push(newStory);
+  localStorage.setItem(CACHE_KEY, JSON.stringify(currentStories));
+  displayStories(currentStories);
+  
+  form.reset();
+  status.textContent = "✨ Story submitted successfully!";
+  storiesSection.scrollIntoView({ behavior: 'smooth' });
+
+  // Submit to Google Form in background
   const params = new URLSearchParams();
   for (const pair of data) params.append(pair[0], pair[1]);
+  fetch(googleFormAction, { method: 'POST', mode: 'no-cors', body: params });
 
-  try {
-    // Submit to Google Form
-    await fetch(googleFormAction, { method: 'POST', mode: 'no-cors', body: params });
-    
-    form.reset();
-    status.textContent = "✨ Story submitted successfully!";
-    storiesSection.scrollIntoView({ behavior: 'smooth' });
-
-    // Wait 3 seconds then fetch updated stories
-    setTimeout(() => {
-      status.textContent = "Loading updated stories...";
-      fetchStories(true, true);
-    }, 3000);
-  } catch (err) {
-    status.textContent = "❌ Error submitting. Please try again.";
-    console.error(err);
-  } finally {
-    submitButton.disabled = false;
-  }
+  // Fetch fresh data after 2 seconds to sync with server
+  setTimeout(() => {
+    fetchStories(true, false);
+  }, 2000);
+  
+  submitButton.disabled = false;
 });
 
 async function fetchStories(forceRefresh = false, showLoader = false) {
@@ -236,10 +249,21 @@ async function fetchStories(forceRefresh = false, showLoader = false) {
   }
 }
 
-// Initial load - always fetch from server
+// Initial load - show cache immediately, then update
 (function init() {
   console.log("🚀 Initializing page...");
-  fetchStories(true, true);
+  
+  const cached = localStorage.getItem(CACHE_KEY);
+  if (cached) {
+    // Show cached stories instantly
+    console.log("⚡ Displaying cached stories immediately");
+    displayStories(JSON.parse(cached));
+    // Then fetch fresh data in background
+    fetchStories(true, false);
+  } else {
+    // No cache, show loader and fetch
+    fetchStories(true, true);
+  }
 })();
 
 // Auto-refresh every 30 seconds when page is visible
@@ -260,4 +284,3 @@ setInterval(() => {
   </footer>
 </body>
 </html>
-
