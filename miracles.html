@@ -8,8 +8,54 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Philosopher&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%); min-height: 100vh; }
+    
+    .site-header { background: #8e24aa; color: white; padding: 1rem 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .brand { font-size: 1.5rem; font-weight: 600; color: white; text-decoration: none; }
+    .main-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .main-nav a { color: white; text-decoration: none; transition: opacity 0.3s; }
+    .main-nav a:hover, .main-nav a.active { opacity: 0.8; text-decoration: underline; }
+    
+    .miracle-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1400px; margin: 2rem auto; padding: 0 20px; }
+    
+    .form-section, .stories-section { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    
+    .form-section h1 { color: #8e24aa; margin-bottom: 0.5rem; }
+    .form-section p { color: #666; margin-bottom: 1.5rem; }
+    
+    form input, form select, form textarea { width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 2px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 1rem; }
+    form input:focus, form select:focus, form textarea:focus { outline: none; border-color: #8e24aa; }
+    
+    form button { width: 100%; padding: 1rem; background: #8e24aa; color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background 0.3s; }
+    form button:hover { background: #7b1fa2; }
+    form button:disabled { background: #ccc; cursor: not-allowed; }
+    
+    #status { text-align: center; margin-top: 1rem; font-weight: 600; color: #4caf50; }
+    
+    .stories-section h2 { color: #8e24aa; margin-bottom: 1.5rem; text-align: center; }
+    
+    .story-card { background: #f9f9f9; padding: 1.5rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid #8e24aa; transition: all 0.3s ease; }
+    .story-card:hover { transform: translateX(5px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .story-card h3 { color: #8e24aa; margin-bottom: 0.5rem; font-size: 1.1rem; }
+    .story-card span { color: #999; font-size: 0.85rem; display: block; margin-bottom: 0.8rem; }
+    .story-card p { color: #555; line-height: 1.6; }
+    
+    .loader { border: 4px solid #f3f3f3; border-top: 4px solid #8e24aa; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 2rem auto; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    
+    .site-footer { background: #8e24aa; color: white; padding: 2rem 0; text-align: center; margin-top: 3rem; }
+    .disclaimer { font-size: 0.85rem; opacity: 0.8; margin-top: 1rem; }
+    
+    @media (max-width: 768px) {
+      .miracle-container { grid-template-columns: 1fr; }
+      .header-inner { flex-direction: column; gap: 1rem; }
+      .main-nav { justify-content: center; }
+    }
+  </style>
 </head>
 <body>
 
@@ -40,7 +86,7 @@
         <select name="entry.964793499" required>
           <option value="">Select Category</option>
           <option value="Health">Health</option>
-          <option value="Health">Job</option>
+          <option value="Job">Job</option>
           <option value="Family">Family</option>
           <option value="Wealth">Wealth</option>
           <option value="Marriage">Marriage</option>
@@ -85,6 +131,8 @@ const googleFormAction = "https://docs.google.com/forms/d/e/1FAIpQLSc67HpyGedHob
 const appScriptURL = "https://script.google.com/macros/s/AKfycbxEMxINPnuddrqy72-FXAyVRyTW5I-UjvnEYlFuHslNuId6jUC5RqXg9Kdgvmm2B1DCJw/exec";
 
 const CACHE_KEY = "sai_baba_stories";
+const CACHE_TIMESTAMP_KEY = "sai_baba_stories_timestamp";
+const CACHE_DURATION = 60000; // 1 minute cache
 
 function displayStories(data) {
   storiesContainer.innerHTML = "";
@@ -94,17 +142,10 @@ function displayStories(data) {
   }
 
   data.reverse().forEach(story => {
-    // 🔍 DEBUG: Log the entire story object
-    console.log("Story object:", story);
-    console.log("Available keys:", Object.keys(story));
-    
     const name = story.Name || story.name || story["entry.579044948"] || "Anonymous";
     const category = story.Category || story.category || story["entry.964793499"] || "Other";
     const storyText = story.Story || story.storyText || story["entry.1663738702"] || "";
     const timestamp = story.Timestamp || story.timestamp || story.time || new Date().toISOString();
-
-    // 🔍 DEBUG: Log what we extracted
-    console.log("Extracted - Name:", name, "Category:", category);
 
     const div = document.createElement('div');
     div.classList.add('story-card');
@@ -125,70 +166,88 @@ function displayStories(data) {
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+  const submitButton = form.querySelector('button');
+  submitButton.disabled = true;
   status.textContent = "Submitting...";
 
   const data = new FormData(form);
-  const name = data.get("entry.579044948");
-  const category = data.get("entry.964793499");
-  const storyText = data.get("entry.1663738702");
-
-  const newStory = {
-    Name: name,
-    Category: category,
-    Story: storyText,
-    Timestamp: new Date().toISOString()
-  };
-  const currentStories = JSON.parse(localStorage.getItem(CACHE_KEY) || "[]");
-  currentStories.push(newStory);
-  localStorage.setItem(CACHE_KEY, JSON.stringify(currentStories));
-  displayStories(currentStories);
-
   const params = new URLSearchParams();
   for (const pair of data) params.append(pair[0], pair[1]);
-  fetch(googleFormAction, { method: 'POST', mode: 'no-cors', body: params });
 
-  form.reset();
-  status.textContent = "✨ Story submitted successfully!";
-  storiesSection.scrollIntoView({ behavior: 'smooth' });
+  try {
+    // Submit to Google Form
+    await fetch(googleFormAction, { method: 'POST', mode: 'no-cors', body: params });
+    
+    form.reset();
+    status.textContent = "✨ Story submitted successfully!";
+    storiesSection.scrollIntoView({ behavior: 'smooth' });
 
-  setTimeout(() => {
-    fetchStories(false);
-  }, 5000);
+    // Wait 3 seconds then fetch updated stories
+    setTimeout(() => {
+      status.textContent = "Loading updated stories...";
+      fetchStories(true, true);
+    }, 3000);
+  } catch (err) {
+    status.textContent = "❌ Error submitting. Please try again.";
+    console.error(err);
+  } finally {
+    submitButton.disabled = false;
+  }
 });
 
-async function fetchStories(showLoader = false) {
+async function fetchStories(forceRefresh = false, showLoader = false) {
+  const now = Date.now();
+  const lastFetch = parseInt(sessionStorage.getItem(CACHE_TIMESTAMP_KEY) || '0');
+  const cached = localStorage.getItem(CACHE_KEY);
+
+  // Use cache if it's fresh and not forcing refresh
+  if (!forceRefresh && cached && (now - lastFetch < CACHE_DURATION)) {
+    console.log("✅ Using cached stories");
+    displayStories(JSON.parse(cached));
+    return;
+  }
+
   if (showLoader) storiesContainer.innerHTML = '<div class="loader"></div>';
+  
   try {
-    console.log("🔍 Fetching from:", appScriptURL);
-    const response = await fetch(appScriptURL, { cache: "no-cache" });
+    console.log("🔄 Fetching fresh stories from Google Sheets...");
+    const response = await fetch(appScriptURL + '?t=' + now, { cache: "no-cache" });
     const data = await response.json();
-    console.log("🔍 Fetched data:", data);
+    console.log("✅ Fetched", data.length, "stories");
     
-    if (data.length) {
-      const cached = localStorage.getItem(CACHE_KEY);
-      const cachedData = cached ? JSON.parse(cached) : [];
-      
-      if (data.length >= cachedData.length) {
-        localStorage.setItem(CACHE_KEY, JSON.stringify(data));
-        displayStories(data);
-      }
+    if (data.length > 0) {
+      localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+      sessionStorage.setItem(CACHE_TIMESTAMP_KEY, now.toString());
+      displayStories(data);
+      status.textContent = "";
+    } else if (cached) {
+      console.log("⚠️ No data from server, using cache");
+      displayStories(JSON.parse(cached));
     }
   } catch (err) {
     console.error("❌ Failed to fetch stories:", err);
-    const cached = localStorage.getItem(CACHE_KEY);
-    if (cached) displayStories(JSON.parse(cached));
+    if (cached) {
+      console.log("⚠️ Using cached stories due to error");
+      displayStories(JSON.parse(cached));
+    } else {
+      storiesContainer.innerHTML = "<p>Unable to load stories. Please refresh the page.</p>";
+    }
+    status.textContent = "";
   }
 }
 
+// Initial load - always fetch from server
 (function init() {
-  const cached = localStorage.getItem(CACHE_KEY);
-  if (cached) {
-    displayStories(JSON.parse(cached));
-  } else {
-    storiesContainer.innerHTML = "<p>Loading stories...</p>";
-    fetchStories(true);
-  }
+  console.log("🚀 Initializing page...");
+  fetchStories(true, true);
 })();
+
+// Auto-refresh every 30 seconds when page is visible
+setInterval(() => {
+  if (document.visibilityState === 'visible') {
+    fetchStories(true, false);
+  }
+}, 30000);
 </script>
 
   <!-- Footer -->
@@ -201,8 +260,3 @@ async function fetchStories(showLoader = false) {
   </footer>
 </body>
 </html>
-
-
-
-
-
