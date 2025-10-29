@@ -1139,26 +1139,40 @@ html, body {
 
 /* ========== MIRACLES.HTML PAGE ========== */
 /* ========== MIRACLES.HTML PAGE ========== */
-/* ========== MIRACLES.HTML PAGE ========== */
+
+/* Force sharp edges on ALL containers - applies to all screen sizes */
+.miracle-container,
+.form-section,
+.stories-section,
+.story-card,
+#storiesContainer,
+.form-section input,
+.form-section select,
+.form-section textarea,
+.form-section button {
+  border-radius: 4px !important;
+}
+
 @media (max-width: 1000px) {
   .miracle-container {
     flex-direction: column !important;
     padding: 30px 15px;
     gap: 25px;
+    border-radius: 4px !important;
   }
   
   .form-section,
   .stories-section {
     flex: 1 1 100% !important;
     max-width: 100% !important;
-    border-radius: 4px !important; /* Sleek sharp corners */
+    border-radius: 4px !important;
   }
 }
 
 @media (max-width: 768px) {
   .form-section {
     padding: 25px 15px;
-    border-radius: 4px !important; /* Sharp corners */
+    border-radius: 4px !important;
   }
   
   .form-section h1 {
@@ -1170,17 +1184,17 @@ html, body {
   .form-section textarea {
     width: 100%;
     font-size: 0.95rem;
-    border-radius: 3px !important; /* Sharp corners for inputs */
+    border-radius: 4px !important;
   }
   
   .form-section button {
     width: 100%;
     padding: 13px 20px;
-    border-radius: 3px !important; /* Sharp button corners */
+    border-radius: 4px !important;
   }
   
   .stories-section {
-    border-radius: 4px !important; /* Sharp corners */
+    border-radius: 4px !important;
   }
   
   .stories-section h2 {
@@ -1189,13 +1203,17 @@ html, body {
   
   #storiesContainer {
     max-height: 350px;
-    border-radius: 3px !important; /* Sharp corners */
+    border-radius: 4px !important;
   }
   
-  /* Individual story cards sharp corners */
   .story-card {
-    border-radius: 3px !important;
+    border-radius: 4px !important;
   }
+}
+
+/* Global override for any nested elements */
+.miracle-container * {
+  border-radius: 4px !important;
 }
 /* ========== TEACHINGS.HTML PAGE ========== */
 @media (max-width: 1400px) {
@@ -1631,5 +1649,6 @@ html, body {
   color: #8e24aa;
   transform: translateY(-2px);
 }
+
 
 
