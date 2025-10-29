@@ -8,235 +8,331 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Tiro+Devanagari+Sanskrit&family=Philosopher&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
   <style>
     /* ============================= */
-/* Mobile Responsive Fix */
-/* ============================= */
-@media (max-width: 768px) {
-  .daily-quote-hero {
-    grid-template-columns: 1fr;  /* single column */
-    text-align: center;
-  }
+    /* Universal Premium Reset */
+    :root {
+      --bg: #f3ecd8;           /* Soft off-white background */
+      --accent:#d4af7f;       /* Deep royal purple */
+      --accent-2: #d4af37;     /* Rich metallic gold */
+      --muted: #3c3c3c;        /* Dark charcoal for text */
+      --card-bg: #f7f4ef;       /* Crisp white cards */
+      --shadow: 0 4px 18px rgba(0,0,0,0.18);
+      --radius: 8px;           /* Subtle sharpness */
+      --glow: 0 0 12px rgba(46,26,71,0.25);
+      --modal-bg: rgba(0,0,0,0.7);
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.7;
+      color: var(--muted);
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-  .hero-right {
-    order: -1; /* move image above text (optional) */
-    margin-bottom: 20px;
-  }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  .hero-right img {
-    width: 80%;
-    max-width: 280px;
-    margin: 0 auto;
-    display: block;
-  }
+    /* ============================= */
+    /* Body */
+    body {
+      background: var(--bg);
+      font-family: 'Poppins', sans-serif;
+      color: var(--muted);
+      overflow-x: hidden;
+    }
 
-  .daily-quote-hero h1 {
-    font-size: 2rem;
-  }
+    /* ============================= */
+    /* Header */
+    .site-header {
+      background: var(--card-bg);
+      padding: 20px 0;
+      box-shadow: var(--shadow);
+      border-bottom: 3px solid var(--accent-2);
+    }
 
-  .daily-quote-hero p {
-    font-size: 1rem;
-  }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-  #newQuoteBtn {
-    width: 100%;
-    max-width: 250px;
-  }
-}
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
 
-/* ============================= */
-/* Universal Premium Reset */
-:root {
-  --bg: #f3ecd8;           /* Soft off-white background */
-  --accent:#d4af7f;       /* Deep royal purple */
-  --accent-2: #d4af37;     /* Rich metallic gold */
-  --muted: #3c3c3c;        /* Dark charcoal for text */
-  --card-bg: #f7f4ef;       /* Crisp white cards */
-  --shadow: 0 4px 18px rgba(0,0,0,0.18);
-  --radius: 8px;           /* Subtle sharpness */
-  --glow: 0 0 12px rgba(46,26,71,0.25);
-  --modal-bg: rgba(0,0,0,0.7);
-  font-family: 'Poppins', sans-serif;
-  line-height: 1.7;
-  color: var(--muted);
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+    .brand {
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
 
-/* ============================= */
-/* Body */
-body {
-  background: var(--bg);
-  font-family: 'Poppins', sans-serif;
-  color: var(--muted);
-  overflow-x: hidden;
-}
+    .main-nav {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
 
-/* ============================= */
-/* Daily Quote Hero */
-.daily-quote-hero {
-  display: grid;
-  grid-template-columns: 1fr 220px;
-  gap: 30px;
-  align-items: center;
-  margin-top: 40px;
-  padding: 30px;
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  border-left: 5px solid var(--accent-2);
-  animation: fadeInUp 1s ease-out;
-}
+    .main-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
 
-.daily-quote-hero h1 {
-  font-family: 'Tiro Devanagari Sanskrit', serif;
-  color: var(--accent);
-  font-size: 2.6rem;
-  margin-bottom: 15px;
-  letter-spacing: 1px;
-}
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: var(--accent-2);
+    }
 
-.daily-quote-hero p {
-  font-size: 1.15rem;
-  color: var(--muted);
-  margin-bottom: 25px;
-  line-height: 1.6;
-  font-style: italic;
-}
+    .main-nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent-2);
+    }
 
-/* ============================= */
-/* Quote Output Box */
-#quoteOutput {
-  background: var(--card-bg);
-  border-left: 4px solid var(--accent-2);
-  padding: 15px 12px;
-  box-shadow: var(--shadow);
-  font-size: 1.15rem;
-  color: var(--muted);
-  min-height: 60px;
-  max-width: 780px;
-  margin-top: 15px;
-  display: none;
-  position: relative;
-  text-align: center;
-  line-height: 1.5;
-}
+    /* ============================= */
+    /* Daily Quote Hero */
+    .daily-quote-hero {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 30px;
+      align-items: center;
+      margin-top: 40px;
+      padding: 30px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border-left: 5px solid var(--accent-2);
+      animation: fadeInUp 1s ease-out;
+    }
 
-#quoteOutput.show {
-  display: block;
-  animation: divineFadeIn 0.8s ease forwards;
-}
+    .daily-quote-hero h1 {
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      color: var(--accent);
+      font-size: 2.6rem;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
 
-#quoteOutput .close-output {
-  position: absolute;
-  top: 6px;
-  right: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  color: var(--accent);
-  font-size: 16px;
-  transition: color 0.3s, transform 0.3s;
-}
+    .daily-quote-hero p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      margin-bottom: 25px;
+      line-height: 1.6;
+      font-style: italic;
+    }
 
-#quoteOutput .close-output:hover {
-  color: var(--accent-2);
-  transform: rotate(90deg);
-}
+    /* ============================= */
+    /* Quote Output Box */
+    #quoteOutput {
+      background: var(--card-bg);
+      border-left: 4px solid var(--accent-2);
+      padding: 15px 12px;
+      box-shadow: var(--shadow);
+      font-size: 1.15rem;
+      color: var(--muted);
+      min-height: 60px;
+      max-width: 780px;
+      margin-top: 15px;
+      display: none;
+      position: relative;
+      text-align: center;
+      line-height: 1.5;
+    }
 
-/* ============================= */
-/* Quote Button */
-#newQuoteBtn {
-  padding: 14px 28px;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 6px; /* sharp premium edges */
-  border: 2px solid var(--accent-2);
-  cursor: pointer;
-  color: var(--accent-2);
-  background: transparent;
-  box-shadow: var(--shadow);
-  transition: all 0.3s ease;
-}
+    #quoteOutput.show {
+      display: block;
+      animation: divineFadeIn 0.8s ease forwards;
+    }
 
-#newQuoteBtn:hover {
-  background: var(--accent-2);
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-}
+    #quoteOutput .close-output {
+      position: absolute;
+      top: 6px;
+      right: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--accent);
+      font-size: 16px;
+      transition: color 0.3s, transform 0.3s;
+    }
 
-/* ============================= */
-/* Quote Cards */
-.quote-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  margin-top: 50px;
-}
+    #quoteOutput .close-output:hover {
+      color: var(--accent-2);
+      transform: rotate(90deg);
+    }
 
-.quote-card {
-  background: var(--card-bg);
-  padding: 20px;
-  border-radius: 6px; /* sharp */
-  border-left: 4px solid var(--accent);
-  box-shadow: var(--shadow);
-  transition: transform 0.3s, box-shadow 0.3s;
-  text-align: center;
-}
-.quote-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
+    /* ============================= */
+    /* Quote Button */
+    #newQuoteBtn {
+      padding: 14px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 6px;
+      border: 2px solid var(--accent-2);
+      cursor: pointer;
+      color: var(--accent-2);
+      background: transparent;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
 
-.quote-card h3 {
-  color: var(--accent);
-  margin-bottom: 10px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
+    #newQuoteBtn:hover {
+      background: var(--accent-2);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
 
-.quote-card p {
-  font-style: italic;
-  color: var(--muted);
-  line-height: 1.5;
-}
+    /* ============================= */
+    /* Quote Cards */
+    .quote-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
 
-/* ============================= */
-/* Hero Right Image */
-.hero-right img {
-  border-radius: 6px;
-  width: 100%;
-  border: 2px solid var(--accent-2);
-  animation: float 4s ease-in-out infinite;
-}
+    .quote-card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 6px;
+      border-left: 4px solid var(--accent);
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
 
-/* ============================= */
-/* Animations */
-@keyframes fadeInUp {
-  0% { opacity:0; transform: translateY(15px);}
-  100% { opacity:1; transform: translateY(0);}
-}
+    .quote-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
 
-@keyframes divineFadeIn {
-  0% {opacity:0; transform: translateY(-10px) scale(0.95);}
-  100% {opacity:1; transform: translateY(0) scale(1);}
-}
+    .quote-card h3 {
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0);}
-  50% { transform: translateY(-8px);}
-}
+    .quote-card p {
+      font-style: italic;
+      color: var(--muted);
+      line-height: 1.5;
+    }
 
+    /* ============================= */
+    /* Hero Right Image */
+    .hero-right img {
+      border-radius: 6px;
+      width: 100%;
+      border: 2px solid var(--accent-2);
+      animation: float 4s ease-in-out infinite;
+      display: block;
+    }
+
+    /* ============================= */
+    /* Footer */
+    .site-footer {
+      background: var(--card-bg);
+      padding: 30px 20px;
+      text-align: center;
+      border-top: 3px solid var(--accent-2);
+      margin-top: 50px;
+    }
+
+    .site-footer p {
+      margin: 10px 0;
+      color: var(--muted);
+    }
+
+    .disclaimer {
+      font-size: 0.85rem;
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    /* ============================= */
+    /* Animations */
+    @keyframes fadeInUp {
+      0% { opacity:0; transform: translateY(15px);}
+      100% { opacity:1; transform: translateY(0);}
+    }
+
+    @keyframes divineFadeIn {
+      0% {opacity:0; transform: translateY(-10px) scale(0.95);}
+      100% {opacity:1; transform: translateY(0) scale(1);}
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0);}
+      50% { transform: translateY(-8px);}
+    }
+
+    /* ============================= */
+    /* Mobile Responsive Fix */
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .main-nav {
+        justify-content: center;
+      }
+
+      .daily-quote-hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-right {
+        order: -1;
+        margin-bottom: 20px;
+      }
+
+      .hero-right img {
+        width: 80%;
+        max-width: 280px;
+        margin: 0 auto;
+      }
+
+      .daily-quote-hero h1 {
+        font-size: 2rem;
+      }
+
+      .daily-quote-hero p {
+        font-size: 1rem;
+      }
+
+      #newQuoteBtn {
+        width: 100%;
+        max-width: 250px;
+      }
+
+      .quote-cards {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
 
-
-
-  <!-- Header & Navigation (same as home page) -->
+  <!-- Header & Navigation -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="brand">🌸 Sai Baba Portal 🌸</a>
@@ -267,10 +363,9 @@ body {
         </div>
       </div>
 
-<div class="hero-right"> 
-  <img src="assets/sai-baba-statue.jpg" alt="Statue of Sai Baba" class="baba-img"> 
-</div>
-
+      <div class="hero-right"> 
+        <img src="sai-baba-statue.JPG" alt="Statue of Sai Baba" class="baba-img"> 
+      </div>
     </section>
 
     <!-- Inspirational Quote Cards -->
@@ -285,7 +380,7 @@ body {
       </div>
       <div class="quote-card">
         <h3>Service</h3>
-        <p>Helping others invokes Sai Baba’s grace in your life.</p>
+        <p>Helping others invokes Sai Baba's grace in your life.</p>
       </div>
       <div class="quote-card">
         <h3>Love</h3>
@@ -295,153 +390,153 @@ body {
 
   </main>
 
-<!-- Footer -->
-<footer class="site-footer">
-  <p>© 2025 Sai Baba Spiritual Portal. All rights reserved.</p>
-  <p class="disclaimer">
-    Disclaimer: The content on this website is for informational and spiritual guidance purposes only. 
-    It is based on public domain sources and does not claim ownership of copyrighted materials.
-  </p>
-</footer>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2025 Sai Baba Spiritual Portal. All rights reserved.</p>
+    <p class="disclaimer">
+      Disclaimer: The content on this website is for informational and spiritual guidance purposes only. 
+      It is based on public domain sources and does not claim ownership of copyrighted materials.
+    </p>
+  </footer>
 
   <!-- JavaScript -->
-<script>
-  const dailyQuotes = [
-    "Baba says: 'Why fear when I am here? I will guide and guard you always, My child.'",
-    "Baba says: 'Hold fast to Shraddha (Faith) and Saburi (Patience). These two alone will carry you across the ocean of life.'",
-    "Baba says: 'Look to Me, and I will look to you. Your devotion is a debt I am always eager to repay.'",
-    "Baba says: 'My tomb will speak and move to the needs of My devotees. Know that I am ever active, even from there.'",
-    "Baba says: 'I am not confined to this body, My child. I am everywhere, in every creature, and beyond what you can see.'",
-    "Baba says: 'Always remember this, My child: Whatever you do, wherever you may be, I am always aware of everything you do.'",
-    "Baba says: 'If you make Me the sole object of your thoughts and aims, I promise you shall gain the Supreme Goal.'",
-    "Baba says: 'God has agents everywhere and their powers are vast. Learn to respect the divine in all people.'",
-    "Baba says: 'Do not fight with anyone. If someone speaks ill of you, pass on like water, unperturbed.'",
-    "Baba says: 'If you spread your palms with devotion before Me, I am immediately with you, day and night.'",
-    "Baba says: 'The Lord is the sole Actor. What I do, I do as His obedient servant and witness; I take no credit.'",
-    "Baba says: 'Be content and cheerful with whatever comes. Why worry? Trust only in God's provision.'",
-    "Baba says: 'Poverty is the highest of riches, My child, and a thousand times superior to a king's fading wealth.'",
-    "Baba says: 'Spend money in charity and be generous, but never be extravagant.'",
-    "Baba says: 'Do not criticize or carp at others. To do so is to pierce Me to the quick and injure Me.'",
-    "Baba says: 'All that you see—the movable and the immovable—is My Body. Treat all creation with love and respect.'",
-    "Baba says: 'This human body is a great opportunity; it will not return. Use it to fix your mind upon the God that lives in all.'",
-    "Baba says: 'The giving of Dakshina helps you let go of attachment, and by detachment, you gain true devotion.'",
-    "Baba says: 'You must fulfill any promise you have made. Always stand by truth and let your word be firm.'",
-    "Baba says: 'If you cannot bear the abuse of another, say a soft word, or else, simply leave the place.'",
-    "Baba says: 'The best way to receive is to give. The act of giving is truly a seed sown for a rich harvest in your future.'",
-    "Baba says: 'I will take you to the very end. Surrender completely to God, and I will do the rest.'",
-    "Baba says: 'Love as thought is Truth. Love as action is Right Conduct. Love as feeling is the only Non-Violence.'",
-    "Baba says: 'Our Karma is the cause of all joy and sorrow. What comes to you today, you must patiently accept.'",
-    "Baba says: 'The mother tortoise feeds her young ones with a mere glance. My gaze upon you is the same—it gives you all the sustenance you need.'",
-    "Baba says: 'Nobody comes to Me unless there is some tie. Every soul who comes here is pulled by a thread of connection.'",
-    "Baba says: 'Be like the lotus, My child. It unfolds its petals in the sky, unaffected by the muddy water that supports it.'",
-    "Baba says: 'The only way to be happy is to stop searching for faults in others. Look only for your own and correct them.'",
-    "Baba says: 'If a devotee is about to fall, I stretch out My hands to support him. I will not allow My devotees to come to harm.'",
-    "Baba says: 'If one devotes their entire mind to Me and rests completely in Me, they need fear nothing for the body or the soul.'",
-    "Baba says: 'Where there is deep love for the Guru, there is no lack. There shall be no want in the house of that true devotee.'",
-    "Baba says: 'God lives in all beings. He is the great wire-puller of this world, and all obey His silent command.'",
-    "Baba says: 'If you are wealthy, be humble. Look at the plants—they only bend when they are bearing fruit.'",
-    "Baba says: 'What do we lose by another's good fortune? Celebrate with them, My child, or strive to emulate them. That should be your desire.'",
-    "Baba says: 'Avoid all rivalry and bickering. If you live in harmony, God Himself will surely protect you.'",
-    "Baba says: 'The greatest pilgrimage is to your own heart. Meditate on Me there, either with form or without form; that is pure bliss.'",
-    "Baba says: 'He who leaves the attachment for his worldly kin and loves Me alone, he is My real lover, and he merges in Me.'",
-    "Baba says: 'My business is only to give blessings. Will a mother ever get angry with her children? I get angry with none.'",
-    "Baba says: 'Do not say of anyone that he is your enemy. All are one and the same in the eyes of the Divine.'",
-    "Baba says: 'Whenever anyone steps into this Dwarkamai, his goal is achieved and his objects are fulfilled.'",
-    "Baba says: 'If one repeats My name, their Karma is destroyed. I stay by his side always.'",
-    "Baba says: 'Serve the hungry creature who comes to you, My child. God is pleased if you feed the hungry; regard this as absolute truth.'",
-    "Baba says: 'Do not kick against the pricks of life. Accept the hardships that come, for they are My strange blessings and grace.'",
-    "Baba says: 'Your mind must be pure before true knowledge can dawn. Discharge your duties honestly and without attachment.'",
-    "Baba says: 'The most blessed food is that which is shared. It is by feeding others that you feed Me.'",
-    "Baba says: 'Sabka Malik Ek! (The Lord of all is One). Remember, My child, Mosque and temple are the very same.'",
-    "Baba says: 'Death is but an illusion. The body is a worn-out garment cast aside, but the soul does not truly die.'",
-    "Baba says: 'Be cheerful and content with what comes, for the wise one knows the ultimate plan. There is no mistake in God's timing.'",
-    "Baba says: 'I will not allow My devotees to come to harm. This is my word.'",
-    "Baba says: 'I will be with you, My child, whenever and wherever you think of Me. Do not let fear enter your heart.'",
-    "Baba says: 'My eye is ever fixed upon those who love Me. I watch them day and night.'",
-    "Baba says: 'Know this for yourself: My spirit is immortal. There is no end to My presence or power.'",
-    "Baba says: 'If you cannot grant a beggars request, decline it politely. Do not get angry at them.'",
-    "Baba says: 'The whole purpose of the Divine coming down (Avatar) is to make you realize the God that is within your own heart.'",
-    "Baba says: 'If you sing earnestly about My life and My deeds, I shall certainly surround you on all sides with My grace.'",
-    "Baba says: 'The simple utterance of the name Sai will cleanse all sins that come from loose talk and gossip.'",
-    "Baba says: 'You should never take the labor of others without paying them their due. This is not proper behavior.'",
-    "Baba says: 'I shall be ever active and vigorous, even after leaving this earthly body and entering the tomb.'",
-    "Baba says: 'When anyone enters this Dwarkamai, all his sorrows and sufferings come to a swift end.'",
-    "Baba says: 'Whatever creature is hungry and comes to you at mealtime is an Atithi (guest). You must feed them.'",
-    "Baba says: 'I am a slave to those pure souls who hunger and thirst only after Me and treat all else as unimportant.'",
-    "Baba says: 'Know that you are the result of your past actions. Be very careful about every action you perform today.'",
-    "Baba says: 'Be patient, not rash. Remember: haste makes waste, and waste will only bring you worry.'",
-    "Baba says: 'If you make Me the sole refuge, I am your debtor, and I will give My head to save you.'",
-    "Baba says: 'The Divine is present in everyone. You must show respect and reverence to one another.'",
-    "Baba says: 'Humility is not for all situations; severity is sometimes necessary when dealing with those who seek to cause harm.'",
-    "Baba says: 'You must know the Master (God). Else, why have you come here? To collect cow dung cakes?'",
-    "Baba says: 'I will be with you, My child, whenever and wherever you think of Me. Fear not, I am truly there.'",
-    "Baba says: 'The greatest spiritual practice is Love. Let the flame of your love be steady and strong, never flickering.'",
-    "Baba says: 'Many nations, but the Earth is one. Many beings, but the Breath is one. Many religions, but God is one.'",
-    "Baba says: 'What you give, you will surely get. Recognize the existence of this eternal Moral Law.'",
-    "Baba says: 'If you cannot grant a request, be polite and gentle. Do not mock or ridicule the one asking for help.'",
-    "Baba says: 'I am in everything and beyond, My child. I fill all space. Truly, all that you see is My form.'",
-    "Baba says: 'The reward for a good deed is great, My child; the reward for evil is very little. Strive for goodness always.'",
-    "Baba says: 'If you avoid all rivalry and bickering, then I will gladly protect you in all situations.'",
-    "Baba says: 'You must pass your days in song. Let your whole life be an unbroken song of the Divine.'",
-    "Baba says: 'Do not be misled by this world. It is a playground of illusion, full of false paths and fleeting values.'",
-    "Baba says: 'God is always for those who are not for themselves. Selflessness is the supreme quality.'",
-    "Baba says: 'To God be all the praise. I am but His slave, and without His permission, nothing can be done by Me.'",
-    "Baba says: 'Hold on to faith and patience. By this, I promise you, I will be with you wherever you are.'",
-    "Baba says: 'The wise are those who are cheerful and content with whatever has been allotted to them in this life.'",
-    "Baba says: 'I will pull out My devotees from the very jaws of death, My child. Have no doubt.'",
-    "Baba says: 'If a person remembers My name with love, I shall fulfill their every wish and cause their devotion to grow.'",
-    "Baba says: 'If you cannot endure the abuse, either speak a simple word or else leave the place entirely.'",
-    "Baba says: 'What God gives is a blessing that is never exhausted. What man gives never truly lasts.'",
-    "Baba says: 'Be cheerful and contented with what comes to you, for it is all part of the Divine plan.'",
-    "Baba says: 'If you listen to My stories (Leelas) and fix your gaze on Me alone, you will easily reach God.'",
-    "Baba says: 'The greatest spiritual practice is simply to avoid causing any kind of annoyance to others.'",
-    "Baba says: 'One must always cling to the truth and keep every promise that has been made.'",
-    "Baba says: 'I am the Inner Ruler of everyone, and I am seated in your heart. Always know this.'",
-    "Baba says: 'If you seek My advice or My help, it shall be given to you at once. Do not delay.'",
-    "Baba says: 'The donor sows his seed so that he may reap a rich spiritual harvest in the future.'",
-    "Baba says: 'My eye is ever watchful over those who love Me and call upon Me.'",
-    "Baba says: 'Work is worship. Even the smallest act of duty is a flower placed at the Feet of God.'",
-    "Baba says: 'I am in everything and beyond. I fill all space.'",
-    "Baba says: 'I will not allow any harm to come to My devotees. This is my absolute vow.'",
-    "Baba says: 'The body is cast away like worn-out garments. The soul does not truly die; it is eternal.'",
-    "Baba says: 'He who carps and cavils at others pierces Me in the heart. Speak only of good things.'",
-    "Baba says: 'If you cannot grant a request, be polite. Do not let anger or frustration show in your words.'",
-    "Baba says: 'Every experience is a lesson, My child. Every loss you suffer is truly a gain in wisdom.'",
-    "Baba says: 'I shall guide and guard you. March on bravely, My child, and have no fear.'",
-    "Baba says: 'Avoid all unnecessary disputes. Arguing is only a waste of your precious spiritual energy.'",
-    "Baba says: 'The heart that is filled with compassion is the most genuine temple of God.'",
-    "Baba says: 'Your sorrow and happiness are caused by your own Karma. Therefore, put up with whatever comes to you.'",
-    "Baba says: 'I am ever living to help and guide all who come to Me, surrender to Me, and seek My refuge.'",
-    "Baba says: 'God has no preferences. His action is only a reflection and resound of your own actions.'",
-    "Baba says: 'He who suffers patiently and endures silently pleases Me the most in this world.'",
-    "Baba says: 'To attain true happiness, My child, get on with your worldly activities cheerfully, but never forget God.'",
-    "Baba says: 'Whosoever sets their foot on the soil of Shirdi, know that their long sufferings will soon come to an end.'",
-    "Baba says: 'The name of Allah is eternal, My child. Know that Allah is truly all-in-all.'",
-    "Baba says: 'Be patient, not in a hurry. For I tell you, haste makes waste, and waste will bring you worry.'",
-    "Baba says: 'The giver is sowing a seed to reap a rich spiritual harvest in the time to come.'",
-    "Baba says: 'I will not allow My devotees to come to harm. This is my absolute vow, and it is unbreakable.'",
-    "Baba says: 'The greatest pilgrimage you can ever take is the one to your own purified heart.'",
-    "Baba says: 'Know that spiritual poverty is the highest of all riches, far superior to any kingdom.'",
-    "Baba says: 'The fruit of a good deed is truly great, My child; the fruit of evil is very little. Strive for goodness.'",
-    "Baba says: 'If you make Me the sole object of your thoughts, all other distracting desires will drop away.'",
-    "Baba says: 'Love one another and help others to rise. Love is infectious, and it is the greatest healing energy.'",
-    "Baba says: 'The only true spiritual practice I know is for you to fix your loving gaze upon Me.'",
-    "Baba says: 'My eye is ever fixed upon those who love Me, and I watch them day and night.'",
-    "Baba says: 'I will pull out My sincere devotees from the very jaws of death, so have no fear.'",
-    "Baba says: 'If you make Me your sole refuge, I become your debtor, and I will give My head to save you.'",
-    "Baba says: 'The miserable soul will rise to joy the moment they step onto the sacred steps of the Dwarkamai.'",
-    "Baba says: 'The only way to find happiness is to stop looking for faults in others.'",
-    "Baba says: 'The difficulties you face are not punishments. They are experiences for spiritual cleansing.'",
-    "Baba says: 'My tomb shall bless and speak to every single need of My devoted children.'",
-    "Baba says: 'Trust in Me, My child, and your prayer shall be answered. My word is truth.'",
-    "Baba says: 'Though I be no more in flesh and blood, I shall ever protect My devotees.'",
-    "Baba says: 'Show Me him who has sought My refuge and yet has been turned away. I have never failed one.'",
-    "Baba says: 'My promise is not in vain: I shall ever lighten your burden. Cast all your cares upon Me.'",
-    "Baba says: 'Knock, and the door shall open; ask, and it shall be granted. Seek Me with your whole heart.'",
-    "Baba says: 'There shall be no want in the house of My sincere devotee. I will provide.'",
-    "Baba says: 'Remember My greatest message: Sabka Malik Ek. There is One God who governs all.'",
-    "Baba says: 'Why fear when I am here? Trust in Me always.'"
-  ];
+  <script>
+    const dailyQuotes = [
+      "Baba says: 'Why fear when I am here? I will guide and guard you always, My child.'",
+      "Baba says: 'Hold fast to Shraddha (Faith) and Saburi (Patience). These two alone will carry you across the ocean of life.'",
+      "Baba says: 'Look to Me, and I will look to you. Your devotion is a debt I am always eager to repay.'",
+      "Baba says: 'My tomb will speak and move to the needs of My devotees. Know that I am ever active, even from there.'",
+      "Baba says: 'I am not confined to this body, My child. I am everywhere, in every creature, and beyond what you can see.'",
+      "Baba says: 'Always remember this, My child: Whatever you do, wherever you may be, I am always aware of everything you do.'",
+      "Baba says: 'If you make Me the sole object of your thoughts and aims, I promise you shall gain the Supreme Goal.'",
+      "Baba says: 'God has agents everywhere and their powers are vast. Learn to respect the divine in all people.'",
+      "Baba says: 'Do not fight with anyone. If someone speaks ill of you, pass on like water, unperturbed.'",
+      "Baba says: 'If you spread your palms with devotion before Me, I am immediately with you, day and night.'",
+      "Baba says: 'The Lord is the sole Actor. What I do, I do as His obedient servant and witness; I take no credit.'",
+      "Baba says: 'Be content and cheerful with whatever comes. Why worry? Trust only in God's provision.'",
+      "Baba says: 'Poverty is the highest of riches, My child, and a thousand times superior to a king's fading wealth.'",
+      "Baba says: 'Spend money in charity and be generous, but never be extravagant.'",
+      "Baba says: 'Do not criticize or carp at others. To do so is to pierce Me to the quick and injure Me.'",
+      "Baba says: 'All that you see—the movable and the immovable—is My Body. Treat all creation with love and respect.'",
+      "Baba says: 'This human body is a great opportunity; it will not return. Use it to fix your mind upon the God that lives in all.'",
+      "Baba says: 'The giving of Dakshina helps you let go of attachment, and by detachment, you gain true devotion.'",
+      "Baba says: 'You must fulfill any promise you have made. Always stand by truth and let your word be firm.'",
+      "Baba says: 'If you cannot bear the abuse of another, say a soft word, or else, simply leave the place.'",
+      "Baba says: 'The best way to receive is to give. The act of giving is truly a seed sown for a rich harvest in your future.'",
+      "Baba says: 'I will take you to the very end. Surrender completely to God, and I will do the rest.'",
+      "Baba says: 'Love as thought is Truth. Love as action is Right Conduct. Love as feeling is the only Non-Violence.'",
+      "Baba says: 'Our Karma is the cause of all joy and sorrow. What comes to you today, you must patiently accept.'",
+      "Baba says: 'The mother tortoise feeds her young ones with a mere glance. My gaze upon you is the same—it gives you all the sustenance you need.'",
+      "Baba says: 'Nobody comes to Me unless there is some tie. Every soul who comes here is pulled by a thread of connection.'",
+      "Baba says: 'Be like the lotus, My child. It unfolds its petals in the sky, unaffected by the muddy water that supports it.'",
+      "Baba says: 'The only way to be happy is to stop searching for faults in others. Look only for your own and correct them.'",
+      "Baba says: 'If a devotee is about to fall, I stretch out My hands to support him. I will not allow My devotees to come to harm.'",
+      "Baba says: 'If one devotes their entire mind to Me and rests completely in Me, they need fear nothing for the body or the soul.'",
+      "Baba says: 'Where there is deep love for the Guru, there is no lack. There shall be no want in the house of that true devotee.'",
+      "Baba says: 'God lives in all beings. He is the great wire-puller of this world, and all obey His silent command.'",
+      "Baba says: 'If you are wealthy, be humble. Look at the plants—they only bend when they are bearing fruit.'",
+      "Baba says: 'What do we lose by another's good fortune? Celebrate with them, My child, or strive to emulate them. That should be your desire.'",
+      "Baba says: 'Avoid all rivalry and bickering. If you live in harmony, God Himself will surely protect you.'",
+      "Baba says: 'The greatest pilgrimage is to your own heart. Meditate on Me there, either with form or without form; that is pure bliss.'",
+      "Baba says: 'He who leaves the attachment for his worldly kin and loves Me alone, he is My real lover, and he merges in Me.'",
+      "Baba says: 'My business is only to give blessings. Will a mother ever get angry with her children? I get angry with none.'",
+      "Baba says: 'Do not say of anyone that he is your enemy. All are one and the same in the eyes of the Divine.'",
+      "Baba says: 'Whenever anyone steps into this Dwarkamai, his goal is achieved and his objects are fulfilled.'",
+      "Baba says: 'If one repeats My name, their Karma is destroyed. I stay by his side always.'",
+      "Baba says: 'Serve the hungry creature who comes to you, My child. God is pleased if you feed the hungry; regard this as absolute truth.'",
+      "Baba says: 'Do not kick against the pricks of life. Accept the hardships that come, for they are My strange blessings and grace.'",
+      "Baba says: 'Your mind must be pure before true knowledge can dawn. Discharge your duties honestly and without attachment.'",
+      "Baba says: 'The most blessed food is that which is shared. It is by feeding others that you feed Me.'",
+      "Baba says: 'Sabka Malik Ek! (The Lord of all is One). Remember, My child, Mosque and temple are the very same.'",
+      "Baba says: 'Death is but an illusion. The body is a worn-out garment cast aside, but the soul does not truly die.'",
+      "Baba says: 'Be cheerful and content with what comes, for the wise one knows the ultimate plan. There is no mistake in God's timing.'",
+      "Baba says: 'I will not allow My devotees to come to harm. This is my word.'",
+      "Baba says: 'I will be with you, My child, whenever and wherever you think of Me. Do not let fear enter your heart.'",
+      "Baba says: 'My eye is ever fixed upon those who love Me. I watch them day and night.'",
+      "Baba says: 'Know this for yourself: My spirit is immortal. There is no end to My presence or power.'",
+      "Baba says: 'If you cannot grant a beggars request, decline it politely. Do not get angry at them.'",
+      "Baba says: 'The whole purpose of the Divine coming down (Avatar) is to make you realize the God that is within your own heart.'",
+      "Baba says: 'If you sing earnestly about My life and My deeds, I shall certainly surround you on all sides with My grace.'",
+      "Baba says: 'The simple utterance of the name Sai will cleanse all sins that come from loose talk and gossip.'",
+      "Baba says: 'You should never take the labor of others without paying them their due. This is not proper behavior.'",
+      "Baba says: 'I shall be ever active and vigorous, even after leaving this earthly body and entering the tomb.'",
+      "Baba says: 'When anyone enters this Dwarkamai, all his sorrows and sufferings come to a swift end.'",
+      "Baba says: 'Whatever creature is hungry and comes to you at mealtime is an Atithi (guest). You must feed them.'",
+      "Baba says: 'I am a slave to those pure souls who hunger and thirst only after Me and treat all else as unimportant.'",
+      "Baba says: 'Know that you are the result of your past actions. Be very careful about every action you perform today.'",
+      "Baba says: 'Be patient, not rash. Remember: haste makes waste, and waste will only bring you worry.'",
+      "Baba says: 'If you make Me the sole refuge, I am your debtor, and I will give My head to save you.'",
+      "Baba says: 'The Divine is present in everyone. You must show respect and reverence to one another.'",
+      "Baba says: 'Humility is not for all situations; severity is sometimes necessary when dealing with those who seek to cause harm.'",
+      "Baba says: 'You must know the Master (God). Else, why have you come here? To collect cow dung cakes?'",
+      "Baba says: 'I will be with you, My child, whenever and wherever you think of Me. Fear not, I am truly there.'",
+      "Baba says: 'The greatest spiritual practice is Love. Let the flame of your love be steady and strong, never flickering.'",
+      "Baba says: 'Many nations, but the Earth is one. Many beings, but the Breath is one. Many religions, but God is one.'",
+      "Baba says: 'What you give, you will surely get. Recognize the existence of this eternal Moral Law.'",
+      "Baba says: 'If you cannot grant a request, be polite and gentle. Do not mock or ridicule the one asking for help.'",
+      "Baba says: 'I am in everything and beyond, My child. I fill all space. Truly, all that you see is My form.'",
+      "Baba says: 'The reward for a good deed is great, My child; the reward for evil is very little. Strive for goodness always.'",
+      "Baba says: 'If you avoid all rivalry and bickering, then I will gladly protect you in all situations.'",
+      "Baba says: 'You must pass your days in song. Let your whole life be an unbroken song of the Divine.'",
+      "Baba says: 'Do not be misled by this world. It is a playground of illusion, full of false paths and fleeting values.'",
+      "Baba says: 'God is always for those who are not for themselves. Selflessness is the supreme quality.'",
+      "Baba says: 'To God be all the praise. I am but His slave, and without His permission, nothing can be done by Me.'",
+      "Baba says: 'Hold on to faith and patience. By this, I promise you, I will be with you wherever you are.'",
+      "Baba says: 'The wise are those who are cheerful and content with whatever has been allotted to them in this life.'",
+      "Baba says: 'I will pull out My devotees from the very jaws of death, My child. Have no doubt.'",
+      "Baba says: 'If a person remembers My name with love, I shall fulfill their every wish and cause their devotion to grow.'",
+      "Baba says: 'If you cannot endure the abuse, either speak a simple word or else leave the place entirely.'",
+      "Baba says: 'What God gives is a blessing that is never exhausted. What man gives never truly lasts.'",
+      "Baba says: 'Be cheerful and contented with what comes to you, for it is all part of the Divine plan.'",
+      "Baba says: 'If you listen to My stories (Leelas) and fix your gaze on Me alone, you will easily reach God.'",
+      "Baba says: 'The greatest spiritual practice is simply to avoid causing any kind of annoyance to others.'",
+      "Baba says: 'One must always cling to the truth and keep every promise that has been made.'",
+      "Baba says: 'I am the Inner Ruler of everyone, and I am seated in your heart. Always know this.'",
+      "Baba says: 'If you seek My advice or My help, it shall be given to you at once. Do not delay.'",
+      "Baba says: 'The donor sows his seed so that he may reap a rich spiritual harvest in the future.'",
+      "Baba says: 'My eye is ever watchful over those who love Me and call upon Me.'",
+      "Baba says: 'Work is worship. Even the smallest act of duty is a flower placed at the Feet of God.'",
+      "Baba says: 'I am in everything and beyond. I fill all space.'",
+      "Baba says: 'I will not allow any harm to come to My devotees. This is my absolute vow.'",
+      "Baba says: 'The body is cast away like worn-out garments. The soul does not truly die; it is eternal.'",
+      "Baba says: 'He who carps and cavils at others pierces Me in the heart. Speak only of good things.'",
+      "Baba says: 'If you cannot grant a request, be polite. Do not let anger or frustration show in your words.'",
+      "Baba says: 'Every experience is a lesson, My child. Every loss you suffer is truly a gain in wisdom.'",
+      "Baba says: 'I shall guide and guard you. March on bravely, My child, and have no fear.'",
+      "Baba says: 'Avoid all unnecessary disputes. Arguing is only a waste of your precious spiritual energy.'",
+      "Baba says: 'The heart that is filled with compassion is the most genuine temple of God.'",
+      "Baba says: 'Your sorrow and happiness are caused by your own Karma. Therefore, put up with whatever comes to you.'",
+      "Baba says: 'I am ever living to help and guide all who come to Me, surrender to Me, and seek My refuge.'",
+      "Baba says: 'God has no preferences. His action is only a reflection and resound of your own actions.'",
+      "Baba says: 'He who suffers patiently and endures silently pleases Me the most in this world.'",
+      "Baba says: 'To attain true happiness, My child, get on with your worldly activities cheerfully, but never forget God.'",
+      "Baba says: 'Whosoever sets their foot on the soil of Shirdi, know that their long sufferings will soon come to an end.'",
+      "Baba says: 'The name of Allah is eternal, My child. Know that Allah is truly all-in-all.'",
+      "Baba says: 'Be patient, not in a hurry. For I tell you, haste makes waste, and waste will bring you worry.'",
+      "Baba says: 'The giver is sowing a seed to reap a rich spiritual harvest in the time to come.'",
+      "Baba says: 'I will not allow My devotees to come to harm. This is my absolute vow, and it is unbreakable.'",
+      "Baba says: 'The greatest pilgrimage you can ever take is the one to your own purified heart.'",
+      "Baba says: 'Know that spiritual poverty is the highest of all riches, far superior to any kingdom.'",
+      "Baba says: 'The fruit of a good deed is truly great, My child; the fruit of evil is very little. Strive for goodness.'",
+      "Baba says: 'If you make Me the sole object of your thoughts, all other distracting desires will drop away.'",
+      "Baba says: 'Love one another and help others to rise. Love is infectious, and it is the greatest healing energy.'",
+      "Baba says: 'The only true spiritual practice I know is for you to fix your loving gaze upon Me.'",
+      "Baba says: 'My eye is ever fixed upon those who love Me, and I watch them day and night.'",
+      "Baba says: 'I will pull out My sincere devotees from the very jaws of death, so have no fear.'",
+      "Baba says: 'If you make Me your sole refuge, I become your debtor, and I will give My head to save you.'",
+      "Baba says: 'The miserable soul will rise to joy the moment they step onto the sacred steps of the Dwarkamai.'",
+      "Baba says: 'The only way to find happiness is to stop looking for faults in others.'",
+      "Baba says: 'The difficulties you face are not punishments. They are experiences for spiritual cleansing.'",
+      "Baba says: 'My tomb shall bless and speak to every single need of My devoted children.'",
+      "Baba says: 'Trust in Me, My child, and your prayer shall be answered. My word is truth.'",
+      "Baba says: 'Though I be no more in flesh and blood, I shall ever protect My devotees.'",
+      "Baba says: 'Show Me him who has sought My refuge and yet has been turned away. I have never failed one.'",
+      "Baba says: 'My promise is not in vain: I shall ever lighten your burden. Cast all your cares upon Me.'",
+      "Baba says: 'Knock, and the door shall open; ask, and it shall be granted. Seek Me with your whole heart.'",
+      "Baba says: 'There shall be no want in the house of My sincere devotee. I will provide.'",
+      "Baba says: 'Remember My greatest message: Sabka Malik Ek. There is One God who governs all.'",
+      "Baba says: 'Why fear when I am here? Trust in Me always.'"
+    ];
 
     const newQuoteBtn = document.getElementById("newQuoteBtn");
     const quoteOutput = document.getElementById("quoteOutput");
@@ -466,4 +561,3 @@ body {
 
 </body>
 </html>
-
