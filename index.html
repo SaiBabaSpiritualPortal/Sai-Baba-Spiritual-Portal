@@ -13,27 +13,20 @@
   <style>
 
 .baba-img {
-  width: 300px; /* Adjust width */
-  height: 400px; /* Adjust height */
-  object-fit: cover; /* Crops image to fill rectangle */
-  display: block;
+  max-width: 200px; /* Half of 300px */
+  height: auto;
 }
 
-/* Or for a wider rectangle */
+/* Or if you want to use a scale transform */
 .baba-img {
-  width: 400px;
-  height: 300px;
-  object-fit: cover;
-  display: block;
+  transform: scale(0.5); /* Makes it 50% of original size */
+  transform-origin: center;
 }
 
-/* Add rounded corners if you want */
+/* Or set specific dimensions */
 .baba-img {
-  width: 300px;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 10px; /* Optional rounded corners */
-  display: block;
+  width: 50%; /* 50% of container width */
+  height: auto;
 }
     </style>
 
@@ -140,6 +133,7 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
