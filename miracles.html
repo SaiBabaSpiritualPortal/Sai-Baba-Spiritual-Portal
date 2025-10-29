@@ -50,6 +50,9 @@
     .site-footer { background: #8e24aa; color: white; padding: 2rem 0; text-align: center; margin-top: 3rem; }
     .disclaimer { font-size: 0.85rem; opacity: 0.8; margin-top: 1rem; }
     
+    .live-indicator { display: inline-block; width: 8px; height: 8px; background: #4caf50; border-radius: 50%; margin-right: 5px; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    
     @media (max-width: 768px) {
       .miracle-container { grid-template-columns: 1fr; }
       .header-inner { flex-direction: column; gap: 1rem; }
@@ -110,7 +113,7 @@
 
     <!-- Left: Stories -->
     <div class="stories-section" id="stories">
-      <h2>Submitted Stories</h2>
+      <h2><span class="live-indicator"></span>Submitted Stories (Live)</h2>
       <div id="storiesContainer">
         <div class="loader"></div>
       </div>
@@ -131,8 +134,7 @@ const googleFormAction = "https://docs.google.com/forms/d/e/1FAIpQLSc67HpyGedHob
 const appScriptURL = "https://script.google.com/macros/s/AKfycbxEMxINPnuddrqy72-FXAyVRyTW5I-UjvnEYlFuHslNuId6jUC5RqXg9Kdgvmm2B1DCJw/exec";
 
 const CACHE_KEY = "sai_baba_stories";
-const CACHE_TIMESTAMP_KEY = "sai_baba_stories_timestamp";
-const CACHE_DURATION = 60000; // 1 minute cache
+let lastKnownCount = 0;
 
 function displayStories(data) {
   storiesContainer.innerHTML = "";
@@ -141,7 +143,8 @@ function displayStories(data) {
     return;
   }
 
-  data.reverse().forEach(story => {
+  const reversed = [...data].reverse();
+  reversed.forEach((story, index) => {
     const name = story.Name || story.name || story["entry.579044948"] || "Anonymous";
     const category = story.Category || story.category || story["entry.964793499"] || "Other";
     const storyText = story.Story || story.storyText || story["entry.1663738702"] || "";
@@ -149,19 +152,25 @@ function displayStories(data) {
 
     const div = document.createElement('div');
     div.classList.add('story-card');
-    div.style.opacity = 0;
-    div.style.transform = "translateY(-10px)";
+    
+    // Highlight new stories
+    if (index === 0 && data.length > lastKnownCount) {
+      div.style.background = '#e1f5e1';
+      setTimeout(() => {
+        div.style.background = '#f9f9f9';
+        div.style.transition = 'background 2s ease';
+      }, 100);
+    }
+    
     div.innerHTML = `
       <h3>${name} (${category})</h3>
       <span>${new Date(timestamp).toLocaleString()}</span>
       <p>${storyText}</p>
     `;
     storiesContainer.appendChild(div);
-    requestAnimationFrame(() => {
-      div.style.opacity = 1;
-      div.style.transform = "translateY(0)";
-    });
   });
+  
+  lastKnownCount = data.length;
 }
 
 form.addEventListener('submit', async (e) => {
@@ -197,81 +206,80 @@ form.addEventListener('submit', async (e) => {
 
   // Submit to Google Form in background
   const params = new URLSearchParams();
-  for (const pair of data) params.append(pair[0], pair[1]);
+  for (const [key, value] of data) params.append(key, value);
   fetch(googleFormAction, { method: 'POST', mode: 'no-cors', body: params });
 
-  // Fetch fresh data after 2 seconds to sync with server
+  // Force immediate sync
   setTimeout(() => {
-    fetchStories(true, false);
-  }, 2000);
+    pollForUpdates();
+  }, 1500);
   
   submitButton.disabled = false;
 });
 
-async function fetchStories(forceRefresh = false, showLoader = false) {
-  const now = Date.now();
-  const lastFetch = parseInt(sessionStorage.getItem(CACHE_TIMESTAMP_KEY) || '0');
-  const cached = localStorage.getItem(CACHE_KEY);
-
-  // Use cache if it's fresh and not forcing refresh
-  if (!forceRefresh && cached && (now - lastFetch < CACHE_DURATION)) {
-    console.log("✅ Using cached stories");
-    displayStories(JSON.parse(cached));
-    return;
-  }
-
-  if (showLoader) storiesContainer.innerHTML = '<div class="loader"></div>';
-  
+async function pollForUpdates() {
   try {
-    console.log("🔄 Fetching fresh stories from Google Sheets...");
-    const response = await fetch(appScriptURL + '?t=' + now, { cache: "no-cache" });
+    const response = await fetch(appScriptURL + '?t=' + Date.now(), { 
+      cache: "no-cache",
+      headers: { 'Cache-Control': 'no-cache' }
+    });
     const data = await response.json();
-    console.log("✅ Fetched", data.length, "stories");
     
-    if (data.length > 0) {
+    const cached = localStorage.getItem(CACHE_KEY);
+    const cachedData = cached ? JSON.parse(cached) : [];
+    
+    // Only update if server has more stories
+    if (data.length >= cachedData.length) {
       localStorage.setItem(CACHE_KEY, JSON.stringify(data));
-      sessionStorage.setItem(CACHE_TIMESTAMP_KEY, now.toString());
       displayStories(data);
-      status.textContent = "";
-    } else if (cached) {
-      console.log("⚠️ No data from server, using cache");
-      displayStories(JSON.parse(cached));
     }
   } catch (err) {
-    console.error("❌ Failed to fetch stories:", err);
-    if (cached) {
-      console.log("⚠️ Using cached stories due to error");
-      displayStories(JSON.parse(cached));
-    } else {
-      storiesContainer.innerHTML = "<p>Unable to load stories. Please refresh the page.</p>";
-    }
-    status.textContent = "";
+    console.error("Poll error:", err);
   }
 }
 
-// Initial load - show cache immediately, then update
+// REAL-TIME POLLING - Checks every 3 seconds for new stories
+let pollingInterval;
+
+function startPolling() {
+  // Clear any existing interval
+  if (pollingInterval) clearInterval(pollingInterval);
+  
+  // Poll every 3 seconds when page is visible
+  pollingInterval = setInterval(() => {
+    if (document.visibilityState === 'visible') {
+      pollForUpdates();
+    }
+  }, 3000);
+}
+
+// Stop polling when page is hidden (save bandwidth)
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') {
+    pollForUpdates();
+    startPolling();
+  } else {
+    if (pollingInterval) clearInterval(pollingInterval);
+  }
+});
+
+// Initial load - show cache immediately, then poll
 (function init() {
-  console.log("🚀 Initializing page...");
+  console.log("🚀 Initializing real-time updates...");
   
   const cached = localStorage.getItem(CACHE_KEY);
   if (cached) {
-    // Show cached stories instantly
-    console.log("⚡ Displaying cached stories immediately");
     displayStories(JSON.parse(cached));
-    // Then fetch fresh data in background
-    fetchStories(true, false);
   } else {
-    // No cache, show loader and fetch
-    fetchStories(true, true);
+    storiesContainer.innerHTML = '<div class="loader"></div>';
   }
+  
+  // Fetch immediately
+  pollForUpdates();
+  
+  // Start continuous polling
+  startPolling();
 })();
-
-// Auto-refresh every 30 seconds when page is visible
-setInterval(() => {
-  if (document.visibilityState === 'visible') {
-    fetchStories(true, false);
-  }
-}, 30000);
 </script>
 
   <!-- Footer -->
