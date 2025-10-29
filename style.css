@@ -1139,6 +1139,7 @@ html, body {
 
 /* ========== MIRACLES.HTML PAGE ========== */
 /* ========== MIRACLES.HTML PAGE ========== */
+/* ========== MIRACLES.HTML PAGE ========== */
 @media (max-width: 1000px) {
   .miracle-container {
     flex-direction: column !important;
@@ -1150,13 +1151,14 @@ html, body {
   .stories-section {
     flex: 1 1 100% !important;
     max-width: 100% !important;
+    border-radius: 4px !important; /* Sleek sharp corners */
   }
 }
 
 @media (max-width: 768px) {
   .form-section {
     padding: 25px 15px;
-    border-radius: 8px; /* Sharper edges */
+    border-radius: 4px !important; /* Sharp corners */
   }
   
   .form-section h1 {
@@ -1168,17 +1170,17 @@ html, body {
   .form-section textarea {
     width: 100%;
     font-size: 0.95rem;
-    border-radius: 6px; /* Sharper edges for form elements */
+    border-radius: 3px !important; /* Sharp corners for inputs */
   }
   
   .form-section button {
     width: 100%;
     padding: 13px 20px;
-    border-radius: 6px; /* Sharper edges for button */
+    border-radius: 3px !important; /* Sharp button corners */
   }
   
   .stories-section {
-    border-radius: 8px; /* Sharper edges */
+    border-radius: 4px !important; /* Sharp corners */
   }
   
   .stories-section h2 {
@@ -1187,7 +1189,12 @@ html, body {
   
   #storiesContainer {
     max-height: 350px;
-    border-radius: 6px; /* Sharper edges */
+    border-radius: 3px !important; /* Sharp corners */
+  }
+  
+  /* Individual story cards sharp corners */
+  .story-card {
+    border-radius: 3px !important;
   }
 }
 /* ========== TEACHINGS.HTML PAGE ========== */
@@ -1624,4 +1631,5 @@ html, body {
   color: #8e24aa;
   transform: translateY(-2px);
 }
+
 
