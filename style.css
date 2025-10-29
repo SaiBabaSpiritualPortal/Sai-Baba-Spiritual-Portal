@@ -1138,6 +1138,7 @@ html, body {
 }
 
 /* ========== MIRACLES.HTML PAGE ========== */
+/* ========== MIRACLES.HTML PAGE ========== */
 @media (max-width: 1000px) {
   .miracle-container {
     flex-direction: column !important;
@@ -1155,6 +1156,7 @@ html, body {
 @media (max-width: 768px) {
   .form-section {
     padding: 25px 15px;
+    border-radius: 8px; /* Sharper edges */
   }
   
   .form-section h1 {
@@ -1166,11 +1168,17 @@ html, body {
   .form-section textarea {
     width: 100%;
     font-size: 0.95rem;
+    border-radius: 6px; /* Sharper edges for form elements */
   }
   
   .form-section button {
     width: 100%;
     padding: 13px 20px;
+    border-radius: 6px; /* Sharper edges for button */
+  }
+  
+  .stories-section {
+    border-radius: 8px; /* Sharper edges */
   }
   
   .stories-section h2 {
@@ -1179,9 +1187,9 @@ html, body {
   
   #storiesContainer {
     max-height: 350px;
+    border-radius: 6px; /* Sharper edges */
   }
 }
-
 /* ========== TEACHINGS.HTML PAGE ========== */
 @media (max-width: 1400px) {
   .features {
@@ -1616,3 +1624,4 @@ html, body {
   color: #8e24aa;
   transform: translateY(-2px);
 }
+
