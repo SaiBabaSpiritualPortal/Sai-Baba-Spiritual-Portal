@@ -13,29 +13,20 @@
   <style>
 
 .baba-img {
-  max-width: 300px; /* Adjust this value to make it smaller or larger */
-  width: 100%;
+  max-width: 150px; /* Half of 300px */
   height: auto;
-  object-fit: contain;
-  display: block;
 }
 
-/* Or if you want to set a specific height */
+/* Or if you want to use a scale transform */
 .baba-img {
-  max-height: 400px; /* Adjust height */
-  width: auto;
-  object-fit: contain;
-  display: block;
+  transform: scale(0.5); /* Makes it 50% of original size */
+  transform-origin: center;
 }
 
-/* Or control both dimensions */
+/* Or set specific dimensions */
 .baba-img {
-  max-width: 300px;
-  max-height: 500px;
-  width: 100%;
+  width: 50%; /* 50% of container width */
   height: auto;
-  object-fit: contain;
-  display: block;
 }
     </style>
 
@@ -142,6 +133,7 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
