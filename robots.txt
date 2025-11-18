@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://saibabaspiritualportal.github.io/sitemap.xml
