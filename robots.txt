@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://saibabaspiritualportal.github.io/Sai-Baba-Spiritual-Portal/sitemap.xml
+Sitemap: https://saibabaspiritualportal.github.io/Sai-Baba-Spiritual-Portal/sitemap.xml 
