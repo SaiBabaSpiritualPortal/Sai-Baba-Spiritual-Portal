@@ -43,4 +43,22 @@
 <priority>0.70</priority>
 </url>
 
+  <url>
+  <loc>https://saibabaspiritualportal.github.io/Sai-Baba-Spiritual-Portal/privacy-policy.html</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.50</priority>
+</url>
+  
+<url>
+  <loc>https://saibabaspiritualportal.github.io/Sai-Baba-Spiritual-Portal/terms.html</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.40</priority>
+</url>
+  
+<url>
+  <loc>https://saibabaspiritualportal.github.io/Sai-Baba-Spiritual-Portal/about.html</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.60</priority>
+</url>
+
 </urlset>
