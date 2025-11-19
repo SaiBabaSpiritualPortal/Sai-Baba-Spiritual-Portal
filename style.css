@@ -1352,80 +1352,35 @@ html, body {
   }
 }
 
-/* ========== GLOBAL FOOTER STYLING ========== */
-.site-footer {
-  background: #faf4eb;
-  text-align: center;
-  padding: 25px 20px;
-  font-size: 0.95rem;
-  color: #5b3c11;
-  border-top: 2px solid #e0d3bd;
-  line-height: 1.6;
-}
-
-.site-footer a {
-  color: #8e24aa;
-  font-weight: 600;
-  text-decoration: none;
-  margin: 0 6px;
-}
-
-.site-footer a:hover {
-  text-decoration: underline;
-}
-
-.footer-links {
-  margin: 10px 0 15px;
-}
-
-.site-footer .disclaimer {
-  max-width: 750px;
-  margin: 0 auto;
-  font-size: 0.85rem;
-  opacity: 0.85;
-  padding: 5px 10px;
-  line-height: 1.5;
-}
-
-
-/* ========== TABLET (768px) ========== */
+/* ========== FOOTER - ALL PAGES ========== */
 @media (max-width: 768px) {
   .site-footer {
-    font-size: 0.87rem;
-    padding: 22px 18px;
+    width: 100%;
+    padding: 20px 15px;
+    font-size: 0.85rem;
   }
-
+  
+  .site-footer p {
+    margin: 8px 0;
+    line-height: 1.5;
+  }
+  
   .site-footer .disclaimer {
-    font-size: 0.78rem;
-  }
-
-  .footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
+    font-size: 0.75rem;
+    padding: 0 10px;
   }
 }
 
-
-/* ========== MOBILE (480px) ========== */
 @media (max-width: 480px) {
   .site-footer {
-    font-size: 0.82rem;
-    padding: 18px 12px;
+    font-size: 0.8rem;
+    padding: 15px 10px;
   }
-
-  .footer-links {
-    flex-direction: column;
-    gap: 6px;
-  }
-
+  
   .site-footer .disclaimer {
-    font-size: 0.72rem;
-    padding: 0 5px;
+    font-size: 0.7rem;
   }
 }
-
 
 /* ========== GLOBAL MOBILE UTILITIES ========== */
 @media (max-width: 768px) {
@@ -1661,20 +1616,4 @@ html, body {
   color: #8e24aa;
   transform: translateY(-2px);
 }
-
-
-/* Mobile optimization */
-@media (max-width: 480px) {
-  .footer-scroll a {
-    font-size: 0.58rem;  /* slightly smaller so fits better */
-  }
-  .footer-scroll {
-    gap: 12px;
-  }
-}
-
-
-
-
-
 
