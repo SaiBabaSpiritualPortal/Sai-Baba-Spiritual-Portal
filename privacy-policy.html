@@ -1,97 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Privacy Policy | Sai Baba Spiritual Portal</title>
-<link rel="stylesheet" href="style.css">
-</head>
 
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Philosopher&display=swap" rel="stylesheet">
+
+<!-- Footer CSS (separate file) -->
+<link rel="stylesheet" href="footer.css">
+
+<style>
+/* Page (premium white card layout) */
+:root{
+  --bg:#f7f5f2;
+  --card:#ffffff;
+  --accent:#6a1b9a;
+  --gold:#d4af37;
+  --muted:#444;
+  --max:980px;
+  font-family: 'Poppins', sans-serif;
+}
+body{margin:0;background:var(--bg);color:var(--muted);-webkit-font-smoothing:antialiased;}
+.header-space{height:18px;} /* if header present allow breathing */
+
+.wrapper{
+  max-width:var(--max); margin:36px auto; padding:34px; background:var(--card);
+  border-radius:14px; box-shadow:0 14px 40px rgba(20,10,30,0.06);
+  border-left:5px solid var(--gold);
+}
+
+h1{font-family:'Philosopher', serif; color:var(--accent); font-size:2.1rem; text-align:center; margin:4px 0 12px;}
+.meta{ text-align:center; color:#6b4a82; margin-bottom:18px; font-weight:600; }
+
+h2{ font-family:'Philosopher', serif; color:var(--gold); margin-top:22px; font-size:1.18rem; }
+p, li { line-height:1.7; margin-bottom:12px; color:var(--muted); }
+ul{ margin-left:20px; }
+
+.note {
+  background:#fff9f0;
+  border-left:4px solid #f3d39b;
+  padding:10px 14px;
+  border-radius:8px;
+  margin:12px 0;
+  color:#5b3c11;
+}
+
+/* Cookie popup (keeps consistent look) */
+.cookie-popup{position:fixed;left:14px;right:14px;bottom:18px;background:#fff;padding:14px;border-radius:12px;
+  box-shadow:0 12px 40px rgba(0,0,0,0.14);display:none;z-index:99999;border:2px solid var(--gold)}
+.cookie-box h3{margin:0;color:var(--accent);font-family:'Philosopher',serif;}
+.cookie-box p{margin:8px 0 12px}
+.cookie-buttons{display:flex;gap:8px;justify-content:flex-end}
+.btn{padding:8px 12px;border-radius:8px;border:none;cursor:pointer;font-weight:600}
+.btn-accept{background:var(--gold);color:#fff} .btn-reject{background:#eee;color:#444}
+
+/* Responsive */
+@media(max-width:600px){ .wrapper{padding:18px;margin:16px} h1{font-size:1.6rem} }
+</style>
+</head>
 <body>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a href="index.html" class="brand">🌸 Sai Baba Portal 🌸</a>
-    <nav class="main-nav">
-      <a href="index.html">Home</a>
-      <a href="teachings.html">Teachings</a>
-      <a href="chits.html">Chits</a>
-      <a href="daily-quote.html">Daily Quote</a>
-      <a href="worship.html">Worship</a>
-      <a href="miracles.html">Miracles</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+<!-- Header (if you use your site header remove or keep consistent) -->
+<header class="site-header" style="display:block;">
+  <div style="max-width:980px;margin:10px auto;padding:0 18px;">
+    <a href="index.html" style="text-decoration:none;color:#8e24aa;font-weight:700;font-family:'Philosopher',serif;">🌸 Sai Baba Portal 🌸</a>
   </div>
 </header>
 
-<main class="legal-page">
+<main class="wrapper" role="main" aria-labelledby="privacy-title">
+  <h1 id="privacy-title">Privacy Policy</h1>
+  <div class="meta">Owner: <strong>Afreen Mohammed</strong> — a devotee of Sai Baba | Email: <strong>afreenmohammed150598@gmail.com</strong></div>
 
-<h1>Privacy Policy</h1>
-<p><strong>Owner:</strong> Afreen Mohammed (a devotee of Sai Baba)<br>
-<strong>Email:</strong> afreenmohammed150598@gmail.com</p>
+  <p>This Privacy Policy describes how <strong>Sai Baba Spiritual Portal</strong> (the “Site”) collects, uses, stores, and protects information. The Site is devotional and non-commercial — created purely to share Sai Baba’s teachings and devotee experiences.</p>
 
-<p>This Privacy Policy explains how Sai Baba Spiritual Portal collects, uses, and protects your information.  
-This website is a devotional, non-commercial platform created out of love and respect for Shri Sai Baba.</p>
+  <h2>Non-Commercial & Non-Fundraising</h2>
+  <p>The Site does not accept donations, sell spiritual services, or charge for content. If that changes you will be informed on a dedicated page.</p>
 
-<h2>1. Non-Commercial Spiritual Website</h2>
-<p>This website does NOT sell products, request payments, accept donations, or mislead visitors.  
-It is created purely to spread positivity and devotion.</p>
+  <h2>Information We Collect</h2>
+  <ul>
+    <li><strong>Voluntary:</strong> name and story content you submit (miracle/experience forms).</li>
+    <li><strong>Automatic:</strong> anonymized analytics data (page views, device type), collected only with consent through our cookie popup.</li>
+    <li><strong>Contact messages:</strong> email address only if you choose to contact the owner.</li>
+  </ul>
 
-<h2>2. Information We Collect</h2>
-<p>We only collect the following:</p>
-<ul>
-  <li>Visitor analytics (Google Analytics)</li>
-  <li>Miracle submissions voluntarily written by users</li>
-  <li>Contact messages</li>
-</ul>
+  <div class="note">
+    <strong>Important:</strong> Do not submit sensitive personal data in stories (medical records, government IDs, financial details). If sensitive data is shared accidentally, contact us for removal.
+  </div>
 
-<p>No sensitive personal information is collected.</p>
+  <h2>Cookies & Analytics</h2>
+  <p>We use a cookie consent popup. If you <strong>Accept</strong>, Google Analytics (GA4) may run to help improve the Site. If you <strong>Reject</strong>, analytics and ad scripts will not run.</p>
 
-<h2>3. Cookies & Analytics</h2>
-<p>We use cookies only for:</p>
-<ul>
-  <li>Website performance</li>
-  <li>Google Analytics</li>
-  <li>Future Google AdSense compliance</li>
-</ul>
+  <h2>Google AdSense & Ads (Future)</h2>
+  <p>If advertising is enabled in future, we will follow all Google Publisher and AdSense policies (no encouragement of clicks, clear separation of ads & content, user consent for personalized ads).</p>
 
-<p>You may accept or reject cookies through our cookie popup.</p>
+  <h2>User-Submitted Content & Copyright</h2>
+  <p>By submitting a story you confirm it is your own content and you grant the Site a non-exclusive right to display it. If you believe your copyright was used without permission, email a takedown request to <strong>afreenmohammed150598@gmail.com</strong>. Include the URL, identification of the work, and a statement under penalty of perjury that you are the rights owner.</p>
 
-<h2>4. Google AdSense & Google Policies</h2>
-<p>We follow all Google policies, including:</p>
-<ul>
-  <li>AdSense Program Policies</li>
-  <li>Google Publisher Policies</li>
-  <li>Personalized ads consent</li>
-</ul>
+  <h2>Your Rights</h2>
+  <ul>
+    <li>Request deletion of a story</li>
+    <li>Request copies of data we hold about you</li>
+    <li>Opt out of analytics by rejecting cookies</li>
+  </ul>
 
-<p>If ads are activated in the future, users will be notified.</p>
+  <h2>Security</h2>
+  <p>We use reasonable measures to protect data; however, absolute security cannot be guaranteed.</p>
 
-<h2>5. Your Rights</h2>
-<p>You may request removal of your submitted story at any time by emailing us.</p>
+  <h2>Third-Party Links & Services</h2>
+  <p>We may link to third-party resources (YouTube, Google Forms). Their privacy policies apply to data processed by them.</p>
 
-<h2>6. Protection of Children</h2>
-<p>This website is safe for all ages and contains NO harmful content.</p>
-
-<h2>7. Third-Party Disclaimer</h2>
-<p>"Sai Baba" and related references are spiritual and devotional in nature.  
-We are not affiliated with Shirdi Sai Baba Sansthan or any organization.</p>
-
-<h2>8. Contact</h2>
-<p>For any concerns: <strong>afreenmohammed150598@gmail.com</strong></p>
-
+  <h2>Contact</h2>
+  <p>Owner: <strong>Afreen Mohammed</strong><br>Email: <strong>afreenmohammed150598@gmail.com</strong></p>
 </main>
 
-<footer class="footer-premium">
+<!-- Footer (uses footer.css) -->
+<footer class="footer-premium" role="contentinfo">
   <p class="footer-copy">© 2025 Sai Baba Spiritual Portal. All rights reserved.</p>
-  <div class="footer-premium-links">
+  <nav class="footer-premium-links" aria-label="Footer links">
     <a href="about.html">About</a>
     <a href="privacy-policy.html">Privacy Policy</a>
     <a href="terms.html">Terms & Conditions</a>
     <a href="disclaimer.html">Disclaimer</a>
     <a href="contact.html">Contact</a>
-  </div>
+  </nav>
 </footer>
 
+<!-- Cookie popup (same HTML to paste into other pages) -->
+<div id="cookiePopup" class="cookie-popup" aria-hidden="true">
+  <div class="cookie-box">
+    <h3>🍪 Cookie Consent</h3>
+    <p>We use cookies to improve your experience. Accept to allow analytics & future ads (only if enabled). Reject to keep the site functional without analytics.</p>
+    <div class="cookie-buttons">
+      <button class="btn btn-reject" onclick="rejectCookies()">Reject</button>
+      <button class="btn btn-accept" onclick="acceptCookies()">Accept</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Cookie consent + GA load logic (GA loads only if user accepts) */
+function showCookie() {
+  if(!localStorage.getItem('sai_cookie')) document.getElementById('cookiePopup').style.display='block';
+}
+function acceptCookies(){
+  localStorage.setItem('sai_cookie','accepted');
+  document.getElementById('cookiePopup').style.display='none';
+  loadGA();
+}
+function rejectCookies(){
+  localStorage.setItem('sai_cookie','rejected');
+  document.getElementById('cookiePopup').style.display='none';
+}
+window.addEventListener('load', showCookie);
+
+/* Load GA example (only runs after Accept). Replace ID if needed. */
+function loadGA(){
+  if(window.__gaLoaded) return;
+  window.__gaLoaded = true;
+  var id = 'G-ZGTECZT0GM'; // update if you have another
+  var s = document.createElement('script');
+  s.src = 'https://www.googletagmanager.com/gtag/js?id='+id;
+  s.async=true; document.head.appendChild(s);
+  window.dataLayer = window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);} window.gtag=gtag;
+  gtag('js', new Date()); gtag('config', id);
+}
+if(localStorage.getItem('sai_cookie')==='accepted'){ loadGA(); }
+</script>
 </body>
 </html>
