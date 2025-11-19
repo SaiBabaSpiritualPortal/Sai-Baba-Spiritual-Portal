@@ -1623,7 +1623,7 @@ html, body {
 /* ============================= */
 
 :root {
-  --footer-gap: 12px;   /* ← CHANGE THIS VALUE ONLY */
+  --footer-gap: 14px;   /* ← CHANGE THIS VALUE ONLY */
 }
 
 /* Footer Links */
@@ -1631,12 +1631,13 @@ html, body {
   gap: var(--footer-gap);    /* ← automatic spacing */
     font-size: 0.85rem;
   margin-top: 2px:
-  color:#8f6223;
 }
 
 /* Remove underline from links */
 .footer-links a {
   text-decoration: none;
+    color:#8f6223;
 }
+
 
 
