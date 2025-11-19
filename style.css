@@ -1616,3 +1616,41 @@ html, body {
   color: #8e24aa;
   transform: translateY(-2px);
 }
+
+/* Add spacing between footer links */
+.site-footer a {
+  margin: 0 14px;            /* ← Spacing between links */
+  text-decoration: none;     /* Remove underline */
+  color: #631a9c;            /* Matches theme */
+  font-weight: 600;
+}
+
+.site-footer a:hover {
+  opacity: 0.7;
+  text-decoration: none !important;
+}
+
+/* Mobile optimization: smaller spacing */
+@media (max-width: 480px) {
+  .site-footer a {
+    margin: 0 10px;          /* Slightly less spacing for small screens */
+    font-size: 0.85rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
