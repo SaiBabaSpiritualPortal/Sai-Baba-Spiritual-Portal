@@ -1708,10 +1708,11 @@ html, body {
 /* Mobile optimization */
 @media (max-width: 480px) {
   .footer-scroll a {
-    font-size: 0.88rem;  /* slightly smaller so fits better */
+    font-size: 0.58rem;  /* slightly smaller so fits better */
   }
   .footer-scroll {
-    gap: 22px;
+    gap: 12px;
   }
 }
+
 
