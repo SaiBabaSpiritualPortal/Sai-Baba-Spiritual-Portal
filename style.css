@@ -1617,39 +1617,8 @@ html, body {
   transform: translateY(-2px);
 }
 
-/* ===========================
-      FOOTER BASE STYLE
-   =========================== */
-
-.site-footer {
-  background: linear-gradient(180deg, #fef6ff 0%, #f3e6ff 100%);
-  padding: 25px 10px;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
-  color: #5d3a85;
-  margin-top: 40px;
-  border-top: 1px solid rgba(93, 58, 133, 0.15);
-}
-
-/* Horizontal footer links */
-.footer-links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 18px; /* desktop spacing */
-  margin-top: 12px;
-  white-space: nowrap; /* keep in one line ALWAYS */
-}
-
-.footer-links a {
-  color: #6d2da8;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.2s ease-in-out;
-}
-
-.footer-links a:hover {
-  color: #b055ff;
+.footer-links a { 
+  text-decoration: none;   /* REMOVE underline */ 
 }
 
 /* ===========================
@@ -1674,4 +1643,5 @@ html, body {
     font-size: 0.70rem;
   }
 }
+
 
