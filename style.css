@@ -1619,7 +1619,7 @@ html, body {
 
 /* Add spacing between footer links */
 .site-footer a {
-  margin: 0 14px;            /* ← Spacing between links */
+  margin: 0 90px;            /* ← Spacing between links */
   text-decoration: none;     /* Remove underline */
   color: #631a9c;            /* Matches theme */
   font-weight: 600;
@@ -1637,6 +1637,7 @@ html, body {
     font-size: 0.85rem;
   }
 }
+
 
 
 
