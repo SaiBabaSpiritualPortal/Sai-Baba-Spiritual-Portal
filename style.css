@@ -1629,4 +1629,7 @@ html, body {
 /* Footer Links */
 .footer-links {
   gap: var(--footer-gap);    /* ← automatic spacing */
+    font-size: 0.65rem;
+  margin-top: 2px:
 }
+
