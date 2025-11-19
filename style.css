@@ -1662,63 +1662,56 @@ html, body {
   transform: translateY(-2px);
 }
 
-/* ===== FOOTER MAIN ===== */
+/* ===========================
+      PREMIUM FOOTER
+   =========================== */
+
 .site-footer {
-  background: linear-gradient(180deg, #fdf1ff 0%, #f3e7ff 100%);
+  background: linear-gradient(180deg, #fef6ff 0%, #f3e6ff 100%);
+  padding: 25px 15px;
   text-align: center;
-  padding: 25px 10px 40px;
-  border-top: 1px solid #f1d7ff;
   font-family: 'Poppins', sans-serif;
+  color: #5d3a85;
+  margin-top: 40px;
+  border-top: 1px solid rgba(93, 58, 133, 0.15);
 }
 
-.site-footer p {
-  color: #6a2a8d;
-  font-weight: 600;
-  margin-bottom: 18px;
-  font-size: 0.95rem;
-}
-
-/* ===== HORIZONTAL FOOTER LINKS ===== */
-.footer-links {
+/* Horizontal scrolling container */
+.footer-scroll {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding: 0 10px;
+  gap: 28px;
+  margin-top: 12px;
+  overflow-x: auto;      /* allows sideways scroll on small screens */
+  white-space: nowrap;   /* forces single line */
+  padding-bottom: 5px;
+  scrollbar-width: none; /* hide scrollbar in Firefox */
 }
 
-/* Pill buttons */
-.footer-links a {
-  background: #ffffff;
-  color: #7c1fbf;
+.footer-scroll::-webkit-scrollbar {
+  display: none;         /* hide scrollbar in Chrome/Safari */
+}
+
+.footer-scroll a {
+  color: #6d2da8;
   text-decoration: none;
-  padding: 10px 18px;
-  border-radius: 30px;
-  font-weight: 600;
-  border: 1.5px solid #e8cfff;
-  box-shadow: 0 4px 10px rgba(124, 31, 191, 0.08);
-  transition: all 0.25s ease;
-  font-size: 0.9rem;
-  white-space: nowrap;   /* Prevents breaking inside button */
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: 0.2s ease-in-out;
 }
 
-.footer-links a:hover {
-  background: #f8eaff;
-  box-shadow: 0 8px 20px rgba(124, 31, 191, 0.18);
-  transform: translateY(-3px);
+.footer-scroll a:hover {
+  color: #b055ff;
+  text-shadow: 0 0 6px rgba(150, 70, 255, 0.35);
 }
 
-/* MOBILE FIX — shrink gracefully */
+/* Mobile optimization */
 @media (max-width: 480px) {
-
-  /* shrink buttons so they fit horizontally */
-  .footer-links a {
-    padding: 8px 14px;
-    font-size: 0.78rem;
+  .footer-scroll a {
+    font-size: 0.88rem;  /* slightly smaller so fits better */
   }
-
-  .footer-links {
-    gap: 8px;
+  .footer-scroll {
+    gap: 22px;
   }
 }
 
