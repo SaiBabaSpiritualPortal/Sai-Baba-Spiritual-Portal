@@ -1630,11 +1630,12 @@ html, body {
 .footer-links {
   gap: var(--footer-gap);    /* ← automatic spacing */
     font-size: 0.85rem;
-    text-decoration: none;   /* REMOVE underline */
   margin-top: 2px:
 }
 
-
-
-
+/* Remove underline from links */
+.footer-links a {
+  text-decoration: none;
+  color: inherit;
+}
 
