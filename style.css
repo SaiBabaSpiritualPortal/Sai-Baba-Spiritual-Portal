@@ -1668,7 +1668,7 @@ html, body {
 
 .site-footer {
   background: linear-gradient(180deg, #fef6ff 0%, #f3e6ff 100%);
-  padding: 25px 15px;
+  padding: 20px 10px;
   text-align: center;
   font-family: 'Poppins', sans-serif;
   margin-top: 40px;
@@ -1713,6 +1713,7 @@ html, body {
     gap: 12px;
   }
 }
+
 
 
 
