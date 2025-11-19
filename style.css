@@ -1616,32 +1616,3 @@ html, body {
   color: #8e24aa;
   transform: translateY(-2px);
 }
-
-.footer-links a { 
-  text-decoration: none;   /* REMOVE underline */ 
-}
-
-/* ===========================
-   MOBILE OPTIMIZATION — NO SCROLL
-   =========================== */
-
-@media (max-width: 480px) {
-
-  /* Compress spacing on mobile */
-  .footer-links {
-    gap: 10px;  /* reduced, ensures all fit */
-  }
-
-  /* Reduce text for perfect single line */
-  .footer-links a {
-    font-size: 0.75rem; /* small enough to fit on one line */
-  }
-
-  /* Shorten the longest label by scaling */
-  .footer-links a:nth-child(3) {
-    /* "Terms & Conditions" */
-    font-size: 0.70rem;
-  }
-}
-
-
