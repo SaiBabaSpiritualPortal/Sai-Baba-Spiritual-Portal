@@ -1633,10 +1633,11 @@ html, body {
 /* Mobile version spacing */
 @media (max-width: 480px) {
   .footer-links a {
-    margin: 0 12px;
+    margin: 0 8px;
     font-size: 0.85rem;
   }
 }
+
 
 
 
