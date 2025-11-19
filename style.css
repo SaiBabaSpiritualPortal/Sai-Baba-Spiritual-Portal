@@ -1619,7 +1619,7 @@ html, body {
 
 /* Spacing between footer page names */
 .footer-links a {
-  margin: 0 18px;            /* ← adds clean space between each link */
+  margin: 0 14px;            /* ← adds clean space between each link */
   text-decoration: none;
   font-weight: 600;
   color: #631a9c;
@@ -1637,6 +1637,7 @@ html, body {
     font-size: 0.85rem;
   }
 }
+
 
 
 
