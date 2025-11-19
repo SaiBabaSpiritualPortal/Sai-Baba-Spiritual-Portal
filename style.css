@@ -124,7 +124,7 @@ body::before {
   grid-template-columns: 1fr 380px;
   gap: 28px;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 10px;
   background: rgba(255,255,255,0.92);
   border-radius: var(--radius);
   box-shadow: var(--shadow), var(--glow);
@@ -1633,6 +1633,7 @@ html, body {
     text-decoration: none;   /* REMOVE underline */
   margin-top: 2px:
 }
+
 
 
 
