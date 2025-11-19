@@ -1671,7 +1671,6 @@ html, body {
   padding: 25px 15px;
   text-align: center;
   font-family: 'Poppins', sans-serif;
-  color: #5d3a85;
   margin-top: 40px;
   border-top: 1px solid rgba(93, 58, 133, 0.15);
 }
@@ -1714,5 +1713,6 @@ html, body {
     gap: 12px;
   }
 }
+
 
 
