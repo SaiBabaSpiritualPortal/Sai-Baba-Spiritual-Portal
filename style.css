@@ -1662,17 +1662,22 @@ html, body {
   transform: translateY(-2px);
 }
 
+/* footer.css - Premium gradient + single-line hybrid footer (one-line, mobile-scrollable) */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Philosopher&display=swap');
+
 .footer-premium {
-  background: linear-gradient(135deg, #fff7ef, #f5e8ff);
-  padding: 30px 20px;
+  background: linear-gradient(135deg, #fff7ef 0%, #f5e8ff 100%);
+  padding: 28px 18px;
   text-align: center;
   border-top: 2px solid #e8dccf;
-  margin-top: 40px;
+  margin-top: 36px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .footer-copy {
   color: #5b3c11;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   margin-bottom: 12px;
   font-weight: 600;
 }
@@ -1680,19 +1685,45 @@ html, body {
 .footer-premium-links {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 14px;
   overflow-x: auto;
   white-space: nowrap;
-  padding-bottom: 5px;
+  padding-bottom: 6px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
 
 .footer-premium-links a {
   color: #8e24aa;
   font-weight: 600;
   text-decoration: none;
+  padding: 8px 14px;
+  background: #ffffff;
+  border: 1px solid #eee2df;
+  border-radius: 20px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.04);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
 }
 
 .footer-premium-links a:hover {
-  text-decoration: underline;
+  transform: translateY(-3px);
+  background: #f8ecff;
+  box-shadow: 0 8px 18px rgba(142,36,170,0.12);
+}
+
+.footer-premium-links::-webkit-scrollbar { height: 6px; }
+.footer-premium-links::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.08); border-radius: 10px; }
+
+/* Accessibility focus */
+.footer-premium-links a:focus {
+  outline: 3px solid rgba(142,36,170,0.14);
+  outline-offset: 3px;
+}
+
+/* Mobile tweaks */
+@media (max-width: 480px) {
+  .footer-premium { padding: 18px 10px; }
+  .footer-copy { font-size: 0.82rem; margin-bottom:8px; }
+  .footer-premium-links a { padding: 7px 12px; font-size: 0.86rem; }
 }
 
