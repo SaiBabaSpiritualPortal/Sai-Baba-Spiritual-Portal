@@ -124,7 +124,7 @@ body::before {
   grid-template-columns: 1fr 380px;
   gap: 28px;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 30px;
   background: rgba(255,255,255,0.92);
   border-radius: var(--radius);
   box-shadow: var(--shadow), var(--glow);
@@ -1617,66 +1617,16 @@ html, body {
   transform: translateY(-2px);
 }
 
+
 /* ============================= */
 /* Adjustable Footer Spacing */
 /* ============================= */
 
 :root {
-  --footer-gap: 14px;   /* ← CHANGE THIS VALUE ONLY */
+  --footer-gap: 12px;   /* ← CHANGE THIS VALUE ONLY */
 }
 
 /* Footer Links */
 .footer-links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: var(--footer-gap);    /* ← automatic spacing */
-  flex-wrap: nowrap;         /* ← stays in ONE LINE even on mobile */
-  overflow-x: auto;          /* ensures no break, no vertical stack */
-  white-space: nowrap;       /* forces single-line footer */
-  padding: 5px 0;
 }
-
-.footer-links a {
-  text-decoration: none;
-  font-weight: 600;
-  color: #631a9c;
-  font-size: 0.95rem;
-}
-
-.footer-links a:hover {
-  opacity: 0.7;
-}
-
-/* Mobile: keep same single line but slightly reduce font if needed */
-@media (max-width: 480px) {
-  :root {
-    --footer-gap: 10px;  /* smaller gap for mobile */
-  }
-
-  .footer-links a {
-    font-size: 0.9rem;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
