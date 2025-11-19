@@ -1713,7 +1713,7 @@ html, body {
 /* Mobile adjustments */
 @media (max-width: 480px) {
   .site-footer p {
-    font-size: 0.85rem;
+    font-size: 0.65rem;
   }
 
   .footer-grid {
@@ -1726,6 +1726,7 @@ html, body {
     padding: 4px 6px;
   }
 }
+
 
 
 
