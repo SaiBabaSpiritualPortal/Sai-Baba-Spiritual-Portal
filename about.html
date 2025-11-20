@@ -7,135 +7,352 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Philosopher&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-:root{
-  --bg:#f6f3ef;
-  --card:#ffffff;
-  --accent:#5b1590;
-  --gold:#d4af37;
-  --muted:#3d3d3d;
-  --max:980px;
-  font-family:'Poppins', sans-serif;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fef5f0 0%, #fff5f7 50%, #fef0f5 100%);
+            color: #4a4a4a;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
 
-/* PREMIUM BODY STYLING ONLY */
-body{
-  margin:0;
-  background:linear-gradient(135deg,#f8f6f2,#efe9e1);
-  color:var(--muted);
-}
+        .legal-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 80px 20px;
+        }
 
-/* MAIN WRAPPER WITH PREMIUM LOOK */
-.wrapper{
-  max-width:var(--max);
-  margin:40px auto;
-  padding:40px;
-  background:var(--card);
-  border-radius:20px;
-  border-left:6px solid var(--gold);
-  border-right:6px solid #e4d6a1;
-  box-shadow:
-     0 10px 25px rgba(0,0,0,0.08),
-     0 0 50px rgba(212,175,55,0.15) inset;
-  animation: fadeIn 0.8s ease-out;
-}
+        .page-selector {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            padding: 20px;
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 8px 30px rgba(218, 112, 214, 0.15);
+        }
 
-/* HEADINGS */
-h1{
-  font-family:'Philosopher', serif;
-  color:var(--accent);
-  font-size:2.4rem;
-  text-align:center;
-  letter-spacing:1px;
-  margin-bottom:20px;
-}
+        .page-btn {
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #da70d6 0%, #ba55d3 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(186, 85, 211, 0.3);
+            text-transform: capitalize;
+            letter-spacing: 0.5px;
+        }
 
-h2{
-  font-family:'Philosopher', serif;
-  color:var(--gold);
-  font-size:1.55rem;
-  margin-top:30px;
-  letter-spacing:0.5px;
-}
+        .page-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(186, 85, 211, 0.5);
+            background: linear-gradient(135deg, #ba55d3 0%, #9370db 100%);
+        }
 
-/* TEXT */
-p, li{
-  line-height:1.85;
-  font-size:1.05rem;
-  color:#333;
-  margin-bottom:14px;
-}
+        .page-btn.active {
+            background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
+            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.4);
+        }
 
-ul{
-  margin-left:22px;
-}
+        .page-content {
+            display: none;
+            background: white;
+            padding: 50px 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.08);
+            border-top: 6px solid #da70d6;
+            animation: fadeIn 0.6s ease;
+        }
 
-/* LINKS */
-a{
-  color:var(--accent);
-  font-weight:600;
-  text-decoration:none;
-}
+        .page-content.active {
+            display: block;
+        }
 
-.wrapper a:hover{
-  color:#8034c0;
-}
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-/* ANIMATION */
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(10px);}
-  to{opacity:1; transform:translateY(0);}
-}
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #f0e6f6;
+        }
 
-@media(max-width:600px){
-  .wrapper{
-    padding:20px;
-    margin:16px;
-  }
-  h1{font-size:1.9rem;}
-}
-  /* FIX: Premium bullet alignment and spacing */
-.wrapper ul {
-  margin: 12px 0 20px 28px;
-  padding-left: 0;
-}
+        .page-title {
+            font-size: 46px;
+            background: linear-gradient(135deg, #da70d6 0%, #ba55d3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
 
-.wrapper ul li {
-  margin-bottom: 10px;
-  list-style-type: disc;
-  padding-left: 4px;
-}
+        .page-subtitle {
+            font-size: 18px;
+            color: #888;
+            font-style: italic;
+            font-weight: 400;
+        }
 
-/* Fix centered paragraphs before lists */
-.wrapper p + ul {
-  margin-top: -4px !important;
-}
+        .om-symbol {
+            font-size: 50px;
+            color: #ff8c42;
+            margin-bottom: 20px;
+            filter: drop-shadow(2px 2px 8px rgba(255, 140, 66, 0.3));
+        }
 
-/* Fix spacing after list before next heading */
-.wrapper ul + h2 {
-  margin-top: 34px !important;
-}
+        .last-updated {
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
 
-/* Optional: make bullet section look richer */
-.premium-list {
-  margin: 10px 0 20px 28px;
-  padding-left: 0;
-}
+        .section {
+            margin-bottom: 45px;
+        }
 
-.premium-list li {
-  margin-bottom: 12px;
-  list-style-type: disc;
-  font-size: 1.06rem;
-  color: #333;
-}
+        .section-title {
+            font-size: 26px;
+            color: #6a0dad;
+            margin-bottom: 20px;
+            padding-left: 25px;
+            border-left: 5px solid #ff8c42;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
 
-</style>
+        .section-content {
+            font-size: 16px;
+            text-align: justify;
+            margin-bottom: 20px;
+            padding: 25px;
+            background: linear-gradient(135deg, #fef9ff 0%, #fff9fc 100%);
+            border-radius: 12px;
+            border-left: 3px solid #f0e6f6;
+            line-height: 1.9;
+        }
 
+        .subsection-title {
+            font-size: 21px;
+            color: #8e44ad;
+            margin: 25px 0 15px 0;
+            font-weight: 600;
+        }
+
+        .list-item {
+            padding: 18px 25px;
+            margin: 12px 0;
+            background: linear-gradient(135deg, #fff5f7 0%, #fef9ff 100%);
+            border-radius: 10px;
+            border-left: 4px solid #da70d6;
+            transition: all 0.3s ease;
+            line-height: 1.8;
+        }
+
+        .list-item:hover {
+            background: linear-gradient(135deg, #fef0f5 0%, #fff5f7 100%);
+            transform: translateX(8px);
+            box-shadow: 0 4px 15px rgba(218, 112, 214, 0.2);
+        }
+
+        .list-item strong {
+            color: #6a0dad;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e8 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #ff8c42;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(255, 140, 66, 0.15);
+        }
+
+        .highlight-box h3 {
+            color: #ff6b35;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #da70d6 0%, #ba55d3 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(186, 85, 211, 0.3);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .contact-info a {
+            color: #ffe4e8;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: white;
+        }
+
+        .numbered-list {
+            counter-reset: item;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .numbered-list li {
+            counter-increment: item;
+            margin-bottom: 20px;
+            padding-left: 45px;
+            position: relative;
+        }
+
+        .numbered-list li:before {
+            content: counter(item);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: linear-gradient(135deg, #da70d6 0%, #ba55d3 100%);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 25px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th {
+            background: linear-gradient(135deg, #da70d6 0%, #ba55d3 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #f0e6f6;
+        }
+
+        tr:hover {
+            background: #fef9ff;
+        }
+
+        .bullet-list {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .bullet-list li {
+            padding: 10px 0 10px 35px;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        .bullet-list li:before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #ff8c42;
+            font-size: 20px;
+        }
+
+        .divider {
+            height: 3px;
+            background: linear-gradient(90deg, transparent 0%, #da70d6 50%, transparent 100%);
+            margin: 40px 0;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .legal-container {
+                padding: 20px 15px 60px 15px;
+            }
+
+            .page-content {
+                padding: 30px 25px;
+            }
+
+            .page-title {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            .page-btn {
+                padding: 12px 20px;
+                font-size: 13px;
+            }
+        }
+
+        .effective-date {
+            background: linear-gradient(135deg, #fff5f7 0%, #fef9ff 100%);
+            padding: 15px 25px;
+            border-radius: 10px;
+            border-left: 4px solid #ff8c42;
+            margin-bottom: 30px;
+            font-size: 15px;
+            color: #666;
+            font-weight: 500;
+        }
+    </style>
 </head>
 <body>
-
-<!-- Header & Navigation - UNTOUCHED -->
+  <!-- Header & Navigation - UNTOUCHED -->
 <header class="site-header">
   <div class="container header-inner">
     <a href="index.html" class="brand">🌸 Sai Baba Portal 🌸</a>
@@ -150,83 +367,261 @@ a{
     </nav>
   </div>
 </header>
+    <div class="legal-container">
+        <div class="page-selector">
+            <button class="page-btn active" onclick="showPage('about')">About Us</button>
+            <button class="page-btn" onclick="showPage('privacy')">Privacy Policy</button>
+            <button class="page-btn" onclick="showPage('terms')">Terms & Conditions</button>
+            <button class="page-btn" onclick="showPage('disclaimer')">Disclaimer</button>
+        </div>
 
-<!-- MAIN BODY -->
-<main class="wrapper" role="main" aria-labelledby="about-title">
+        <!-- ABOUT US PAGE -->
+        <div id="about" class="page-content active">
+            <div class="page-header">
+                <div class="om-symbol">🕉️</div>
+                <h1 class="page-title">About Sai Baba Spiritual Portal</h1>
+                <p class="page-subtitle">श्री साई बाबा की कृपा - Dedicated to Spreading Divine Love and Wisdom</p>
+            </div>
 
-  <h1 id="about-title">About Sai Baba Spiritual Portal</h1>
+            <div class="effective-date">
+                <strong>Last Updated:</strong> November 20, 2025
+            </div>
 
-  <p><strong>Owner:</strong> <em>Afreen Mohammed</em> — a devotee of Sai Baba.<br>
-  <strong>Contact:</strong> <a href="mailto:afreenmohammed150598@gmail.com">afreenmohammed150598@gmail.com</a></p>
+            <div class="section">
+                <h2 class="section-title">Welcome to Our Spiritual Community</h2>
+                <div class="section-content">
+                    <p>Namaste and welcome to the Sai Baba Spiritual Portal, a sacred digital space dedicated to sharing the timeless teachings, miraculous stories, and divine wisdom of Shri Sai Baba of Shirdi. Our portal serves as a comprehensive resource for spiritual seekers, devotees, and anyone interested in understanding the profound philosophy and life lessons taught by this revered spiritual master who transcended all religious boundaries.</p>
+                    
+                    <p>Sai Baba Spiritual Portal was established with a pure intention to create an accessible online sanctuary where individuals from all walks of life, regardless of their religious background, caste, creed, nationality, or spiritual inclination, can connect with Sai Baba's universal teachings of love, compassion, faith, patience, and selfless service. We recognize that in today's fast-paced digital age, many devotees seek authentic spiritual guidance and a sense of community online, and we strive to fulfill this need with integrity and devotion.</p>
 
-  <h2>Our Mission</h2>
-  <ul>
-    <li>Share Shri Sai Baba’s teachings in simple, respectful language.</li>
-    <li>Offer daily quotes, chits, and worship guidance to uplift devotees.</li>
-    <li>Provide a platform for devotees to share inspiring experiences.</li>
-    <li>Maintain a non-commercial, devotional space free from misleading claims.</li>
-  </ul>
+                    <p>Our platform is built upon the fundamental principle that spirituality is universal and transcends all man-made boundaries. Sai Baba himself welcomed people of all faiths to his mosque-temple in Shirdi, demonstrating that true spirituality embraces unity in diversity. Following this sacred example, our portal is open to everyone seeking spiritual growth, inner peace, and divine guidance, regardless of their religious or cultural background.</p>
+                </div>
+            </div>
 
-  <h2>Core Principles</h2>
-  <ul>
-    <li>Respect all faiths and traditions (Sabka Malik Ek).</li>
-    <li>No solicitation of money or paid spiritual services.</li>
-    <li>Respect for copyright and removal on request.</li>
-    <li>Transparency in data handling and user consent.</li>
-  </ul>
+            <div class="section">
+                <h2 class="section-title">Our Mission and Vision</h2>
+                <div class="section-content">
+                    <h3 class="subsection-title">Mission Statement</h3>
+                    <p>Our mission is to serve as a trusted, authentic, and comprehensive digital resource that preserves, shares, and illuminates the teachings and life of Shri Sai Baba. We are committed to providing accurate, respectful, and spiritually enriching content that helps devotees deepen their faith, understand Sai Baba's universal message, and apply his teachings to modern life challenges. We aim to foster a global community of like-minded spiritual seekers united in their devotion and quest for divine truth.</p>
 
-  <h2>Why This Portal Was Created</h2>
-  <p>
-    This portal was built with a pure intention — to create a peaceful spiritual corner for 
-    devotees seeking guidance, comfort, and blessings from Sai Baba. In today’s busy world, 
-    many people look for real experiences and simple explanations of Baba’s teachings. This 
-    website brings together all essential aspects of devotion to help devotees feel connected 
-    to His presence.
-  </p>
+                    <h3 class="subsection-title">Vision Statement</h3>
+                    <p>We envision Sai Baba Spiritual Portal becoming a leading global platform for Sai Baba devotees, recognized for its authentic content, spiritual integrity, and commitment to spreading Sai Baba's message of universal love and harmony. We aspire to create a positive impact on millions of lives by making spiritual wisdom accessible to everyone with an internet connection, thereby contributing to a more compassionate, harmonious, and spiritually awakened world.</p>
+                </div>
+            </div>
 
-  <h2>What Makes This Portal Unique?</h2>
-  <ul>
-    <li>All content is devotional, original, and written with sincerity.</li>
-    <li>No commercial intentions — this is a completely free spiritual platform.</li>
-    <li>Fast-loading, mobile-friendly, and clean design for best user experience.</li>
-    <li>Thoughtful selection of teachings and stories that genuinely inspire devotees.</li>
-  </ul>
+            <div class="section">
+                <h2 class="section-title">What We Offer</h2>
+                <div class="section-content">
+                    <p>Our portal provides a comprehensive range of spiritual content and features designed to enrich your spiritual journey:</p>
+                </div>
 
-  <h2>Our Devotional Commitment</h2>
-  <p>
-    We are dedicated to maintaining a respectful, positivity-filled, and authentic space. 
-    No superstition, no false promises — only genuine devotion, well-known teachings, 
-    and love for Baba. Everything added to the portal is verified and written peacefully.
-  </p>
+                <div class="list-item">
+                    <strong>Authentic Teachings:</strong> We present Sai Baba's teachings as recorded in the Shri Sai Satcharitra and other authenticated sources, explained in contemporary language that makes ancient wisdom relevant to modern life. Our content includes explanations of his eleven assurances (Gyarah Vachan), core principles, and philosophical teachings on faith, patience, surrender, and devotion.
+                </div>
 
-  <h2>Future Additions</h2>
-  <ul>
-    <li>Expanded teachings with simple explanations.</li>
-    <li>A devotional blog for answered prayers and experiences.</li>
-    <li>Daily Baba messages & affirmations.</li>
-    <li>Guided meditation inspired by Sai teachings.</li>
-  </ul>
+                <div class="list-item">
+                    <strong>Miracle Stories:</strong> We share authentic, documented accounts of Sai Baba's miracles and leelas (divine plays) as experienced by devotees both during his physical presence in Shirdi and in contemporary times. These stories are presented with proper context and spiritual interpretation, helping readers understand the deeper meaning behind each miraculous event.
+                </div>
 
-  <h2>Google & Monetization Readiness</h2>
-  <p>
-    The site follows Google Publisher policies: clear legal pages, user-friendly content, 
-    cookie consent, original writing, and zero encouragement of ad clicks. When ads are 
-    enabled, they will follow all Google AdSense requirements strictly.
-  </p>
+                <div class="list-item">
+                    <strong>Daily Spiritual Guidance:</strong> Our platform offers daily Sai quotes, Sai Chits (divine messages), and practical spiritual guidance that you can incorporate into your daily routine. We provide actionable advice on applying Sai Baba's teachings to contemporary challenges including stress management, relationship issues, career decisions, and personal growth.
+                </div>
 
-  <h2>Contact</h2>
-  <p>
-    Owner: <strong>Afreen Mohammed</strong><br>
-    Email: <strong>afreenmohammed150598@gmail.com</strong>
-  </p>
+                <div class="list-item">
+                    <strong>Worship Resources:</strong> We provide comprehensive information about Sai Baba worship practices, including detailed guides on performing aarti, conducting home pujas, observing Thursday fasts, reciting the Sai Chalisa, and other devotional practices. Our resources include proper procedures, mantras, and the spiritual significance of each ritual.
+                </div>
 
-  <p style="text-align:center; font-size:1.2rem; margin-top:30px;">
-    <strong>Om Sai Ram 🌸</strong>
-  </p>
+                <div class="list-item">
+                    <strong>Sacred Texts and Literature:</strong> Access to Shri Sai Satcharitra chapters, Sai Baba's Eleven Assurances, prayers, bhajans, and other authenticated spiritual literature. We provide both original texts and interpretive commentaries to help readers understand the deeper meanings.
+                </div>
 
-</main>
+                <div class="list-item">
+                    <strong>Community Connection:</strong> While we do not currently operate interactive forums or user-generated content sections, we provide channels through which devotees can connect with us, share their experiences (with permission), and feel part of a larger spiritual community.
+                </div>
 
-<!-- Footer - UNTOUCHED -->
+                <div class="list-item">
+                    <strong>Educational Content:</strong> Historical information about Shirdi, Sai Baba's life, his principal disciples, important places associated with him, and the evolution of the Sai movement. We present this information in an educational, non-sectarian manner.
+                </div>
+
+                <div class="list-item">
+                    <strong>Multimedia Resources:</strong> Audio recordings of aartis and bhajans, video content explaining teachings, image galleries of Sai Baba and Shirdi, and downloadable devotional resources for personal use.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Our Approach and Values</h2>
+                <div class="section-content">
+                    <h3 class="subsection-title">Authenticity and Accuracy</h3>
+                    <p>We are committed to providing content that is authentic, well-researched, and based on recognized sources such as the Shri Sai Satcharitra, historical records, and documented accounts. We carefully verify information before publication and cite our sources where appropriate. We do not promote superstition, false claims, or unsubstantiated stories that could mislead devotees.</p>
+
+                    <h3 class="subsection-title">Universal Respect and Inclusivity</h3>
+                    <p>Following Sai Baba's own example of welcoming all religions, we maintain complete respect for all faiths, spiritual paths, and traditions. Our content never denigrates, criticizes, or shows disrespect toward any religion, religious figure, spiritual leader, or belief system. We recognize that Sai Baba's teachings are universal and can complement any spiritual practice.</p>
+
+                    <h3 class="subsection-title">Non-Commercial Spiritual Service</h3>
+                    <p>While we may display advertisements to support our operational costs (in compliance with relevant advertising policies), our primary motivation is spiritual service (seva), not commercial profit. We do not sell spiritual products, charge for spiritual advice, promise miracles in exchange for money, or engage in any exploitative commercial practices. Any revenue generated through legitimate advertising is used solely to maintain and improve the portal's services.</p>
+
+                    <h3 class="subsection-title">Educational Purpose</h3>
+                    <p>Our content is provided for educational, informational, and devotional purposes. We aim to educate visitors about Sai Baba's life, teachings, and spiritual principles while encouraging critical thinking and personal spiritual development. We do not claim to be a religious authority or demand blind faith from our visitors.</p>
+
+                    <h3 class="subsection-title">Privacy and User Respect</h3>
+                    <p>We deeply respect the privacy of our visitors and handle any personal information with utmost care and in full compliance with applicable data protection laws. We are transparent about our data collection practices and provide users with control over their information.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Who We Are</h2>
+                <div class="section-content">
+                    <p>Sai Baba Spiritual Portal is operated by a dedicated team of Sai devotees who combine spiritual devotion with professional expertise in web development, content creation, spiritual education, and digital media. Our team includes:</p>
+                </div>
+
+                <div class="list-item">
+                    <strong>Content Creators and Spiritual Writers:</strong> Devotees with deep knowledge of Sai Baba's teachings, well-versed in the Shri Sai Satcharitra and other authentic sources, who create accurate and inspiring content.
+                </div>
+
+                <div class="list-item">
+                    <strong>Researchers and Fact-Checkers:</strong> Team members who verify information, cross-reference sources, and ensure the authenticity of all published content.
+                </div>
+
+                <div class="list-item">
+                    <strong>Web Developers and Technical Experts:</strong> Professionals who maintain the website's functionality, security, user experience, and technical infrastructure.
+                </div>
+
+                <div class="list-item">
+                    <strong>Advisory Council:</strong> We consult with knowledgeable Sai devotees, scholars, and representatives from Shirdi Sai Baba temples to ensure our content maintains spiritual integrity and accuracy.
+                </div>
+
+                <div class="section-content">
+                    <p>While we are devotees and spiritual enthusiasts, we want to be transparent that we are not officially affiliated with the Shri Saibaba Sansthan Trust, Shirdi, or any other official Sai Baba temple organization. We operate as an independent digital platform dedicated to serving the Sai community through online resources. However, we maintain respectful relationships with various Sai organizations and always acknowledge their important work.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Our Content Standards</h2>
+                <div class="section-content">
+                    <p>We maintain rigorous standards for all content published on our portal:</p>
+                </div>
+
+                <ol class="numbered-list">
+                    <li><strong>Source Verification:</strong> All factual claims about Sai Baba's life, teachings, and miracles are verified against authenticated sources, primarily the Shri Sai Satcharitra and other recognized historical documents.</li>
+                    
+                    <li><strong>Balanced Presentation:</strong> We present spiritual teachings in a balanced manner that encourages personal reflection and growth rather than promoting blind faith or extremism.</li>
+                    
+                    <li><strong>Cultural Sensitivity:</strong> We are mindful of cultural sensitivities and present content in a manner that respects diverse cultural perspectives within our global audience.</li>
+                    
+                    <li><strong>Accuracy in Translation:</strong> When translating content from Hindi, Marathi, or other languages, we ensure accuracy while making the content accessible to English-speaking audiences.</li>
+                    
+                    <li><strong>Regular Updates:</strong> We regularly review and update our content to maintain accuracy, relevance, and compliance with evolving best practices and standards.</li>
+                    
+                    <li><strong>Proper Attribution:</strong> We properly attribute quotes, images, stories, and other content to their original sources and respect intellectual property rights.</li>
+                    
+                    <li><strong>No Misleading Claims:</strong> We never make exaggerated, false, or misleading claims about spiritual benefits, miracles, or outcomes. We present spiritual concepts honestly and responsibly.</li>
+                </ol>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Relationship with Users and Community</h2>
+                <div class="section-content">
+                    <p>We view our relationship with visitors as a sacred trust. Every person who visits our portal seeking spiritual guidance deserves our respect, honesty, and genuine service. We are committed to:</p>
+                </div>
+
+                <div class="list-item">
+                    <strong>Responsive Communication:</strong> We welcome questions, feedback, suggestions, and constructive criticism from our community. We strive to respond to all genuine inquiries promptly and respectfully.
+                </div>
+
+                <div class="list-item">
+                    <strong>Continuous Improvement:</strong> We actively seek ways to improve our content, user experience, and services based on community feedback and evolving needs.
+                </div>
+
+                <div class="list-item">
+                    <strong>Transparency:</strong> We maintain transparency about who we are, how we operate, our policies, and any limitations of our services.
+                </div>
+
+                <div class="list-item">
+                    <strong>User Empowerment:</strong> We provide tools and information that empower users to deepen their spiritual practice independently rather than creating dependency.
+                </div>
+
+                <div class="list-item">
+                    <strong>Safe Environment:</strong> We are committed to maintaining a safe, respectful, and positive online environment free from harassment, hate speech, exploitation, or harmful content.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Our Commitment to Quality</h2>
+                <div class="section-content">
+                    <p>Quality is at the heart of everything we do. This commitment extends to:</p>
+                    
+                    <p><strong>Content Quality:</strong> Every article, story, guide, and resource published on our portal undergoes careful review to ensure accuracy, clarity, relevance, and spiritual value. We never compromise content quality for the sake of quantity or search engine optimization.</p>
+                    
+                    <p><strong>Technical Quality:</strong> We maintain high technical standards for website performance, security, accessibility, and user experience. Our website is designed to be fast-loading, mobile-friendly, secure (HTTPS), and accessible to users with disabilities.</p>
+                    
+                    <p><strong>Visual Quality:</strong> Images, graphics, and multimedia content are carefully selected or created to be respectful, appropriate, high-quality, and enhance the spiritual atmosphere of our portal.</p>
+                    
+                    <p><strong>Language Quality:</strong> Our content is written in clear, grammatically correct, and culturally appropriate language accessible to our diverse global audience.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Future Vision and Development</h2>
+                <div class="section-content">
+                    <p>We are continuously working to expand and improve our portal to better serve the Sai community. Our future plans include:</p>
+                </div>
+
+                <div class="list-item">
+                    <strong>Multi-language Support:</strong> Expanding our content to include Hindi, Marathi, Telugu, Tamil, and other Indian languages to serve devotees who prefer content in their native language.
+                </div>
+
+                <div class="list-item">
+                    <strong>Mobile Application:</strong> Developing dedicated mobile applications for iOS and Android to provide a more convenient and immersive experience for mobile users.
+                </div>
+
+                <div class="list-item">
+                    <strong>Interactive Features:</strong> Potentially introducing community forums, discussion boards, virtual satsangs, or live streaming of aartis and spiritual discourses, subject to appropriate moderation and quality control.
+                </div>
+
+                <div class="list-item">
+                    <strong>Expanded Content Library:</strong> Continuously adding new teachings, stories, historical information, and spiritual resources to create one of the most comprehensive Sai Baba resources online.
+                </div>
+
+                <div class="list-item">
+                    <strong>Personalization Features:</strong> Implementing features that allow users to customize their experience, save favorite content, create spiritual journals, and track their devotional practices.
+                </div>
+
+                <div class="list-item">
+                    <strong>Educational Programs:</strong> Developing structured learning programs, courses, and guided spiritual journeys based on Sai Baba's teachings.
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Our Core Principles</h3>
+                <ul class="bullet-list">
+                    <li><strong>Shraddha (Faith):</strong> We operate with complete faith in Sai Baba's guidance and blessings</li>
+                    <li><strong>Saburi (Patience):</strong> We approach our mission with patience, understanding that spiritual growth takes time</li>
+                    <li><strong>Seva (Service):</strong> We consider this portal as our service to Sai Baba and his devotees</li>
+                    <li><strong>Satya (Truth):</strong> We are committed to truthfulness in all our content and operations</li>
+                    <li><strong>Ahimsa (Non-violence):</strong> We respect all beings and never promote harm in any form</li>
+                    <li><strong>Ekta (Unity):</strong> We promote unity among all people regardless of differences</li>
+                </ul>
+            </div>
+
+            <div class="contact-info">
+                <h3>Connect With Us</h3>
+                <p>We welcome your feedback, suggestions, questions, and experiences. Please feel free to reach out to us:</p>
+                <p><strong>Email:</strong> <a href="mailto:contact@saibabaspiritualportal.com">contact@saibabaspiritualportal.com</a></p>
+                <p><strong>For Content Suggestions:</strong> <a href="mailto:content@saibabaspiritualportal.com">content@saibabaspiritualportal.com</a></p>
+                <p><strong>For Technical Issues:</strong> <a href="mailto:support@saibabaspiritualportal.com">support@saibabaspiritualportal.com</a></p>
+                <p><strong>Response Time:</strong> We aim to respond to all genuine inquiries within 48-72 hours.</p>
+            </div>
+
+            <div class="section-content">
+                <p style="text-align: center; font-style: italic; color: #8e44ad; font-size: 18px; margin-top: 30px;">
+                    "श्रद्धा सबुरी सांई कृपा" - Shraddha, Saburi, Sai Kripa<br>
+                    With Faith and Patience, Sai Baba's Blessings Flow<br><br>
+                    Om Sai Ram 🙏
+                </p>
+            </div>
+        </div>
+
+      <!-- Footer - UNTOUCHED -->
 <footer class="site-footer">
   <p>© 2025 Sai Baba Spiritual Portal. All rights reserved.</p>
   <div class="footer-links">
@@ -239,3 +634,4 @@ a{
 
 </body>
 </html>
+
