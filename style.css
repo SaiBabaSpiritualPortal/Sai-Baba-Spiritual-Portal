@@ -1623,7 +1623,7 @@ html, body {
 /* ============================= */
 
 :root {
-  --footer-gap: 14px;   /* ← CHANGE THIS VALUE ONLY */
+  --footer-gap: 18px;   /* ← CHANGE THIS VALUE ONLY */
 }
 
 /* Footer Links */
@@ -1636,8 +1636,10 @@ html, body {
 /* Remove underline from links */
 .footer-links a {
   text-decoration: none;
-    color:#8f6223;
+    color: #1877F2;
+    margin-top: 1px:
 }
+
 
 
 
