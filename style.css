@@ -1627,13 +1627,14 @@ html, body {
     gap: 20px;       /* ← space between each link */
     font-size: 0.75rem;
     justify-content: center;  /* CENTER ALIGN */
-
+    margin-top: -8px;            /* move upward */
 }
 
 .footer-links a {
-    color: #001F3F;  /* navy blue */
+    color: #000A3D;              /* deeper dark blue */
     text-decoration: none; /* remove underline */
 }
+
 
 
 
