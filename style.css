@@ -1629,16 +1629,17 @@ html, body {
 /* Footer Links */
 .footer-links {
   gap: var(--footer-gap);    /* ← automatic spacing */
-    font-size: 0.85rem;
+  font-size: 0.85rem;
   margin-top: 2px:
+  color: #1877F2;
 }
 
 /* Remove underline from links */
 .footer-links a {
   text-decoration: none;
-    color: #1877F2;
-    margin-top: 1px:
+  color: #1877F2;
 }
+
 
 
 
