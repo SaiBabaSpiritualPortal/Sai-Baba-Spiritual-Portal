@@ -105,6 +105,41 @@ ul{
   .wrapper{ padding:20px; margin:16px; }
   h1{ font-size:1.9rem; }
 }
+   /* FIX: Premium bullet alignment and spacing */
+.wrapper ul {
+  margin: 12px 0 20px 28px;
+  padding-left: 0;
+}
+
+.wrapper ul li {
+  margin-bottom: 10px;
+  list-style-type: disc;
+  padding-left: 4px;
+}
+
+/* Fix centered paragraphs before lists */
+.wrapper p + ul {
+  margin-top: -4px !important;
+}
+
+/* Fix spacing after list before next heading */
+.wrapper ul + h2 {
+  margin-top: 34px !important;
+}
+
+/* Optional: make bullet section look richer */
+.premium-list {
+  margin: 10px 0 20px 28px;
+  padding-left: 0;
+}
+
+.premium-list li {
+  margin-bottom: 12px;
+  list-style-type: disc;
+  font-size: 1.06rem;
+  color: #333;
+}
+
 </style>
 </head>
 
