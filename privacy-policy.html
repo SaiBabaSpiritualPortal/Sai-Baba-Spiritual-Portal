@@ -8,126 +8,225 @@
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Philosopher&display=swap" rel="stylesheet">
 
-<!-- Footer CSS (separate file) -->
-  <link rel="stylesheet" href="style.css" />
+<!-- Footer CSS (your site global styles) -->
+<link rel="stylesheet" href="style.css" />
 
 <style>
-/* Page (premium white card layout) */
+/* ============================
+   PREMIUM BODY STYLING ONLY
+============================ */
+
 :root{
-  --bg:#f7f5f2;
+  --bg:#f6f3ef;
   --card:#ffffff;
-  --accent:#6a1b9a;
+  --accent:#5b1590;
   --gold:#d4af37;
-  --muted:#444;
+  --muted:#3d3d3d;
   --max:980px;
-  font-family: 'Poppins', sans-serif;
+  font-family:'Poppins', sans-serif;
 }
-body{margin:0;background:var(--bg);color:var(--muted);-webkit-font-smoothing:antialiased;}
-.header-space{height:18px;} /* if header present allow breathing */
 
+body{
+  margin:0;
+  background:linear-gradient(135deg,#f8f6f2,#efe9e1);
+  color:var(--muted);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Premium Card Layout */
 .wrapper{
-  max-width:var(--max); margin:36px auto; padding:34px; background:var(--card);
-  border-radius:14px; box-shadow:0 14px 40px rgba(20,10,30,0.06);
-  border-left:5px solid var(--gold);
+  max-width:var(--max);
+  margin:40px auto;
+  padding:40px;
+  background:var(--card);
+  border-radius:20px;
+  border-left:6px solid var(--gold);
+  border-right:6px solid #e4d6a1;
+  box-shadow:
+     0 10px 25px rgba(0,0,0,0.08),
+     0 0 50px rgba(212,175,55,0.15) inset;
+  animation:fadeIn 0.8s ease-out;
 }
 
-h1{font-family:'Philosopher', serif; color:var(--accent); font-size:2.1rem; text-align:center; margin:4px 0 12px;}
-.meta{ text-align:center; color:#6b4a82; margin-bottom:18px; font-weight:600; }
+/* Headings */
+h1{
+  font-family:'Philosopher', serif;
+  color:var(--accent);
+  font-size:2.4rem;
+  text-align:center;
+  margin-bottom:14px;
+  letter-spacing:1px;
+}
+.meta{
+  text-align:center;
+  color:#7a549a;
+  margin-bottom:22px;
+  font-weight:600;
+}
 
-h2{ font-family:'Philosopher', serif; color:var(--gold); margin-top:22px; font-size:1.18rem; }
-p, li { line-height:1.7; margin-bottom:12px; color:var(--muted); }
-ul{ margin-left:20px; }
+h2{
+  font-family:'Philosopher', serif;
+  color:var(--gold);
+  margin-top:28px;
+  font-size:1.45rem;
+}
 
-.note {
+/* Text */
+p, li{
+  line-height:1.85;
+  font-size:1.05rem;
+  color:#333;
+  margin-bottom:14px;
+}
+
+ul{
+  margin-left:22px;
+}
+
+/* Highlight Note Box */
+.note{
   background:#fff9f0;
-  border-left:4px solid #f3d39b;
-  padding:10px 14px;
-  border-radius:8px;
-  margin:12px 0;
+  border-left:5px solid #f3d39b;
+  padding:14px 16px;
+  border-radius:12px;
+  margin:18px 0;
   color:#5b3c11;
+  line-height:1.75;
 }
 
-/* Cookie popup (keeps consistent look) */
-.cookie-popup{position:fixed;left:14px;right:14px;bottom:18px;background:#fff;padding:14px;border-radius:12px;
-  box-shadow:0 12px 40px rgba(0,0,0,0.14);display:none;z-index:99999;border:2px solid var(--gold)}
-.cookie-box h3{margin:0;color:var(--accent);font-family:'Philosopher',serif;}
-.cookie-box p{margin:8px 0 12px}
-.cookie-buttons{display:flex;gap:8px;justify-content:flex-end}
-.btn{padding:8px 12px;border-radius:8px;border:none;cursor:pointer;font-weight:600}
-.btn-accept{background:var(--gold);color:#fff} .btn-reject{background:#eee;color:#444}
+/* Animation */
+@keyframes fadeIn {
+  from { opacity:0; transform:translateY(10px); }
+  to   { opacity:1; transform:translateY(0); }
+}
 
 /* Responsive */
-@media(max-width:600px){ .wrapper{padding:18px;margin:16px} h1{font-size:1.6rem} }
+@media(max-width:600px){
+  .wrapper{ padding:20px; margin:16px; }
+  h1{ font-size:1.9rem; }
+}
 </style>
 </head>
+
 <body>
 
-  <!-- Header & Navigation -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="brand">🌸 Sai Baba Portal 🌸</a>
-      <nav class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="teachings.html">Teachings</a>
-        <a href="chits.html">Chits</a>
-        <a href="daily-quote.html">Daily Quote</a>
-        <a href="worship.html">Worship</a>
-        <a href="miracles.html">Miracles</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+<!-- Header (untouched) -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">🌸 Sai Baba Portal 🌸</a>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="teachings.html">Teachings</a>
+      <a href="chits.html">Chits</a>
+      <a href="daily-quote.html">Daily Quote</a>
+      <a href="worship.html">Worship</a>
+      <a href="miracles.html">Miracles</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
 
+<!-- MAIN CONTENT -->
 <main class="wrapper" role="main" aria-labelledby="privacy-title">
+
   <h1 id="privacy-title">Privacy Policy</h1>
-  <div class="meta">Owner: <strong>Afreen Mohammed</strong> — a devotee of Sai Baba | Email: <strong>afreenmohammed150598@gmail.com</strong></div>
 
-  <p>This Privacy Policy describes how <strong>Sai Baba Spiritual Portal</strong> (the “Site”) collects, uses, stores, and protects information. The Site is devotional and non-commercial — created purely to share Sai Baba’s teachings and devotee experiences.</p>
+  <div class="meta">
+    Owner: <strong>Afreen Mohammed</strong> — Devotee of Sai Baba  
+    | Email: <strong>afreenmohammed150598@gmail.com</strong>
+  </div>
 
-  <h2>Non-Commercial & Non-Fundraising</h2>
-  <p>The Site does not accept donations, sell spiritual services, or charge for content. If that changes you will be informed on a dedicated page.</p>
+  <p>
+    This Privacy Policy explains how <strong>Sai Baba Spiritual Portal</strong>
+    (“the Site”) collects, uses, and protects information. This is a completely
+    devotional, non-commercial website created only to spread Sai Baba’s teachings,
+    experiences, and guidance in a peaceful and respectful manner.
+  </p>
+
+  <h2>Non-Commercial Nature</h2>
+  <p>
+    The Site does not sell spiritual services, paid readings, or collect donations.
+    All content is freely accessible for devotees.  
+    If the Site ever adds monetization (such as ads), users will be clearly informed.
+  </p>
 
   <h2>Information We Collect</h2>
   <ul>
-    <li><strong>Voluntary:</strong> name and story content you submit (miracle/experience forms).</li>
-    <li><strong>Automatic:</strong> anonymized analytics data (page views, device type), collected only with consent through our cookie popup.</li>
-    <li><strong>Contact messages:</strong> email address only if you choose to contact the owner.</li>
+    <li><strong>Voluntary Data:</strong> Devotee experiences, miracle stories, names (only if submitted).</li>
+    <li><strong>Automatic Data:</strong> anonymous analytics like page visits & device type (only after cookie consent).</li>
+    <li><strong>Contact Forms:</strong> Email address if you contact us directly.</li>
   </ul>
 
   <div class="note">
-    <strong>Important:</strong> Do not submit sensitive personal data in stories (medical records, government IDs, financial details). If sensitive data is shared accidentally, contact us for removal.
+    <strong>Important:</strong> Please avoid submitting sensitive personal details
+    (medical reports, financial data, government ID numbers).  
+    If you shared such data accidentally, email us for immediate removal.
   </div>
 
   <h2>Cookies & Analytics</h2>
-  <p>We use a cookie consent popup. If you <strong>Accept</strong>, Google Analytics (GA4) may run to help improve the Site. If you <strong>Reject</strong>, analytics and ad scripts will not run.</p>
+  <p>
+    The cookie popup asks for your permission before enabling Google Analytics (GA4).
+    If you <strong>Reject</strong>, no analytics or tracking scripts run.
+  </p>
 
-  <h2>Google AdSense & Ads (Future)</h2>
-  <p>If advertising is enabled in future, we will follow all Google Publisher and AdSense policies (no encouragement of clicks, clear separation of ads & content, user consent for personalized ads).</p>
+  <h2>Future Google AdSense (If Enabled)</h2>
+  <p>
+    If ads are added in future, the Site will follow:
+  </p>
+  <ul>
+    <li>Google Publisher Policies</li>
+    <li>Strict separation of ads & content</li>
+    <li>No encouragement of ad clicks</li>
+    <li>Consent-based personalized ads</li>
+  </ul>
 
-  <h2>User-Submitted Content & Copyright</h2>
-  <p>By submitting a story you confirm it is your own content and you grant the Site a non-exclusive right to display it. If you believe your copyright was used without permission, email a takedown request to <strong>afreenmohammed150598@gmail.com</strong>. Include the URL, identification of the work, and a statement under penalty of perjury that you are the rights owner.</p>
+  <h2>Copyright & User Submissions</h2>
+  <p>
+    Devotees submitting stories confirm the content belongs to them.
+    If something is copyrighted and submitted mistakenly, the owner may request removal.
+  </p>
+  <p>
+    For copyright claims, email:
+    <strong>afreenmohammed150598@gmail.com</strong>  
+    Include:
+  </p>
+  <ul>
+    <li>Story or page URL</li>
+    <li>Description of copyrighted work</li>
+    <li>Proof of ownership</li>
+    <li>A declaration under penalty of perjury</li>
+  </ul>
 
   <h2>Your Rights</h2>
   <ul>
-    <li>Request deletion of a story</li>
-    <li>Request copies of data we hold about you</li>
-    <li>Opt out of analytics by rejecting cookies</li>
+    <li>Request deletion of your story</li>
+    <li>Request a copy of data associated with you</li>
+    <li>Reject cookies & avoid analytics</li>
   </ul>
 
   <h2>Security</h2>
-  <p>We use reasonable measures to protect data; however, absolute security cannot be guaranteed.</p>
+  <p>
+    Basic technical measures are used to protect data, but no system can guarantee
+    100% security. Sensitive data is never stored intentionally.
+  </p>
 
-  <h2>Third-Party Links & Services</h2>
-  <p>We may link to third-party resources (YouTube, Google Forms). Their privacy policies apply to data processed by them.</p>
+  <h2>External Links</h2>
+  <p>
+    Some pages may link to external platforms (Google Forms, YouTube).  
+    Their own privacy policies apply when interacting with their websites.
+  </p>
 
-  <h2>Contact</h2>
-  <p>Owner: <strong>Afreen Mohammed</strong><br>Email: <strong>afreenmohammed150598@gmail.com</strong></p>
+  <h2>Contact Information</h2>
+  <p>
+    Owner: <strong>Afreen Mohammed</strong><br>
+    Email: <strong>afreenmohammed150598@gmail.com</strong>
+  </p>
+
 </main>
 
-  <!-- Footer -->
+<!-- Footer (untouched) -->
 <footer class="site-footer">
   <p>© 2025 Sai Baba Spiritual Portal. All rights reserved.</p>
-
   <div class="footer-links">
     <a href="about.html">About</a>
     <a href="privacy-policy.html">Privacy Policy</a>
@@ -136,7 +235,7 @@ ul{ margin-left:20px; }
   </div>
 </footer>
 
-<!-- Cookie popup (same HTML to paste into other pages) -->
+<!-- Cookie Popup (untouched) -->
 <div id="cookiePopup" class="cookie-popup" aria-hidden="true">
   <div class="cookie-box">
     <h3>🍪 Cookie Consent</h3>
@@ -149,34 +248,40 @@ ul{ margin-left:20px; }
 </div>
 
 <script>
-/* Cookie consent + GA load logic (GA loads only if user accepts) */
-function showCookie() {
-  if(!localStorage.getItem('sai_cookie')) document.getElementById('cookiePopup').style.display='block';
+/* Cookie Logic */
+function showCookie(){
+  if(!localStorage.getItem('sai_cookie'))
+    document.getElementById('cookiePopup').style.display='block';
 }
+
 function acceptCookies(){
   localStorage.setItem('sai_cookie','accepted');
   document.getElementById('cookiePopup').style.display='none';
   loadGA();
 }
+
 function rejectCookies(){
   localStorage.setItem('sai_cookie','rejected');
   document.getElementById('cookiePopup').style.display='none';
 }
+
 window.addEventListener('load', showCookie);
 
-/* Load GA example (only runs after Accept). Replace ID if needed. */
+/* Google Analytics (conditional) */
 function loadGA(){
   if(window.__gaLoaded) return;
   window.__gaLoaded = true;
-  var id = 'G-ZGTECZT0GM'; // update if you have another
-  var s = document.createElement('script');
-  s.src = 'https://www.googletagmanager.com/gtag/js?id='+id;
+  var id='G-ZGTECZT0GM';
+  var s=document.createElement('script');
+  s.src='https://www.googletagmanager.com/gtag/js?id='+id;
   s.async=true; document.head.appendChild(s);
   window.dataLayer = window.dataLayer||[];
-  function gtag(){dataLayer.push(arguments);} window.gtag=gtag;
+  function gtag(){ dataLayer.push(arguments); } window.gtag = gtag;
   gtag('js', new Date()); gtag('config', id);
 }
+
 if(localStorage.getItem('sai_cookie')==='accepted'){ loadGA(); }
 </script>
+
 </body>
 </html>
