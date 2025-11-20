@@ -1622,22 +1622,15 @@ html, body {
 /* Adjustable Footer Spacing */
 /* ============================= */
 
-:root {
-  --footer-gap: 18px;   /* ← CHANGE THIS VALUE ONLY */
-}
-
-/* Footer Links */
 .footer-links {
-  gap: var(--footer-gap);    /* ← automatic spacing */
-  font-size: 0.85rem;
-  margin-top: 2px:
-  color: #1877F2;
+    display: flex;
+    gap: 20px;       /* ← space between each link */
+    font-size: 0.85rem;
 }
 
-/* Remove underline from links */
 .footer-links a {
-  text-decoration: none;
-  color: #1877F2;
+    color: #001F3F;  /* navy blue */
+    text-decoration: none; /* remove underline */
 }
 
 
