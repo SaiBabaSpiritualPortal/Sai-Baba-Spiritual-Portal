@@ -1625,13 +1625,16 @@ html, body {
 .footer-links {
     display: flex;
     gap: 20px;       /* ← space between each link */
-    font-size: 0.85rem;
+    font-size: 0.75rem;
+    text-align: center;
+
 }
 
 .footer-links a {
     color: #001F3F;  /* navy blue */
     text-decoration: none; /* remove underline */
 }
+
 
 
 
