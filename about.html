@@ -1,43 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>About | Sai Baba Spiritual Portal</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Philosopher&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css" />
 
 <style>
-:root{--bg:#f7f5f2;--card:#fff;--accent:#6a1b9a;--gold:#d4af37;--muted:#444;--max:980px;font-family:'Poppins',sans-serif}
-body{margin:0;background:var(--bg);color:var(--muted)}
-.wrapper{max-width:var(--max);margin:36px auto;padding:34px;background:var(--card);border-radius:14px;box-shadow:0 14px 40px rgba(20,10,30,0.06);border-left:5px solid var(--gold)}
-h1{font-family:'Philosopher',serif;color:var(--accent);font-size:2.1rem;text-align:center}
-h2{font-family:'Philosopher',serif;color:var(--gold);margin-top:18px}
-p,li{line-height:1.7;margin-bottom:12px}
-ul{margin-left:20px}
-@media(max-width:600px){.wrapper{padding:18px;margin:14px}}
+:root{
+  --bg:#f6f3ef;
+  --card:#ffffff;
+  --accent:#5b1590;
+  --gold:#d4af37;
+  --muted:#3d3d3d;
+  --max:980px;
+  font-family:'Poppins', sans-serif;
+}
+
+/* PREMIUM BODY STYLING ONLY */
+body{
+  margin:0;
+  background:linear-gradient(135deg,#f8f6f2,#efe9e1);
+  color:var(--muted);
+}
+
+/* MAIN WRAPPER WITH PREMIUM LOOK */
+.wrapper{
+  max-width:var(--max);
+  margin:40px auto;
+  padding:40px;
+  background:var(--card);
+  border-radius:20px;
+  border-left:6px solid var(--gold);
+  border-right:6px solid #e4d6a1;
+  box-shadow:
+     0 10px 25px rgba(0,0,0,0.08),
+     0 0 50px rgba(212,175,55,0.15) inset;
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* HEADINGS */
+h1{
+  font-family:'Philosopher', serif;
+  color:var(--accent);
+  font-size:2.4rem;
+  text-align:center;
+  letter-spacing:1px;
+  margin-bottom:20px;
+}
+
+h2{
+  font-family:'Philosopher', serif;
+  color:var(--gold);
+  font-size:1.55rem;
+  margin-top:30px;
+  letter-spacing:0.5px;
+}
+
+/* TEXT */
+p, li{
+  line-height:1.85;
+  font-size:1.05rem;
+  color:#333;
+  margin-bottom:14px;
+}
+
+ul{
+  margin-left:22px;
+}
+
+/* LINKS */
+a{
+  color:var(--accent);
+  font-weight:600;
+  text-decoration:none;
+}
+
+.wrapper a:hover{
+  color:#8034c0;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+@media(max-width:600px){
+  .wrapper{
+    padding:20px;
+    margin:16px;
+  }
+  h1{font-size:1.9rem;}
+}
 </style>
 
 </head>
 <body>
 
-  <!-- Header & Navigation -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="brand">🌸 Sai Baba Portal 🌸</a>
-      <nav class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="teachings.html">Teachings</a>
-        <a href="chits.html">Chits</a>
-        <a href="daily-quote.html">Daily Quote</a>
-        <a href="worship.html">Worship</a>
-        <a href="miracles.html">Miracles</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+<!-- Header & Navigation - UNTOUCHED -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">🌸 Sai Baba Portal 🌸</a>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="teachings.html">Teachings</a>
+      <a href="chits.html">Chits</a>
+      <a href="daily-quote.html">Daily Quote</a>
+      <a href="worship.html">Worship</a>
+      <a href="miracles.html">Miracles</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
 
+<!-- MAIN BODY -->
 <main class="wrapper" role="main" aria-labelledby="about-title">
+
   <h1 id="about-title">About Sai Baba Spiritual Portal</h1>
 
   <p><strong>Owner:</strong> <em>Afreen Mohammed</em> — a devotee of Sai Baba.<br>
@@ -59,18 +140,60 @@ ul{margin-left:20px}
     <li>Transparency in data handling and user consent.</li>
   </ul>
 
+  <h2>Why This Portal Was Created</h2>
+  <p>
+    This portal was built with a pure intention — to create a peaceful spiritual corner for 
+    devotees seeking guidance, comfort, and blessings from Sai Baba. In today’s busy world, 
+    many people look for real experiences and simple explanations of Baba’s teachings. This 
+    website brings together all essential aspects of devotion to help devotees feel connected 
+    to His presence.
+  </p>
+
+  <h2>What Makes This Portal Unique?</h2>
+  <ul>
+    <li>All content is devotional, original, and written with sincerity.</li>
+    <li>No commercial intentions — this is a completely free spiritual platform.</li>
+    <li>Fast-loading, mobile-friendly, and clean design for best user experience.</li>
+    <li>Thoughtful selection of teachings and stories that genuinely inspire devotees.</li>
+  </ul>
+
+  <h2>Our Devotional Commitment</h2>
+  <p>
+    We are dedicated to maintaining a respectful, positivity-filled, and authentic space. 
+    No superstition, no false promises — only genuine devotion, well-known teachings, 
+    and love for Baba. Everything added to the portal is verified and written peacefully.
+  </p>
+
+  <h2>Future Additions</h2>
+  <ul>
+    <li>Expanded teachings with simple explanations.</li>
+    <li>A devotional blog for answered prayers and experiences.</li>
+    <li>Daily Baba messages & affirmations.</li>
+    <li>Guided meditation inspired by Sai teachings.</li>
+  </ul>
+
   <h2>Google & Monetization Readiness</h2>
-  <p>The Site follows Google Publisher best practices: clear legal pages, cookie consent, original content, and no encouragement of ad clicks. When ads are enabled, they will be implemented in accordance with Google policies.</p>
+  <p>
+    The site follows Google Publisher policies: clear legal pages, user-friendly content, 
+    cookie consent, original writing, and zero encouragement of ad clicks. When ads are 
+    enabled, they will follow all Google AdSense requirements strictly.
+  </p>
 
   <h2>Contact</h2>
-  <p>Owner: <strong>Afreen Mohammed</strong><br>
-  Email: <strong>afreenmohammed150598@gmail.com</strong></p>
+  <p>
+    Owner: <strong>Afreen Mohammed</strong><br>
+    Email: <strong>afreenmohammed150598@gmail.com</strong>
+  </p>
+
+  <p style="text-align:center; font-size:1.2rem; margin-top:30px;">
+    <strong>Om Sai Ram 🌸</strong>
+  </p>
+
 </main>
 
-  <!-- Footer -->
+<!-- Footer - UNTOUCHED -->
 <footer class="site-footer">
   <p>© 2025 Sai Baba Spiritual Portal. All rights reserved.</p>
-
   <div class="footer-links">
     <a href="about.html">About</a>
     <a href="privacy-policy.html">Privacy Policy</a>
