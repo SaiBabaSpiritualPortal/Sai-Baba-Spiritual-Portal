@@ -253,7 +253,7 @@
             .om-symbol {
                 font-size: 40px;
             }
-          /* ============================= */
+         /* ============================= */
 /* Header Styling */
 /* ============================= */
 .site-header {
@@ -284,6 +284,7 @@
   text-shadow: 0 0 10px rgba(142, 36, 170, 0.5);
   animation: gentlePulse 3s ease-in-out infinite;
 }
+@keyframes gentlePulse { 0%,100%{transform:scale(1);}50%{transform:scale(1.02);} }
 .main-nav { display: flex; gap: 18px; }
 .main-nav a {
   font-family: 'Poppins', sans-serif;
@@ -304,7 +305,84 @@
   transition: width 0.3s ease-in-out;
 }
 .main-nav a:hover::after, .main-nav a.active::after { width: 100%; }
+/* ============================================= */
+/* HEADER & NAVIGATION FIX - KEEP ALL IN ONE LINE */
+/* ============================================= */
 
+/* Base header styles */
+.site-header {
+  position: sticky;
+  top: 0;
+  padding: 8px 0;
+  background: linear-gradient(135deg, #fff8e7, #fffdf6);
+  backdrop-filter: blur(12px) saturate(180%);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  z-index: 1000;
+  width: 100%;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  gap: 20px;
+}
+
+/* Brand - Keep in one line */
+.brand {
+  font-family: 'Philosopher', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #b6863d;
+  text-decoration: none;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(142, 36, 170, 0.5);
+  white-space: nowrap; 
+  flex-shrink: 0; 
+}
+
+/* Navigation - Keep all links in one line */
+.main-nav {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: nowrap; 
+  flex-shrink: 1;
+}
+
+.main-nav a {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  color: #5b3c11;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 6px 8px;
+  position: relative;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-size: 0.85rem; 
+}
+
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #d6a35f;
+  transition: width 0.3s ease-in-out;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  width: 100%;
+}
 /* ============================= */
 /* Footer Styling */
 /* ============================= */
@@ -315,22 +393,36 @@
   margin-top:auto;
 }
 
+.site-footer {
+    text-align: center;
+    padding: 10px 0; 
+    background-color: #f8f8f8;
+    color: #333;
+    font-size: 14px;
+}
+.site-footer .disclaimer {
+    font-size: 11px; 
+    color: #777;
+    margin-top: 3px;
+}
+
 /* ============================= */
 /* Adjustable Footer Spacing */
 /* ============================= */
 
 .footer-links {
     display: flex;
-    gap: 20px;       /* ← space between each link */
+    gap: 20px;    
     font-size: 0.75rem;
-    justify-content: center;  /* CENTER ALIGN */
-    margin-top: -8px;            /* move upward */
+    justify-content: center;
+    margin-top: -8px;     
 }
 
 .footer-links a {
-    color: #000A3D;              /* deeper dark blue */
-    text-decoration: none; /* remove underline */
+    color: #000A3D;        
+    text-decoration: none;
 }
+
 
         }
     </style>
