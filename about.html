@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Sai Baba Spiritual Portal</title>
     <meta name="description" content="Learn about Sai Baba Spiritual Portal - created by devotee Afreen Mohammed to spread Sai Baba's teachings, miracles, and daily spiritual guidance.">
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* Body Content Styles Only */
-        .legal-body {
+        /* Isolated styles for legal page body - won't conflict with style.css */
+        .legal-page-wrapper {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #fef5f0 0%, #fff5f7 50%, #fef0f5 100%);
             color: #4a4a4a;
@@ -17,13 +17,17 @@
             min-height: 100vh;
         }
 
-        .content-wrapper {
+        .legal-page-wrapper * {
+            box-sizing: border-box;
+        }
+
+        .legal-page-wrapper .content-wrapper {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        .page-container {
+        .legal-page-wrapper .page-container {
             background: white;
             padding: 50px 60px;
             border-radius: 20px;
@@ -33,31 +37,25 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .page-header {
+        .legal-page-wrapper .page-header {
             text-align: center;
             margin-bottom: 50px;
             padding-bottom: 30px;
             border-bottom: 3px solid #f0e6f6;
         }
 
-        .om-symbol {
+        .legal-page-wrapper .om-symbol {
             font-size: 50px;
             color: #ff8c42;
             margin-bottom: 20px;
             filter: drop-shadow(2px 2px 8px rgba(255, 140, 66, 0.3));
         }
 
-        .page-title {
+        .legal-page-wrapper .page-title {
             font-size: 46px;
             background: linear-gradient(135deg, #da70d6 0%, #ba55d3 100%);
             -webkit-background-clip: text;
@@ -68,14 +66,14 @@
             letter-spacing: -1px;
         }
 
-        .page-subtitle {
+        .legal-page-wrapper .page-subtitle {
             font-size: 18px;
             color: #888;
             font-style: italic;
             font-weight: 400;
         }
 
-        .effective-date {
+        .legal-page-wrapper .effective-date {
             background: linear-gradient(135deg, #fff5f7 0%, #fef9ff 100%);
             padding: 15px 25px;
             border-radius: 10px;
@@ -86,11 +84,11 @@
             font-weight: 500;
         }
 
-        .section {
+        .legal-page-wrapper .section {
             margin-bottom: 45px;
         }
 
-        .section-title {
+        .legal-page-wrapper .section-title {
             font-size: 26px;
             color: #6a0dad;
             margin-bottom: 20px;
@@ -100,7 +98,7 @@
             letter-spacing: -0.5px;
         }
 
-        .section-content {
+        .legal-page-wrapper .section-content {
             font-size: 16px;
             text-align: justify;
             margin-bottom: 20px;
@@ -111,14 +109,14 @@
             line-height: 1.9;
         }
 
-        .subsection-title {
+        .legal-page-wrapper .subsection-title {
             font-size: 21px;
             color: #8e44ad;
             margin: 25px 0 15px 0;
             font-weight: 600;
         }
 
-        .list-item {
+        .legal-page-wrapper .list-item {
             padding: 18px 25px;
             margin: 12px 0;
             background: linear-gradient(135deg, #fff5f7 0%, #fef9ff 100%);
@@ -128,18 +126,18 @@
             line-height: 1.8;
         }
 
-        .list-item:hover {
+        .legal-page-wrapper .list-item:hover {
             background: linear-gradient(135deg, #fef0f5 0%, #fff5f7 100%);
             transform: translateX(8px);
             box-shadow: 0 4px 15px rgba(218, 112, 214, 0.2);
         }
 
-        .list-item strong {
+        .legal-page-wrapper .list-item strong {
             color: #6a0dad;
             font-weight: 600;
         }
 
-        .highlight-box {
+        .legal-page-wrapper .highlight-box {
             background: linear-gradient(135deg, #fff0f5 0%, #ffe4e8 100%);
             padding: 30px;
             border-radius: 15px;
@@ -148,13 +146,13 @@
             box-shadow: 0 5px 20px rgba(255, 140, 66, 0.15);
         }
 
-        .highlight-box h3 {
+        .legal-page-wrapper .highlight-box h3 {
             color: #ff6b35;
             margin-bottom: 15px;
             font-size: 22px;
         }
 
-        .contact-info {
+        .legal-page-wrapper .contact-info {
             background: linear-gradient(135deg, #da70d6 0%, #ba55d3 100%);
             color: white;
             padding: 35px;
@@ -163,35 +161,35 @@
             box-shadow: 0 8px 25px rgba(186, 85, 211, 0.3);
         }
 
-        .contact-info h3 {
+        .legal-page-wrapper .contact-info h3 {
             margin-bottom: 20px;
             font-size: 24px;
             color: white;
         }
 
-        .contact-info p {
+        .legal-page-wrapper .contact-info p {
             margin: 10px 0;
             font-size: 16px;
             line-height: 1.8;
         }
 
-        .contact-info a {
+        .legal-page-wrapper .contact-info a {
             color: #ffe4e8;
             text-decoration: underline;
             transition: color 0.3s ease;
         }
 
-        .contact-info a:hover {
+        .legal-page-wrapper .contact-info a:hover {
             color: white;
         }
 
-        .numbered-list {
+        .legal-page-wrapper .numbered-list {
             counter-reset: item;
             list-style: none;
             padding-left: 0;
         }
 
-        .numbered-list li {
+        .legal-page-wrapper .numbered-list li {
             counter-increment: item;
             margin-bottom: 20px;
             padding-left: 45px;
@@ -199,7 +197,7 @@
             line-height: 1.8;
         }
 
-        .numbered-list li:before {
+        .legal-page-wrapper .numbered-list li:before {
             content: counter(item);
             position: absolute;
             left: 0;
@@ -216,18 +214,18 @@
             font-size: 14px;
         }
 
-        .bullet-list {
+        .legal-page-wrapper .bullet-list {
             padding-left: 0;
             list-style: none;
         }
 
-        .bullet-list li {
+        .legal-page-wrapper .bullet-list li {
             padding: 10px 0 10px 35px;
             position: relative;
             line-height: 1.8;
         }
 
-        .bullet-list li:before {
+        .legal-page-wrapper .bullet-list li:before {
             content: "✦";
             position: absolute;
             left: 0;
@@ -236,24 +234,24 @@
         }
 
         @media (max-width: 768px) {
-            .content-wrapper {
+            .legal-page-wrapper .content-wrapper {
                 padding: 0 15px;
             }
 
-            .page-container {
+            .legal-page-wrapper .page-container {
                 padding: 30px 20px;
             }
 
-            .page-title {
+            .legal-page-wrapper .page-title {
                 font-size: 32px;
             }
 
-            .section-title {
+            .legal-page-wrapper .section-title {
                 font-size: 22px;
                 padding-left: 15px;
             }
 
-            .om-symbol {
+            .legal-page-wrapper .om-symbol {
                 font-size: 40px;
             }
         }
@@ -276,8 +274,8 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <div class="legal-body">
+    <!-- Main Content with Isolated Wrapper -->
+    <div class="legal-page-wrapper">
         <div class="content-wrapper">
             <div class="page-container">
                 <div class="page-header">
@@ -425,7 +423,7 @@
                         
                         <p><strong>What We Collect:</strong> When you submit a miracle story, we collect only the information you voluntarily provide: your name, email address, the category of your experience (such as Health, Marriage, Financial, Protection, etc.), and the story you wish to share. We do not collect IP addresses, browsing data, or any other personal information.</p>
                         
-                        <p><strong>How We Use It:</strong> Your story is published on our Miracles page so that other devotees can read about Baba's grace and feel strengthened in their faith. Your email address is kept private and is used only if we need to contact you regarding your submission. We will never sell, share, or misuse your information.</p>
+                        <p><strong>How We Use It:</strong> Your story is published on our Miracles page so that other devotees can read about Baba's grace and feel strengthened in their faith. Your email address is kept private and never displayed. We will never sell, share, or misuse your information.</p>
                         
                         <h3 class="subsection-title">Contact and Communication</h3>
                         <p>We welcome all sincere communications from devotees through our Contact page. Whether you have questions about Sai Baba's teachings, suggestions for improving the website, feedback about your experience, or simply want to share your devotion, we are here to listen and respond with care and respect.</p>
